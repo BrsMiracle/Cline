@@ -1,0 +1,17 @@
+{
+  "name": "cline-sandbox-report",
+  "version": "1.0.0",
+  "private": true,
+  "description": "单文件 HTML 沙箱环境报告 + 自动化测试",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:browser": "node scripts/screenshot.mjs",
+    "diag:overflow": "node scripts/diag.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.2",
+    "playwright": "^1.64.0"
+  }
+}

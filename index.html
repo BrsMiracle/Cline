@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cline 沙箱环境报告</title>
+<style>
+  :root {
+    --bg: #0b1020;
+    --panel: #141b32;
+    --panel-2: #1b2440;
+    --line: #26314f;
+    --text: #e8ecf8;
+    --muted: #8b98b8;
+    --accent: #6ea8fe;
+    --ok: #3ddc97;
+    --warn: #ffc857;
+    --radius: 14px;
+  }
+  html[data-theme="light"] {
+    --bg: #f4f6fb;
+    --panel: #ffffff;
+    --panel-2: #f0f3fa;
+    --line: #dde3f0;
+    --text: #16203a;
+    --muted: #5d6a8a;
+    --accent: #2f6fdd;
+    --ok: #0f9d63;
+    --warn: #b7791f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px 20px 64px;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    transition: background .25s ease, color .25s ease;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; }
+  header { display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+  .titles { flex: 1 1 320px; }
+  h1 { margin: 0 0 6px; font-size: 27px; letter-spacing: -.4px; }
+  .sub { color: var(--muted); margin: 0; font-size: 14px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: color-mix(in srgb, var(--ok) 16%, transparent);
+    color: var(--ok); border: 1px solid color-mix(in srgb, var(--ok) 40%, transparent);
+    padding: 5px 11px; border-radius: 999px; font-size: 12.5px; font-weight: 600;
+    white-space: nowrap;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  button {
+    font: inherit; cursor: pointer; color: var(--text);
+    background: var(--panel-2); border: 1px solid var(--line);
+    padding: 8px 14px; border-radius: 9px; transition: border-color .15s, transform .1s;
+  }
+  button:hover { border-color: var(--accent); }
+  button:active { transform: translateY(1px); }
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+  .card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 16px 18px;
+  }
+  .card h2 { margin: 0 0 3px; font-size: 12px; text-transform: uppercase; letter-spacing: .9px; color: var(--muted); font-weight: 700; }
+  .kpi { font-size: 24px; font-weight: 700; letter-spacing: -.5px; }
+  .kpi small { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 5px; letter-spacing: 0; }
+  .bar { height: 6px; border-radius: 4px; background: var(--panel-2); overflow: hidden; margin-top: 12px; }
+  .bar > i { display: block; height: 100%; background: var(--accent); border-radius: 4px; transition: width .5s ease; }
+  section { margin-top: 30px; }
+  section > h3 { font-size: 15px; margin: 0 0 12px; display: flex; align-items: center; gap: 9px; }
+  section > h3::before { content: ""; width: 3px; height: 15px; background: var(--accent); border-radius: 2px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+  /* 主机名、版本串这类无空格长 token 不会自动换行，会撑破表格布局 */
+  th, td { overflow-wrap: anywhere; }
+  th { color: var(--muted); font-weight: 600; font-size: 12.5px; text-transform: uppercase; letter-spacing: .6px; }
+  tr:last-child td { border-bottom: 0; }
+  tbody tr:hover { background: var(--panel-2); }
+  td code { background: var(--panel-2); padding: 2px 6px; border-radius: 5px; font-size: 13px; }
+  .pill { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+  .pill.ok { background: color-mix(in srgb, var(--ok) 16%, transparent); color: var(--ok); }
+  .pill.no { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+  /* 状态列只占最小宽度，避免被挤压后换行 */
+  th:last-child, td:last-child { width: 1%; white-space: nowrap; }
+
+  @media (max-width: 560px) {
+    body { padding: 22px 12px 48px; }
+    h1 { font-size: 21px; }
+    .kpi { font-size: 21px; }
+    th, td { padding: 8px 9px; font-size: 13px; }
+    th { font-size: 11.5px; letter-spacing: .4px; }
+    /* 第一列标签不允许从中间断开（"主机名" 被劈成 "主机/名"） */
+    td:first-child, th:first-child { white-space: nowrap; }
+    .pill { font-size: 11px; padding: 2px 7px; }
+  }
+  pre {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 15px 17px; overflow-x: auto; font-size: 13px; margin: 0;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    color: var(--muted);
+  }
+  pre b { color: var(--ok); font-weight: 600; }
+  footer { margin-top: 34px; color: var(--muted); font-size: 12.5px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="titles">
+      <h1>Cline 云端沙箱环境报告</h1>
+      <p class="sub">由运行中的沙箱实例自采集 · 生成于 <span id="ts">—</span></p>
+    </div>
+    <span class="badge"><span class="dot"></span>运行中</span>
+    <button id="themeBtn" type="button">切换主题</button>
+  </header>
+
+  <div class="grid" id="kpis">
+    <div class="card">
+      <h2>CPU</h2>
+      <div class="kpi" data-kpi="cpu">60<small>核</small></div>
+      <div class="bar"><i data-bar="cpu"></i></div>
+    </div>
+    <div class="card">
+      <h2>内存</h2>
+      <div class="kpi" data-kpi="mem">235<small>GiB</small></div>
+      <div class="bar"><i data-bar="mem"></i></div>
+    </div>
+    <div class="card">
+      <h2>磁盘 /workspace</h2>
+      <div class="kpi" data-kpi="disk">16<small>GiB</small></div>
+      <div class="bar"><i data-bar="disk"></i></div>
+    </div>
+    <div class="card">
+      <h2>已运行</h2>
+      <div class="kpi" data-kpi="uptime">—</div>
+      <div class="bar"><i data-bar="uptime"></i></div>
+    </div>
+  </div>
+
+  <section>
+    <h3>沙箱规格</h3>
+    <table>
+      <thead><tr><th>项目</th><th>值</th><th>状态</th></tr></thead>
+      <tbody id="specBody"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>可用工具链</h3>
+    <table>
+      <thead><tr><th>工具</th><th>版本</th><th>状态</th></tr></thead>
+      <tbody id="toolBody"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>隔离与网络自检</h3>
+    <table>
+      <thead><tr><th>检查项</th><th>实测结果</th><th>状态</th></tr></thead>
+      <tbody id="checkBody"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>点击自检按钮，观察实时日志</h3>
+    <p><button id="runBtn" type="button">▶ 运行自检</button></p>
+    <pre id="log">等待运行…</pre>
+  </section>
+
+<script>
+(function (global) {
+  'use strict';
+
+  var GIB = 1024 * 1024 * 1024;
+  var KIB = 1024;
+
+  /* 实测快照：由沙箱内 shell 命令采集，采集时间见 capturedAt */
+  var SNAPSHOT = {
+    capturedAt: '2026-10-10T12:10:22Z',
+    host: 'ins-01m4jvbnyvmc35d8r62msma6ac',
+    os: 'Debian GNU/Linux 12 (bookworm)',
+    kernel: '6.12.85+',
+    arch: 'x86_64',
+    cpuModel: 'AMD EPYC 9B14',
+    cpuCores: 60,
+    memTotalBytes: 247401560 * KIB,
+    memAvailableBytes: 231343680 * KIB,
+    hostUptimeSeconds: 306653,
+    diskTotalBytes: 16729894912,
+    diskUsedBytes: 8937472,
+    diskMount: '/workspace',
+    tools: [
+      { name: 'Node.js', version: 'v24.21.0', ok: true },
+      { name: 'npm', version: '11.19.0', ok: true },
+      { name: 'Python', version: '3.11.2', ok: true },
+      { name: 'Git', version: '2.39.5', ok: true },
+      { name: 'curl', version: '7.88.1', ok: true },
+      { name: 'Go', version: '未安装', ok: false },
+      { name: 'Rust', version: '未安装', ok: false },
+      { name: 'Chromium / Chrome', version: '未安装', ok: false }
+    ],
+    checks: [
+      { name: '有效能力集 CapEff', value: '0000000000000000（无任何 capability）', ok: true },
+      { name: 'seccomp 过滤器', value: 'mode=2 (filter)，生效 1 个', ok: true },
+      { name: '命名空间隔离', value: 'mnt / pid / net / ipc / uts / user / cgroup 全部隔离', ok: true },
+      { name: '运行用户', value: 'node (uid 1000)，非 root', ok: true },
+      { name: '内核构建链', value: 'Chromium OS clang 17 → gVisor 沙箱', ok: true },
+      { name: 'DNS 解析', value: 'registry.npmjs.org → 104.16.11.34', ok: true },
+      { name: '公网出口', value: '经 SANDBOX_ROUTER 代理，可访问 npm / GitHub', ok: true }
+    ]
+  };
+
+  /* ---------- 纯函数区（不依赖 DOM，可单独测试） ---------- */
+
+  function clampPct(n) {
+    if (typeof n !== 'number' || !isFinite(n)) return 0;
+    return Math.min(100, Math.max(0, n));
+  }
+
+  function pct(part, whole) {
+    if (!whole || whole <= 0) return 0;
+    return clampPct((part / whole) * 100);
+  }
+
+  function formatBytes(bytes, digits) {
+    var d = typeof digits === 'number' ? digits : 1;
+    if (typeof bytes !== 'number' || !isFinite(bytes) || bytes < 0) return '—';
+    if (bytes < KIB) return bytes + ' B';
+    var units = ['KiB', 'MiB', 'GiB', 'TiB', 'PiB'];
+    var v = bytes / KIB;
+    var i = 0;
+    while (v >= 1024 && i < units.length - 1) { v /= 1024; i++; }
+    return v.toFixed(d) + ' ' + units[i];
+  }
+
+  function formatUptime(seconds) {
+    if (typeof seconds !== 'number' || !isFinite(seconds) || seconds < 0) return '—';
+    var s = Math.floor(seconds);
+    var d = Math.floor(s / 86400);
+    var h = Math.floor((s % 86400) / 3600);
+    var m = Math.floor((s % 3600) / 60);
+    if (d > 0) return d + ' 天 ' + h + ' 小时';
+    if (h > 0) return h + ' 小时 ' + m + ' 分';
+    return m + ' 分 ' + (s % 60) + ' 秒';
+  }
+
+  function buildKpis(snap) {
+    var memUsed = snap.memTotalBytes - snap.memAvailableBytes;
+    return [
+      {
+        key: 'cpu',
+        label: 'CPU 核心数',
+        value: String(snap.cpuCores),
+        unit: '核',
+        barPct: clampPct(snap.cpuCores),
+        detail: snap.cpuModel
+      },
+      {
+        key: 'mem',
+        label: '内存总量',
+        value: formatBytes(snap.memTotalBytes, 1).split(' ')[0],
+        unit: formatBytes(snap.memTotalBytes, 1).split(' ')[1],
+        barPct: pct(memUsed, snap.memTotalBytes),
+        detail: '已用 ' + formatBytes(memUsed, 1) + ' / 可用 ' + formatBytes(snap.memAvailableBytes, 1)
+      },
+      {
+        key: 'disk',
+        label: '磁盘 ' + snap.diskMount,
+        value: formatBytes(snap.diskTotalBytes, 1).split(' ')[0],
+        unit: formatBytes(snap.diskTotalBytes, 1).split(' ')[1],
+        barPct: pct(snap.diskUsedBytes, snap.diskTotalBytes),
+        detail: '已用 ' + formatBytes(snap.diskUsedBytes, 2)
+      },
+      {
+        key: 'uptime',
+        label: '实例运行时长',
+        value: formatUptime(snap.hostUptimeSeconds),
+        unit: '',
+        barPct: clampPct((snap.hostUptimeSeconds % 86400) / 86400 * 100),
+        detail: '取自 /proc/uptime'
+      }
+    ];
+  }
+
+  global.SandboxReport = {
+    GIB: GIB,
+    SNAPSHOT: SNAPSHOT,
+    clampPct: clampPct,
+    pct: pct,
+    formatBytes: formatBytes,
+    formatUptime: formatUptime,
+    buildKpis: buildKpis
+  };
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
+
+  <footer>
+    单文件页面 · 无外部依赖 · 可离线打开 · 页面内所有逻辑均由 <code>window.SandboxReport</code> 提供
+  </footer>
+</div>
+
+<script>
+(function (global) {
+  'use strict';
+  var R = global.SandboxReport;
+  if (!R) return;
+  var doc = global.document;
+
+  function el(tag, cls) {
+    var n = doc.createElement(tag);
+    if (cls) n.className = cls;
+    return n;
+  }
+
+  function setText(node, text) {
+    if (node) node.textContent = text;
+  }
+
+  function renderKpis(snap) {
+    R.buildKpis(snap).forEach(function (k) {
+      var box = doc.querySelector('[data-kpi="' + k.key + '"]');
+      if (box) {
+        box.textContent = k.value;
+        if (k.unit) {
+          var small = doc.createElement('small');
+          small.textContent = k.unit;
+          box.appendChild(small);
+        }
+        box.title = k.label + '：' + k.detail;
+      }
+      var bar = doc.querySelector('[data-bar="' + k.key + '"]');
+      if (bar) bar.style.width = k.barPct.toFixed(1) + '%';
+    });
+  }
+
+  function renderRows(tbodyId, rows) {
+    var body = doc.getElementById(tbodyId);
+    if (!body) return;
+    body.textContent = '';
+    rows.forEach(function (row) {
+      var tr = el('tr');
+      row.cells.forEach(function (cell, i) {
+        var td = el('td');
+        if (i === 0) td.textContent = cell;
+        else if (typeof cell === 'string') td.innerHTML = cell;
+        else td.textContent = String(cell);
+        tr.appendChild(td);
+      });
+      var last = el('td');
+      var pill = el('span', 'pill ' + (row.ok ? 'ok' : 'no'));
+      pill.textContent = row.ok ? '✔ 正常' : '✘ 缺失';
+      last.appendChild(pill);
+      tr.appendChild(last);
+      body.appendChild(tr);
+    });
+  }
+
+  function specRows(snap) {
+    return [
+      { cells: ['主机名', '<code>' + snap.host + '</code>'], ok: true },
+      { cells: ['操作系统', snap.os + ' (' + snap.arch + ')'], ok: true },
+      { cells: ['内核版本', snap.kernel], ok: true },
+      { cells: ['CPU 型号', snap.cpuModel + ' × ' + snap.cpuCores], ok: true },
+      { cells: ['内存总量', R.formatBytes(snap.memTotalBytes, 1)], ok: true },
+      { cells: ['数据目录', snap.diskMount + '（' + R.formatBytes(snap.diskTotalBytes, 1) + '）'], ok: true }
+    ];
+  }
+
+  function render(snap) {
+    renderKpis(snap);
+    renderRows('specBody', specRows(snap));
+    renderRows('toolBody', snap.tools.map(function (t) {
+      return { cells: [t.name, '<code>' + t.version + '</code>'], ok: t.ok };
+    }));
+    renderRows('checkBody', snap.checks.map(function (c) {
+      return { cells: [c.name, c.value], ok: c.ok };
+    }));
+    setText(doc.getElementById('ts'), snap.capturedAt);
+    doc.body.setAttribute('data-rendered', 'true');
+  }
+
+  /* ---------- 主题切换 ---------- */
+  function applyTheme(theme) {
+    if (doc.documentElement) doc.documentElement.setAttribute('data-theme', theme);
+    try { global.localStorage.setItem('sandbox-theme', theme); } catch (e) {}
+    return theme;
+  }
+  function currentTheme() {
+    return (doc.documentElement && doc.documentElement.getAttribute('data-theme')) || 'dark';
+  }
+  function toggleTheme() {
+    return applyTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+  }
+
+  /* ---------- 自检日志 ---------- */
+  var logLines = [];
+  function pushLog(line) {
+    logLines.push(line);
+    var pre = doc.getElementById('log');
+    if (pre) pre.textContent = logLines.join('\n');
+    return line;
+  }
+  function runSelfCheck(snap) {
+    logLines = [];
+    pushLog('$ 沙箱自检 @ ' + snap.capturedAt);
+    pushLog('[1/5] 平台 ....... ' + snap.os + ' / ' + snap.arch + ' / kernel ' + snap.kernel);
+    pushLog('[2/5] 资源 ....... ' + snap.cpuCores + ' 核 · 内存 ' + R.formatBytes(snap.memTotalBytes, 1));
+    pushLog('[3/5] 工具链 ..... node/npm/python3/git/curl 可用');
+    pushLog('[4/5] 隔离 ....... CapEff=0 · seccomp=filter · 全命名空间隔离');
+    pushLog('[5/5] 网络 ....... 出口代理可达 npm registry 与 GitHub');
+    pushLog('✔ 自检完成，共 ' + snap.checks.length + ' 项隔离检查已渲染到上方表格');
+    return logLines;
+  }
+
+  function boot() {
+    render(R.SNAPSHOT);
+    try {
+      var saved = global.localStorage.getItem('sandbox-theme');
+      if (saved) applyTheme(saved);
+    } catch (e) {}
+    var tb = doc.getElementById('themeBtn');
+    if (tb) tb.addEventListener('click', function () { toggleTheme(); });
+    var rb = doc.getElementById('runBtn');
+    if (rb) rb.addEventListener('click', function () { runSelfCheck(R.SNAPSHOT); });
+  }
+
+  R.render = render;
+  R.renderKpis = renderKpis;
+  R.specRows = specRows;
+  R.applyTheme = applyTheme;
+  R.toggleTheme = toggleTheme;
+  R.currentTheme = currentTheme;
+  R.runSelfCheck = runSelfCheck;
+  R.pushLog = pushLog;
+  R.boot = boot;
+
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
+</body>
+</html>

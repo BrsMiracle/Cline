@@ -44,18 +44,3 @@ export function clearConfig(): boolean {
     return false;
   }
 }
-
-export function configEquals(a: ProductConfig, b: ProductConfig): boolean {
-  return (
-    a.finishId === b.finishId &&
-    a.spaceText === b.spaceText &&
-    a.themeId === b.themeId &&
-    a.exploded === b.exploded &&
-    a.typingMode === b.typingMode &&
-    a.sound === b.sound
-  );
-}
-
-export function isDefaultConfig(config: ProductConfig): boolean {
-  return configEquals(config, { ...DEFAULT_CONFIG });
-}

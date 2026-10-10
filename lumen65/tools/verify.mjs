@@ -345,6 +345,31 @@ async function main() {
     JSON.stringify(mobile),
   );
 
+  /* ------------------------------------------- storage that refuses to work */
+  await page.evaluateOnNewDocument(() => {
+    Storage.prototype.setItem = () => {
+      throw new Error('QuotaExceededError (simulated)');
+    };
+  });
+  await page.reload({ waitUntil: 'load' });
+  const blocked = await page
+    .waitForFunction(() => window.__LUMEN__ && window.__LUMEN__.debug().frames > 2, {
+      timeout: 30000,
+    })
+    .then(() => true)
+    .catch(() => false);
+  await settle(2500);
+  await page.click('[data-testid="save-config"]');
+  await settle(800);
+  check(
+    'page survives a browser that refuses localStorage',
+    blocked && pageErrors.length === 0,
+    `scene=${blocked} errors=${pageErrors.length}`,
+  );
+  await page.reload({ waitUntil: 'load' });
+  await waitForScene();
+  await settle(2500);
+
   check('no uncaught page errors', pageErrors.length === 0, pageErrors.join(' | '));
   check('no console errors', consoleErrors.length === 0, consoleErrors.slice(0, 3).join(' | '));
 

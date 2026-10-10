@@ -7,6 +7,8 @@
   "scripts": {
     "test": "node --test tests/*.test.js",
     "test:browser": "node scripts/screenshot.mjs",
+    "cache": "node scripts/cache-stats.mjs",
+    "cache:watch": "node scripts/cache-stats.mjs --watch",
     "diag:overflow": "node scripts/diag.mjs",
     "serve": "node scripts/serve.mjs"
   },

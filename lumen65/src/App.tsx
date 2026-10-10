@@ -27,7 +27,10 @@ export default function App() {
   const [savedAt, setSavedAt] = useState<string | null>(null);
   const [lastKey, setLastKey] = useState<{ label: string; id: number } | null>(null);
   const [pressCount, setPressCount] = useState(0);
-  const [autoRotate, setAutoRotate] = useState(true);
+  const [autoRotate, setAutoRotate] = useState(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return true;
+    return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
   const [webglFailed, setWebglFailed] = useState(false);
 
   const hostRef = useRef<HTMLDivElement>(null);
@@ -80,6 +83,7 @@ export default function App() {
       return;
     }
     stageRef.current = stage;
+    if (stage.prefersReducedMotion) setAutoRotate(false);
     stage.setLabelElements({
       caps: labelsRef.current.caps ?? undefined,
       plate: labelsRef.current.plate ?? undefined,
@@ -283,7 +287,11 @@ export default function App() {
           <Hero />
         </div>
 
-        <div className="scene" aria-label="LUMEN 65 三维产品预览">
+        <div
+          className="scene"
+          role="img"
+          aria-label="LUMEN 65 机械键盘三维预览：可拖动旋转、滚轮缩放"
+        >
           <div className="scene__glow" aria-hidden="true" />
           <div className="scene__canvas" ref={hostRef} data-testid="canvas-host" />
           <div className="scene__vignette" aria-hidden="true" />

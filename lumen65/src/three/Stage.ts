@@ -63,6 +63,8 @@ export class Stage {
   private fitDistance = 20;
   private userZoomed = false;
   private fitBox = new Box3();
+  /** respects the OS level motion preference: no drop-in, no auto rotation */
+  readonly prefersReducedMotion: boolean = false;
   private raf = 0;
   private lastTime = 0;
   private hoverKey: KeyHandle | null = null;
@@ -137,7 +139,16 @@ export class Stage {
     this.fitBox = new Box3().setFromObject(this.model.root);
     this.bindEvents();
     this.fitCamera();
-    this.model.startIntro();
+    const reduceMotion =
+      typeof window !== 'undefined' &&
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.prefersReducedMotion = reduceMotion;
+    if (reduceMotion) {
+      this.controls.autoRotate = false;
+    } else {
+      this.model.startIntro();
+    }
     this.lastTime = performance.now();
     this.raf = requestAnimationFrame(this.loop);
   }

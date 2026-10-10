@@ -158,8 +158,3 @@ export function createLegendPlateGeometry(width: number, depth: number): BufferG
   geom.rotateX(-Math.PI / 2);
   return geom;
 }
-
-/** small helper used by the badge / port details */
-export function createRoundedPlate(width: number, depth: number, height: number, radius = 0.05) {
-  return createSlabGeometry({ width, depth, height, radius, bevel: 0.012, curveSegments: 4 });
-}

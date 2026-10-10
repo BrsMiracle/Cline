@@ -69,7 +69,7 @@ lumen65/
 │   └── audio/switch.ts        程序化按键音（噪声 + 低频 thock）
 ├── tools/
 │   ├── build-single.mjs       单文件打包脚本
-│   └── verify.mjs             Puppeteer 端到端自检（34 项断言 + 截图）
+│   └── verify.mjs             Puppeteer 端到端自检（36 项断言 + 截图）
 ├── screenshots/               自检运行时产出的截图
 └── lumen-65.html              单文件交付版
 ```
@@ -104,17 +104,18 @@ lumen65/
 - `npm install` → 成功；`npm run build` → 成功（`dist/` 约 713 kB JS + 14 kB CSS，gzip 后约
   194 kB + 3.9 kB）；`npm run typecheck` → 零错误。
 - `npm run dev`（Vite 开发服务器）→ 启动成功，页面在浏览器中加载后 3D 场景正常初始化。
-- `node tools/verify.mjs`（生产构建 `dist/`）：**34/34 项断言通过**。
-- `node tools/verify.mjs --file lumen-65.html`（单文件版）：**34/34 项断言通过**。
+- `node tools/verify.mjs`（生产构建 `dist/`）：**36/36 项断言通过**。
+- `node tools/verify.mjs --file lumen-65.html`（单文件版）：**36/36 项断言通过**。
 - 单文件 `lumen-65.html` 另外用 `file://` 直接打开验证：3D 场景正常初始化、渲染持续输出，
   无 JS 报错（该环境下 `file://` 的 localStorage 也可用）。
 
-自检覆盖的行为：首屏渲染与默认配置、外壳配色切换（3D 材质 + 摘要）、键帽主题切换、
+自检覆盖的行为：首屏渲染与默认配置、外壳配色切换（3D 材质 + 摘要）、**3×3 全部九种配色/主题组合**、
 拆解展开到位与图层浮标、**快速连点 6 次后仍收敛到正确状态**、按键下压/回弹、
 空格键、键盘体验模式、**输入框聚焦时正常输入且不驱动键帽**、拖动旋转、滚轮缩放、
 视角复位、点击键帽触发按键、localStorage 写入 / 刷新恢复配色与摘要、
 「恢复默认」只删除本页自己的键且不动同一浏览器的其它 key、
 模拟 localStorage 抛异常时页面不崩、414×896 手机视口无横向溢出、
+`prefers-reduced-motion` 下取消自动旋转与入场动画、
 以及全程无 uncaught error / console error。截图见 `screenshots/`。
 
 未在本环境验证的部分：

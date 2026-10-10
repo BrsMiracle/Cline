@@ -116,6 +116,10 @@ async function main() {
   await waitForScene();
   await settle(4000);
 
+  // software rendering in CI is slow: give the loop a moment to prove itself
+  await page
+    .waitForFunction(() => window.__LUMEN__.debug().frames > 5, { timeout: 25000 })
+    .catch(() => null);
   const initial = await debug();
   check('three.js scene boots with the full 63 key layout', initial.keys === 63, `keys=${initial.keys}`);
   check('render loop keeps producing frames', initial.frames > 5, `frames=${initial.frames}`);
@@ -144,6 +148,38 @@ async function main() {
     await text('[data-testid="summary-theme"]'),
   );
   await shot('02-graphite-ember');
+
+  // every finish × theme combination must land in both the scene and the summary
+  const combinations = [
+    ['aurora', 'cbd1da', 'nightfall', '23272f'],
+    ['aurora', 'cbd1da', 'mist', 'eff2f7'],
+    ['aurora', 'cbd1da', 'ember', 'e7d9c2'],
+    ['graphite', '30343c', 'nightfall', '23272f'],
+    ['graphite', '30343c', 'mist', 'eff2f7'],
+    ['graphite', '30343c', 'ember', 'e7d9c2'],
+    ['twilight', '6f62d6', 'nightfall', '23272f'],
+    ['twilight', '6f62d6', 'mist', 'eff2f7'],
+    ['twilight', '6f62d6', 'ember', 'e7d9c2'],
+  ];
+  let badCombos = [];
+  for (const [finish, body, theme, caps] of combinations) {
+    await page.click(`[data-testid="finish-${finish}"]`);
+    await page.click(`[data-testid="theme-${theme}"]`);
+    await settle(1300);
+    const state = await debug();
+    const ok =
+      state.bodyColor === `#${body}` &&
+      state.capColor === `#${caps}` &&
+      (await text('[data-testid="summary-finish"]')).toLowerCase().includes(finish) &&
+      (await page.$eval(`[data-testid="theme-${theme}"]`, (el) => el.getAttribute('aria-checked'))) ===
+        'true';
+    if (!ok) badCombos.push(`${finish}+${theme} (body=#${state.bodyColor} caps=#${state.capColor})`);
+  }
+  check(
+    'all 9 finish × theme combinations apply to scene + summary',
+    badCombos.length === 0,
+    badCombos.join(', ') || 'aurora/graphite/twilight × nightfall/mist/ember',
+  );
 
 
   /* -------------------------------------------------------------- exploding */
@@ -272,6 +308,9 @@ async function main() {
   await page.evaluate(() => localStorage.setItem('unrelated.app.key', 'must-survive'));
   await page.click('[data-testid="toggle-explode"]');
   await settle(3600);
+  const beforeReload = await debug();
+  const summaryBefore = await text('[data-testid="summary-finish"]');
+  const spaceBefore = await text('[data-testid="summary-space"]');
   const storedRaw = await page.evaluate(() => localStorage.getItem('lumen65.product.config.v1'));
   const stored = JSON.parse(storedRaw ?? '{}');
   const liveConfig = await config();
@@ -295,14 +334,16 @@ async function main() {
   );
   check(
     'reload rebuilds the 3D scene with the stored colours',
-    restoredDebug.bodyColor === '#30343c' && restoredDebug.capColor === '#e7d9c2',
-    `body=#${restoredDebug.bodyColor} caps=#${restoredDebug.capColor}`,
+    restoredDebug.bodyColor === beforeReload.bodyColor &&
+      restoredDebug.capColor === beforeReload.capColor,
+    `body=${restoredDebug.bodyColor} (was ${beforeReload.bodyColor}) caps=${restoredDebug.capColor}`,
   );
+  const summaryAfter = await text('[data-testid="summary-finish"]');
   check(
     'reload restores the configuration summary',
-    (await text('[data-testid="summary-finish"]')).includes('石墨黑') &&
-      (await text('[data-testid="summary-space"]')).includes('TYPED'),
-    await text('[data-testid="summary-finish"]'),
+    summaryAfter === summaryBefore &&
+      (await text('[data-testid="summary-space"]')) === spaceBefore,
+    `${summaryBefore} -> ${summaryAfter}`,
   );
   await shot('07-after-reload');
 
@@ -344,6 +385,22 @@ async function main() {
     mobile.scrollW <= mobile.clientW + 2,
     JSON.stringify(mobile),
   );
+
+  /* ------------------------------------------------- reduced motion + a11y */
+  await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+  await page.reload({ waitUntil: 'load' });
+  await waitForScene();
+  await settle(3000);
+  const reduced = await debug();
+  check(
+    'prefers-reduced-motion: no auto rotation, scene still renders',
+    reduced.autoRotate === false && reduced.frames > 2,
+    `autoRotate=${reduced.autoRotate} frames=${reduced.frames}`,
+  );
+  await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'no-preference' }]);
+  await page.reload({ waitUntil: 'load' });
+  await waitForScene();
+  await settle(2500);
 
   /* ------------------------------------------- storage that refuses to work */
   await page.evaluateOnNewDocument(() => {

@@ -23,7 +23,8 @@ npm run typecheck    # TypeScript 类型检查（零错误）
 
 ```bash
 npm run build:single           # 生成单文件版本 lumen-65.html（CSS/JS 全部内联）
-node tools/verify.mjs          # 端到端自检（需要可选依赖 puppeteer，见下）
+npm run verify                 # 端到端自检 dist/（需要可选依赖 puppeteer，见下）
+npm run verify:single          # 端到端自检单文件版 lumen-65.html
 ```
 
 ## 单文件版本

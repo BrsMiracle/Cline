@@ -9,7 +9,9 @@
     "build": "vite build",
     "preview": "vite preview --port 4173",
     "typecheck": "tsc --noEmit",
-    "build:single": "npm run build && node tools/build-single.mjs"
+    "build:single": "npm run build && node tools/build-single.mjs",
+    "verify": "node tools/verify.mjs",
+    "verify:single": "node tools/verify.mjs --file lumen-65.html"
   },
   "dependencies": {
     "react": "^18.3.1",

@@ -142,4 +142,9 @@ node tools/verify.mjs --keep-open        # 结束后保留浏览器
 ```
 
 脚本会自己起一个静态服务器（随机端口）打开页面，驱动真实界面与真实键盘事件，
-并同时断言 DOM 状态和 Three.js 场景内部状态；截图输出到 `screenshots/`。
+并同时断言 DOM 状态和 Three.js 场景内部状态；截图输出到 `screenshots/`
+（`01`–`08` 由自检写入，`09` / `10` 是另外补充的主题观感截图）。
+
+页面在 `window.__LUMEN__` 上暴露了一个很薄的调试钩子（`stage`、`debug()`、
+`getConfig()`、`projectKey(code)`），自检脚本用它读取 Three.js 的真实内部状态
+（键帽数量、材质颜色、相机距离、拆解进度、按下中的键数），而不是只看 DOM。

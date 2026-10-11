@@ -191,7 +191,7 @@
 - Trip.com(HK)：**最便宜预订月份 10 月**（历史均值 HK$1,035），最贵 2 月（HK$1,586）；建議**提前 40 日（約 6 星期）**，週二/三/六出發；每週 68 班；未來 30 天平均單程 HK$1,676。
 - Trip.com(EN)：cheapest month October，peak season July。
 - Kayak：**11 月为最便宜月份（价格下跌约 21%）**；「book at least **17 weeks in advance** save around **38%**」。
-- "Skyscanner：November flights from $116。"
+- Skyscanner：November flights from $116。
 
 ---
 
@@ -237,7 +237,7 @@
 **⑥ 页面洞察**
 - Trip.com(HK)：**历史最便宜月份 9 月**（均值 HK$793），最贵 2 月（HK$1,153）；**最便宜的預訂月份為10月**；建議**提前 40 日（約 6 星期）**，週二/三/六出發；每週 56 班；未來 30 天平均單程 HK$1,631。
 - Skyscanner：November flights from $102（9 Air）。
-- "AirAsia MOVE：建議出發前 4–8 週預訂。"
+- AirAsia MOVE：建議出發前 4–8 週預訂。
 
 ---
 
@@ -308,7 +308,7 @@
 **⑥ 页面洞察**
 - Trip.com(HK)：旅遊需求於 **1 月**達高峰；**最便宜的預訂月份為 10 月**；建議**提早 2 至 3 個月預訂**，避開暑假及連假、選平日出發；每年 6 月為旺季、1 月為淡季。
 - Trip.com(EN)：cheapest month October，peak season January。
-- "AirAsia MOVE：建議出發前 4–8 週預訂；週二/三較平。"
+- AirAsia MOVE：建議出發前 4–8 週預訂；週二/三較平。
 
 ---
 
@@ -375,7 +375,7 @@
 
 **⑥ 页面洞察**
 - Trip.com(HK)：**歷史最便宜月份 11 月**（均值 HK$641），最貴 2 月（HK$1,088）；另注「10月最便宜（需求較低）」；建議**提前 40 日（約 6 星期）**，週二/三/六出發；每週 57 班；未來 30 天平均單程 HK$1,483。
-- "Trip.com(EN)：cheapest month November，peak season July。"
+- Trip.com(EN)：cheapest month November，peak season July。
 
 ---
 
@@ -434,4 +434,81 @@
 - **HKG→SZB**：香港快運 HK Express **直航 HKG 08:10 → SZB 12:00（3h50m）**。AirAsia MOVE 逐日最低价（HKD）：11月4日 909；11月6日 927；11月30日 937；12月29日 1,352；12月30日 1,153；1月14日 985。来源：https://www.airasia.com/flights/zh/hk/from-hong-kong-hkg-to-kuala-lumpur-kul/ （2026-10-11 抓取）
 - **SZX→SZB**（Skyscanner US，USD）：最低单程 **US$167**（AirAsia，1 stop，Mon, Jan 11）；**11月最低 US$187**（Spring Airlines，1 stop，Thu, Nov 5）；页面另注「round-trip fares start from $436」。→ **未见直飞**（页面均标 1 stop）。来源：https://www.skyscanner.com/routes/szx/szb/shenzhen-bao-an-international-to-kuala-lumpur-subang.html （2026-10-11 抓取）
 - **CAN→SZB**：**未查到**（Trip.com 广州→吉隆坡页面仅列 KUL 为主，SZB 未给具体航班/价格）。
-- AirAsia MOVE：建議出發前 4–8 週預訂。
+
+---
+
+## 4. 行李汇总（仅列实际抓取到的规则）
+
+| 航司 | 手提（件数×kg） | 托运（是否含 / kg / 加购） | 来源（2026-10-11 抓取） |
+|---|---|---|---|
+| **Scoot 酷航** | **2 件，合计 ≤10kg（Economy）／≤15kg（ScootPlus）**；随身件 54×38×23cm、个人物品 40×30×10cm | Economy **不含**（需加购 **20–40kg**）；ScootPlus **含 30kg**，最高加购至 40kg；单件 ≤32kg；**加购金额未查到** | https://www.flyscoot.com/en/plan/booking-your-flight/baggage |
+| **AirAsia 亞洲航空** | **1 件 ≤7kg**（免费，官网明确「No cabin baggage over 7kg」） | 需通过 MOVE app **预购**（比机场柜台便宜）；**具体 kg/价格未查到** | https://www.airasia.com/en/gb/baggage 、https://www.airasia.com/flights/zh/cn/from-shenzhen-szx-to-singapore-sin/ |
+| **Singapore Airlines 新加坡航空** | 未查到 | **含**（重量制）：Suites/First 50kg、Business 40kg、Premium Economy 35kg、Economy Flexi/Standard 30kg、Value/Lite 25kg | https://www.singaporeair.com/en_UK/us/travel-info/baggage/checked-baggage/ |
+| 深圳航空 / 中国南方航空 / 中国国际航空 / 厦门航空 / 四川航空 / 九元航空 / 春秋航空 / 国泰航空 / 马来西亚航空 / Batik Air / HK Express | **未查到** | **未查到** | — |
+
+> 注：廉航（Scoot / AirAsia / 春秋 / 九元）通常基础票价不含托运行李，需加购；全服务航司（SIA / 南航 / 深航 / 国泰 / 马航）通常含托运。**本报告未抓取到这些航司的具体行李数值者一律标「未查到」，未做行业惯例推测。**
+
+---
+
+## 5. 预订时机与「最便宜月份」汇总（页面原文口径）
+
+| 航线 | 页面声明的「最便宜月份」 | 建议提前预订 | 出发日建议 | 来源 |
+|---|---|---|---|---|
+| HKG→SIN | 10 月（Trip.com HK / EN）；旺季 1 月 | 提前 2–3 个月（Trip.com HK）；4–8 週（AirAsia MOVE） | — | Trip.com HK/EN |
+| SZX→SIN | 10 月（Trip.com HK / EN，均值 HK$1,035）；旺季 2 月/7 月 | **提前 40 日（約 6 星期）**；Kayak 建议 **17 週**前 | 週二/三/六出發最平 | Trip.com HK/EN、Kayak |
+| CAN→SIN | 9 月（歷史最低均值 HK$793）；10 月為最便宜預訂月；旺季 2 月 | 提前 40 日（約 6 星期） | 週二/三/六 | Trip.com HK |
+| HKG→KUL | 10 月；旺季 1 月 | **提早 2 至 3 個月** | 平日 | Trip.com HK/EN |
+| SZX→KUL | **11 月**（歷史最低均值 HK$641）；旺季 2 月/7 月 | 提前 40 日（約 6 星期） | 週二/三/六 | Trip.com HK/EN |
+| CAN→KUL | **3 月**（歷史最低均值 HK$458）；10 月為最便宜預訂月；旺季 6 月/1 月 | 提前 40 日（約 6 星期） | 週二/三/六 | Trip.com HK/EN |
+| SZX→SIN（Kayak 视角） | **11 月**（价格下跌约 21%） | 17 週前（省约 38%） | — | Kayak |
+
+- 共性洞察（Trip.com 全站口径）：**「預訂最佳時間為提前 40 日（6 星期）左右，且於星期二、三、六出發最為理想；星期二去程通常最便宜。」**
+- AirAsia MOVE 口径：**「出發前 4 至 8 週預訂最優惠；週二或週三平日出行通常比週末更平。」**
+
+---
+
+## 6. 数据来源清单（均于 2026-10-11 实际抓取）
+
+**票价 / 路线页**
+1. Skyscanner US：HKG→SIN — https://www.skyscanner.com/routes/hkg/sin/hong-kong-intl-to-singapore-changi.html
+2. Skyscanner US：SZX→SIN — https://www.skyscanner.com/routes/szx/sin/shenzhen-bao-an-international-to-singapore-changi.html
+3. Skyscanner US：CAN→SIN — https://www.skyscanner.com/routes/can/sin/guangzhou-baiyun-to-singapore-changi.html
+4. Skyscanner US：HKG→KUL — https://www.skyscanner.com/routes/hkg/kul/hong-kong-intl-to-kuala-lumpur-intl.html
+5. Skyscanner US：SZX→KUL — https://www.skyscanner.com/routes/szx/kul/shenzhen-bao-an-international-to-kuala-lumpur-intl.html
+6. Skyscanner US：CAN→KUL — https://www.skyscanner.com/routes/can/kul/guangzhou-baiyun-to-kuala-lumpur-intl.html
+7. Skyscanner US：SZX→SZB — https://www.skyscanner.com/routes/szx/szb/shenzhen-bao-an-international-to-kuala-lumpur-subang.html
+8. Trip.com HK：HKG→SIN — https://hk.trip.com/flights/hong-kong-to-singapore/airfares-hkg-sin/
+9. Trip.com HK：SZX→SIN — https://hk.trip.com/flights/shenzhen-to-singapore/airfares-szx-sin/
+10. Trip.com HK：CAN→SIN — https://hk.trip.com/flights/guangzhou-to-singapore/airfares-can-sin/
+11. Trip.com HK：HKG→KUL — https://hk.trip.com/flights/hong-kong-to-kuala-lumpur/airfares-hkg-kul/
+12. Trip.com HK：SZX→KUL — https://hk.trip.com/flights/shenzhen-to-kuala-lumpur/airfares-szx-kul/
+13. Trip.com HK：CAN→KUL — https://hk.trip.com/flights/guangzhou-to-kuala-lumpur/airfares-can-kul/
+14. Trip.com EN：HKG→SIN / SZX→SIN / HKG→KUL / SZX→KUL / CAN→KUL — https://www.trip.com/flights/…（同上路径，英文站，USD）
+15. Kayak UK：SZX→SIN — https://www.kayak.co.uk/flight-routes/Shenzhen-SZX/Singapore-Changi-SIN
+16. AirAsia MOVE（HK）：HKG→SIN — https://www.airasia.com/flights/zh/hk/from-hong-kong-hkg-to-singapore-sin/
+17. AirAsia MOVE（HK）：HKG→KUL — https://www.airasia.com/flights/zh/hk/from-hong-kong-hkg-to-kuala-lumpur-kul/
+18. AirAsia MOVE（CN）：SZX→SIN — https://www.airasia.com/flights/zh/cn/from-shenzhen-szx-to-singapore-sin/
+19. AirAsia MOVE（CN）：SZX→KUL — https://www.airasia.com/flights/zh/cn/from-shenzhen-szx-to-kuala-lumpur-kul/
+20. AirAsia MOVE（CN）：CAN→SIN — https://www.airasia.com/flights/zh/cn/from-guangzhou-can-to-singapore-sin/
+21. AirAsia MOVE（CN）：CAN→KUL — https://www.airasia.com/flights/zh/cn/from-guangzhou-can-to-kuala-lumpur-kul/
+
+**行李规则页**
+22. Scoot 行李 — https://www.flyscoot.com/en/plan/booking-your-flight/baggage （另见 https://www.flyscoot.com/en/plan/before-you-fly FAQ）
+23. AirAsia 行李 — https://www.airasia.com/en/gb/baggage
+24. Singapore Airlines 托运 — https://www.singaporeair.com/en_UK/us/travel-info/baggage/checked-baggage/
+
+---
+
+## 7. 未查到 / 未能核实的项目（明确列出，未编造）
+
+1. **航班号**：仅 Trip.com(HK) 各页 FAQ「航班時間表」中出现少量航班号（SZX→SIN：CZ8047、SQ857；SZX→KUL：AK129、AK127、MH523；CAN→SIN：SQ8431、3U7067、3U7025；CAN→KUL：CZ365、MH4479、MH4506），且这些页面仅给「代表时刻」。**HKG→SIN、HKG→KUL 的航班号未查到**；其余具体航班号亦**未查到**。
+2. **航站楼**：所有抓取页面均未标注起降航站楼 → **未查到**。
+3. **行李数值**：深圳航空、中国南方航空、中国国际航空、厦门航空、四川航空、九元航空、春秋航空、国泰航空、马来西亚航空、Batik Air、HK Express 的手提/托运具体规则与加购价格 → **未查到**；Scoot 与 AirAsia 的托运**加购具体金额** → **未查到**。
+4. **11 月逐日价格日历**：仅 **AirAsia MOVE** 的 HKG→SIN、HKG→KUL、SZX→SIN、SZX→KUL 四个页面提供了逐日价格（已全量抄录）；**CAN→SIN、CAN→KUL 无日历**；且 AirAsia MOVE 日历中部分日期页面只显示「查看→」而未给出数值（已在表中标注）。
+5. **CAN→SZB 航线**：未查到任何直飞或价格数据。
+6. **搜索引擎摘要价格**：本次运行环境未提供可用的通用网页搜索接口；尝试的 DuckDuckGo / Bing / Google / Brave / Ecosia / Mojeek / Marginalia 均返回验证码、403/429 或无关结果，**故未能记录任何「搜索摘要中的价格」** → 相关字段全部以「未查到」处理，未使用任何未经抓取核实的数字。
+7. **AirAsia MOVE 页面未标注更新日期**：其价格日历与起价均以 2026-10-11 抓取时点为准。
+
+---
+
+*本报告仅用于研究参考。机票价格为动态数据，实际以下单时为准。所有金额均为来源页面原始币种，未做汇率换算。*

@@ -1,0 +1,19 @@
+[
+{"city":"kl","slug":"petronas_towers","ctrip":"吉隆坡国油双峰塔","en":"Petronas Twin Towers","mrt":"KLCC（LRT/Kelana Jaya 线）","dur":"1.5–2 小时","desc":"452 米、88 层的世界最高双塔，41–42 层空中天桥＋86 层观景台可俯瞰全城，入夜冷白灯光是吉隆坡最经典的一张照片。","tip":"登塔必须提前网上买指定时段票，周一闭馆（公共假期除外）；不登塔的话 KLCC 公园是免费最佳机位，喷泉秀夜间整点上演。"},
+{"city":"kl","slug":"klcc_park","ctrip":"吉隆坡城中城公园","en":"KLCC Park","mrt":"KLCC","dur":"1 小时","desc":"双子塔脚下的城市公园，有儿童戏水池、慢跑道和一片能拍出完整塔身倒影的水池。","tip":"拍双子塔全景最佳位置在公园东侧的湖畔；傍晚人最多，清晨最安静。"},
+{"city":"kl","slug":"kl_tower","ctrip":"吉隆坡塔","en":"KL Tower (Menara Kuala Lumpur)","mrt":"Bukit Nanas 单轨站步行 10 分钟","dur":"1–1.5 小时","desc":"421 米的通讯塔，观景台与空中玻璃盒是俯拍双子塔的最佳高度。","tip":"想拍双子塔就别登双子塔——KL Tower 才是拍塔的位置；日落前上最合适。"},
+{"city":"kl","slug":"merdeka_square","ctrip":"独立广场","en":"Merdeka Square","mrt":"Masjid Jamek（LRT）","dur":"0.5–1 小时","desc":"1957 年马来亚独立升旗地，周围是一整圈殖民时期建筑，绿草坪配苏丹阿都沙末大厦非常出片。","tip":"广场正午暴晒，建议清晨或傍晚；与占美清真寺、中央艺术坊步行可串联。"},
+{"city":"kl","slug":"sultan_abdul_samad","ctrip":"苏丹阿都沙末大厦","en":"Sultan Abdul Samad Building","mrt":"Masjid Jamek（LRT）","dur":"0.5 小时","desc":"摩尔式红砖建筑，铜色圆顶与 41 米钟楼是吉隆坡殖民建筑的封面。","tip":"晚上打灯后更漂亮，可在独立广场一侧人行道拍摄。"},
+{"city":"kl","slug":"jamek_mosque","ctrip":"占美清真寺","en":"Masjid Jamek","mrt":"Masjid Jamek（LRT）","dur":"0.5 小时","desc":"1909 年建成，吉隆坡最古老的清真寺，红砖白顶坐落在两河交汇处。","tip":"非穆斯林只能在指定区域参观，需穿长裤长裙并脱鞋；周五中午礼拜时段不开放。"},
+{"city":"kl","slug":"central_market_kl","ctrip":"","en":"Central Market","mrt":"Pasar Seni（LRT/MRT）","dur":"1 小时","desc":"1930 年代的旧菜市场改造的手工艺与伴手礼集中地，室内有空调，买手信很方便。","tip":"二楼的手工艺与蜡染店比一楼更有意思；隔壁就是茨厂街。"},
+{"city":"kl","slug":"petaling_street","ctrip":"茨厂街市场","en":"Petaling Street (Chinatown)","mrt":"Pasar Seni（LRT/MRT）","dur":"1–2 小时","desc":"吉隆坡唐人街的核心，白天卖杂货、傍晚变成夜市，周边藏着不少老字号小吃。","tip":"记得砍价，一般能砍到开价的 6–7 折；贵重物品别带太多。"},
+{"city":"kl","slug":"batu_caves","ctrip":"黑风洞","en":"Batu Caves","mrt":"KTM Komuter：KL Sentral → Batu Caves（约 25 分钟，往返 RM5.20）","dur":"2–3 小时","desc":"140 英尺高的穆鲁干神像＋272 级彩虹阶梯通向主洞，是吉隆坡最震撼的印度教圣地。","tip":"免费入园（Dark Cave 导览 RM35、Ramayana Cave RM5、Cave Villa RM7）；穿长裤、别带食物，猴子会抢；清晨 7–8 点人最少。"},
+{"city":"kl","slug":"thean_hou_temple","ctrip":"天后宫","en":"Thean Hou Temple","mrt":"打车最方便（约 15 分钟）","dur":"1 小时","desc":"六层中式庙宇，红柱金顶配上远处的高楼天际线，是吉隆坡最华丽的华人庙宇。","tip":"免费开放，农历初一十五和节庆时香火最旺；傍晚亮灯后拍照最好看。"},
+{"city":"kl","slug":"bukit_bintang","ctrip":"","en":"Bukit Bintang","mrt":"Bukit Bintang（MRT）","dur":"2–3 小时","desc":"武吉免登是吉隆坡的购物与夜生活核心，柏威年广场、乐天广场与亚罗街夜市都在这附近。","tip":"住宿选这一带最方便：吃饭、购物、打车都顺；夜里人流大但整体安全。"},
+{"city":"kl","slug":"jalan_alor","ctrip":"亚罗街","en":"Jalan Alor Food Street","mrt":"Bukit Bintang（MRT）步行 5 分钟","dur":"1–2 小时","desc":"吉隆坡最有名的美食街，入夜整条街摆满烤鸡翅、沙嗲、炒粿条和榴莲摊。","tip":"先走一圈比价再落座；点海鲜要先问清价格和计价方式，避免结账纠纷。"},
+{"city":"kl","slug":"masjid_negara","ctrip":"国家清真寺","en":"Masjid Negara","mrt":"Kuala Lumpur（KTM）步行 10 分钟","dur":"0.5–1 小时","desc":"73 米宣礼塔与层叠伞状屋顶，是东南亚最大的清真寺之一，非穆斯林也可入内参观。","tip":"免费入场，门口提供长袍；参观时间避开礼拜时段（尤其中午与傍晚）。"},
+{"city":"kl","slug":"kl_bird_park","ctrip":"吉隆坡雀鸟公园","en":"KL Bird Park","mrt":"Masjid Jamek 转打车","dur":"1.5–2 小时","desc":"全球最大的开放式鸟园之一，孔雀与犀鸟在步道旁自由走动，适合带孩子。","tip":"上午喂食时段最活跃；带帽子，注意头顶“空袭”。"},
+{"city":"kl","slug":"putrajaya_pink_mosque","ctrip":"粉红清真寺","en":"Putra Mosque (Pink Mosque)","mrt":"KLIA Transit：Putrajaya & Cyberjaya 站转打车","dur":"1–1.5 小时","desc":"布城的粉红清真寺，粉红色花岗岩＋湖面倒影，是吉隆坡周边最容易出片的地方。","tip":"免费入场但需着长袍；从 KLIA 或吉隆坡市区前往都方便，适合与机场行程串起来。"},
+{"city":"kl","slug":"genting_highlands","ctrip":"云顶高原度假区","en":"Genting Highlands","mrt":"KL Sentral 转巴士＋云天缆车","dur":"1 天","desc":"海拔约 1700 米的高原度假区，室内外主题乐园、商场与赌场都在山上，是马来西亚人的避暑地。","tip":"山路会晕车，坐缆车更舒服；山上比市区低 8–10℃，记得带外套。"},
+{"city":"kl","slug":"aquaria_klcc","ctrip":"吉隆坡城中城水族馆","en":"Aquaria KLCC","mrt":"KLCC（LRT）","dur":"1.5–2 小时","desc":"位于 KLCC 会展中心地下，90 米海底隧道是主打，雨天或带孩子的备选方案。","tip":"与双子塔同区，可安排在同一天；网上购票比现场便宜。"}
+]

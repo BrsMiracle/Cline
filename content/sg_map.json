@@ -1,0 +1,264 @@
+[
+ {
+  "slug": "marina_bay_sands",
+  "ctrip": "滨海湾金沙空中花园观景台",
+  "en": "Marina Bay Sands SkyPark",
+  "mrt": "Bayfront（CE1/DT16）",
+  "dur": "1–1.5 小时",
+  "desc": "56 层高空 360° 平台，是同时拍到金沙船型屋顶、滨海湾花园与新加坡天际线的最佳机位。",
+  "tip": "分时段售票，日落前 1 小时那档最抢手，建议提前 1–2 天在官网锁定；只拍照不登顶的话，金沙对面滨海湾步道免费。"
+ },
+ {
+  "slug": "gardens_by_the_bay",
+  "ctrip": "新加坡滨海湾花园",
+  "en": "Gardens by the Bay",
+  "mrt": "Bayfront（CE1/DT16）",
+  "dur": "3–5 小时",
+  "desc": "花穹（Flower Dome）与云雾林（Cloud Forest）两座巨型玻璃温室＋擎天树丛，白天看植物、晚上看灯光，是新加坡最值得留半天的地方。",
+  "tip": "擎天树灯光秀（Garden Rhapsody）19:45／20:45 免费，站草坪中间即可；室内温室冷气很足，带件薄外套。"
+ },
+ {
+  "slug": "cloud_forest",
+  "ctrip": "云雾林",
+  "en": "Cloud Forest",
+  "mrt": "Bayfront（CE1/DT16）",
+  "dur": "1–1.5 小时",
+  "desc": "进门就是几十米高的室内瀑布，沿空中步道盘旋而下，雾气扑面，主题每年更换。",
+  "tip": "想拍无人瀑布要一开馆就冲进去；地面湿滑，别穿拖鞋。"
+ },
+ {
+  "slug": "flower_dome",
+  "ctrip": "花穹",
+  "en": "Flower Dome",
+  "mrt": "Bayfront（CE1/DT16）",
+  "dur": "1–1.5 小时",
+  "desc": "全球最大的玻璃温室，地中海与半干旱植物＋随季节更换的主题花海。",
+  "tip": "花穹与云雾林可以买联票更划算；周末与花期主题展期间人多。"
+ },
+ {
+  "slug": "supertree_grove",
+  "ctrip": "",
+  "en": "Supertree Grove",
+  "mrt": "Bayfront（CE1/DT16）",
+  "dur": "0.5–1 小时",
+  "desc": "25–50 米高的“擎天树”垂直花园，白天是未来感植物塔，夜里随音乐变换灯光。",
+  "tip": "OCBC Skyway 空中步道与 Supertree Observatory 观景台需单独买票，Skyway 在灯光秀时段会限流。"
+ },
+ {
+  "slug": "merlion",
+  "ctrip": "鱼尾狮公园",
+  "en": "Merlion Park",
+  "mrt": "Raffles Place（NS26/EW14）",
+  "dur": "0.5–1 小时",
+  "desc": "新加坡的城市符号，狮头鱼身像正对金沙，是所有人来新加坡的第一张合影。",
+  "tip": "清晨或工作日早上人最少；“接水”错位照要站在雕像侧前方 45 度。"
+ },
+ {
+  "slug": "singapore_flyer",
+  "ctrip": "新加坡摩天观景轮",
+  "en": "Singapore Flyer",
+  "mrt": "Promenade（CC4/DT15）",
+  "dur": "1 小时",
+  "desc": "165 米高的观景轮，转一圈约 30 分钟，可从高空把滨海湾、金沙和圣淘沙一次看完。",
+  "tip": "想拍夜景选日落后那几班；现场买票比线上贵，提前在平台买更便宜。"
+ },
+ {
+  "slug": "artsscience_museum",
+  "ctrip": "新加坡艺术科学博物馆",
+  "en": "ArtScience Museum",
+  "mrt": "Bayfront（CE1/DT16）",
+  "dur": "1.5–2 小时",
+  "desc": "莲花造型的白色建筑本身就是地标，馆内《Future World》光影互动展非常适合拍照和带小孩。",
+  "tip": "与金沙同属一个综合体，可安排在金沙观景台前后一起逛。"
+ },
+ {
+  "slug": "national_gallery",
+  "ctrip": "新加坡国家美术馆",
+  "en": "National Gallery Singapore",
+  "mrt": "City Hall（NS25/EW13）",
+  "dur": "2–3 小时",
+  "desc": "由旧最高法院与市政厅改建，东南亚规模最大的现代艺术馆，馆藏超过 8000 件。",
+  "tip": "馆内空调很足、人少安静，适合雨天备选；顶楼露台可俯拍市政区。"
+ },
+ {
+  "slug": "national_museum",
+  "ctrip": "新加坡国家博物馆",
+  "en": "National Museum of Singapore",
+  "mrt": "Bras Basah（CC2）／Dhoby Ghaut",
+  "dur": "1.5–2 小时",
+  "desc": "1887 年的老建筑，用沉浸式展陈讲完新加坡从渔村到现代城市的故事。",
+  "tip": "最晚入场 18:30，别安排太晚；与福康宁公园步行可达。"
+ },
+ {
+  "slug": "sentosa",
+  "ctrip": "圣淘沙岛",
+  "en": "Sentosa",
+  "mrt": "HarbourFront（NE1/CC29）转圣淘沙快线",
+  "dur": "半天–1 天",
+  "desc": "新加坡的度假岛：环球影城、海洋馆、海滩、缆车、斜坡滑车全都在这里。",
+  "tip": "进岛方式有跨海步行道（约 SGD 1）、圣淘沙快线、缆车；想省时间建议直接坐快线。"
+ },
+ {
+  "slug": "universal_studios_singapore",
+  "ctrip": "新加坡环球影城",
+  "en": "Universal Studios Singapore",
+  "mrt": "HarbourFront 转圣淘沙快线",
+  "dur": "1 天",
+  "desc": "东南亚唯一的环球影城，7 大主题区、变形金刚与木乃伊两大王牌项目，官方门票 SGD 76 起。",
+  "tip": "务必买指定日期票并按开园时间进场，先刷变形金刚再回头拍照；Express 快速通行证要单独加购。"
+ },
+ {
+  "slug": "sea_aquarium",
+  "ctrip": "新加坡海洋生态馆",
+  "en": "S.E.A. Aquarium / Singapore Oceanarium",
+  "mrt": "HarbourFront 转圣淘沙快线",
+  "dur": "2–3 小时",
+  "desc": "圣淘沙的大型海洋馆，巨型观景窗与海底隧道是主打，适合亲子与雨天。",
+  "tip": "与环球影城同在名胜世界，可以买联票；周末午后排队最长。"
+ },
+ {
+  "slug": "luge",
+  "ctrip": "新加坡天际线斜坡滑车",
+  "en": "Skyline Luge Sentosa",
+  "mrt": "HarbourFront 转圣淘沙快线",
+  "dur": "1–2 小时",
+  "desc": "自己控制速度的滑车沿山道下滑，再坐吊椅回到山顶，晚上还有夜场。",
+  "tip": "建议买 2–4 圈的套票，一圈根本不够；雨天会临时关闭。"
+ },
+ {
+  "slug": "cable_car",
+  "ctrip": "新加坡缆车",
+  "en": "Singapore Cable Car",
+  "mrt": "HarbourFront（NE1/CC29）",
+  "dur": "0.5–1 小时",
+  "desc": "从花柏山经港湾一路跨海到圣淘沙，是看港区与岛屿的最佳视角。",
+  "tip": "傍晚那趟能同时看到日落与亮灯；玻璃底车厢需加价。"
+ },
+ {
+  "slug": "singapore_zoo",
+  "ctrip": "新加坡动物园",
+  "en": "Singapore Zoo",
+  "mrt": "Khatib（NS14）转万态接驳巴士",
+  "dur": "半天",
+  "desc": "全开放式“无笼”动物园，动物与人之间只隔沟渠，体验感在亚洲数一数二。",
+  "tip": "万礼离市区约 40 分钟，动物园＋夜间动物园同日安排更省交通时间。"
+ },
+ {
+  "slug": "night_safari",
+  "ctrip": "夜间野生动物园",
+  "en": "Night Safari",
+  "mrt": "Khatib（NS14）转万态接驳巴士",
+  "dur": "2–3 小时",
+  "desc": "全球第一座夜间动物园，坐游览车在暗光下观察夜行动物。",
+  "tip": "18:00 开园，建议提前网上订票并赶第一班游览车；看完可接驳巴士回市区。"
+ },
+ {
+  "slug": "river_wonders",
+  "ctrip": "河川生态园",
+  "en": "River Wonders",
+  "mrt": "Khatib（NS14）转万态接驳巴士",
+  "dur": "2–3 小时",
+  "desc": "以世界大河为主题的园区，可看大熊猫与海牛，还有亚马逊游船。",
+  "tip": "与动物园相邻，适合“动物园＋河川”半日连玩。"
+ },
+ {
+  "slug": "jewel_changi",
+  "ctrip": "星耀樟宜",
+  "en": "Jewel Changi Airport",
+  "mrt": "樟宜机场（CG2）",
+  "dur": "1–3 小时",
+  "desc": "机场里的森林谷与 40 米室内瀑布“雨漩涡”，本身就是景点，转机或离境前都能逛。",
+  "tip": "瀑布灯光秀晚间整点上演；星空花园与树篱迷宫需另购票。"
+ },
+ {
+  "slug": "chinatown",
+  "ctrip": "牛车水",
+  "en": "Chinatown",
+  "mrt": "Chinatown（NE4/DT19）",
+  "dur": "2–3 小时",
+  "desc": "佛牙寺、马里安曼兴都庙、麦士威熟食中心集中在一片街区，是新加坡最“下饭”的区域。",
+  "tip": "麦士威熟食中心的天天海南鸡饭常排长队，14:00 后去人少一些。"
+ },
+ {
+  "slug": "haji_lane",
+  "ctrip": "哈芝巷",
+  "en": "Haji Lane",
+  "mrt": "Bugis（EW12/DT14）",
+  "dur": "1–2 小时",
+  "desc": "甘榜格南的小巷，两侧是涂鸦墙、买手店与咖啡馆，旁边就是苏丹回教堂。",
+  "tip": "上午光线好、人少；周五中午回教堂礼拜期间不对外开放。"
+ },
+ {
+  "slug": "clarke_quay",
+  "ctrip": "克拉码头",
+  "en": "Clarke Quay",
+  "mrt": "Clarke Quay（NE5）",
+  "dur": "1–2 小时",
+  "desc": "新加坡河畔的仓库改造酒吧街，晚上灯一亮就是全城最热闹的夜生活区。",
+  "tip": "河对岸驳船码头更安静；河游船从这里上船看两岸夜景最方便。"
+ },
+ {
+  "slug": "botanic_gardens",
+  "ctrip": "新加坡植物园",
+  "en": "Singapore Botanic Gardens",
+  "mrt": "Botanic Gardens（CC19/DT9）",
+  "dur": "2–3 小时",
+  "desc": "新加坡唯一的自然类世界遗产，热带雨林与草坪免费开放，国家胡姬花园另收费。",
+  "tip": "清晨或傍晚最舒服；免费区就能逛 2 小时，胡姬花园看花期再决定。"
+ },
+ {
+  "slug": "orchard_road",
+  "ctrip": "乌节路",
+  "en": "Orchard Road",
+  "mrt": "Orchard（NS22/TE14）",
+  "dur": "2–3 小时",
+  "desc": "新加坡的购物主轴，商场几乎无缝相连，11 月起圣诞灯饰陆续上线。",
+  "tip": "ION、义安城、乌节中央城是主要三站；地铁 Orchard 站可直通商场地下层。"
+ },
+ {
+  "slug": "singapore_river_cruise",
+  "ctrip": "新加坡河游船",
+  "en": "Singapore River Cruise",
+  "mrt": "Clarke Quay（NE5）",
+  "dur": "1 小时",
+  "desc": "沿新加坡河从克拉码头驶向滨海湾，一路把旧仓库、CBD 与金沙串起来。",
+  "tip": "晚上 19:00–21:00 那几班景色最好，白天晒。"
+ },
+ {
+  "slug": "haw_par_villa",
+  "ctrip": "",
+  "en": "Haw Par Villa",
+  "mrt": "Haw Par Villa（CC25）",
+  "dur": "1–1.5 小时",
+  "desc": "免费的东方神话雕塑园，最著名的是“十殿阎罗”地狱场景，猎奇又好拍。",
+  "tip": "免费入园，园内无空调；对神怪题材不适的慎入。"
+ },
+ {
+  "slug": "little_india",
+  "ctrip": "",
+  "en": "Little India",
+  "mrt": "Little India（NE7/DT12）",
+  "dur": "1.5–2 小时",
+  "desc": "彩色排屋、鲜花摊与印度教庙宇，是新加坡最浓烈的街区之一。",
+  "tip": "周日傍晚本地印度社群聚集，非常热闹但也非常挤。"
+ },
+ {
+  "slug": "joo_chiat",
+  "ctrip": "",
+  "en": "Katong / Joo Chiat",
+  "mrt": "Paya Lebar（EW8/CC9）转巴士",
+  "dur": "2 小时",
+  "desc": "娘惹文化区，彩色双层店屋＋正宗加东叻沙与娘惹糕，游客密度远低于市中心。",
+  "tip": "离市区较远，建议与樟宜机场同日安排（打车约 15 分钟）。"
+ },
+ {
+  "slug": "henderson_waves",
+  "ctrip": "花柏山公园",
+  "en": "Mount Faber / Henderson Waves",
+  "mrt": "HarbourFront（NE1/CC29）",
+  "dur": "2–3 小时",
+  "desc": "南部山脊步道串起花柏山、亨德森波浪桥与直落布兰雅，城市里的森林步道。",
+  "tip": "全程有坡度，傍晚走最舒服；可从花柏山坐缆车直下圣淘沙。",
+  "name_override": "花柏山公园 · 南部山脊"
+ }
+]

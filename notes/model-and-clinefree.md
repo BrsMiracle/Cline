@@ -58,7 +58,7 @@ Cline 官方推荐的模型目录接口（`GET /api/v1/ai/cline/recommended-mode
 
 ## 4. 追问：`cline-cloud/deepseek-v4.1-flash` 免费吗？有限额吗？（实测）
 
-### 4.1 不免费：本会话正在按标准价计费
+### 4.1 初判：计数器按标准价累积成本（⚠️ 结论已被 4.3 修正）
 
 hub 事件库 `.cline-home/data/db/hub-events-hub-487d82e7ae44.db` 的 `hub_events` 表里，
 本会话有 29 条 `usage.updated` 事件，其中 26 条 `delta.totalCost > 0`：
@@ -82,14 +82,51 @@ hub 事件库 `.cline-home/data/db/hub-events-hub-487d82e7ae44.db` 的 `hub_even
 Output $1.20 / Cached Read $0.006 per 1M）；目录接口 `GET /api/v1/ai/cline/models` 里
 `deepseek/deepseek-v4.1-flash` 的 pricing = 3e-7 / 1.2e-6 / 6e-9，完全吻合。
 
-> 备注：29 条里 3 条 delta 成本为 0（totals 不增长），疑似该请求未带回成本信息，不影响
-> 结论。成本为运行时计费估算，最终以 Cline 设置 → View Usage 为准。
+### 4.3 修正：上面的「硬证据」站不住，计数器 ≠ 账单
 
-### 4.2 限额
+用户反馈"确实没扣 credit"。回头去读**本沙箱里真正在跑的代码**
+（`/app/node_modules/@cline/llms/dist/providers.js` 里 minified 的 `normalizeUsage`）：
+
+```js
+totalCost = billedCost(响应里的 cost / upstream_inference_cost，非 0 时)
+         ?? marketCost(响应里的 market_cost / gateway.marketCost)
+         ?? 按 pricing 计算的估值;
+
+// 显式规则：Cline 自家 "included" 模型强制归零
+included = providerId === "cline-pass"
+        || (providerId === "cline"
+            && (modelId.startsWith("cline-pass/")
+             || modelId.startsWith("cline-free/")
+             || modelId.endsWith(":free")
+             || (pricing.input===0 && pricing.output===0
+                 && (pricing.cacheRead??0)===0 && (pricing.cacheWrite??0)===0)));
+totalCost = included ? 0 : totalCost;
+```
+
+关键：**`cline-cloud/` 不在这份白名单里**（当前 main 分支的源码同样如此）。而且内置目录
+（同目录 `providers.js`）把 `cline-pass/deepseek-v4.1-flash`、全部 `cline-free/*` 的
+`pricing` 都写成 `{input:0,output:0,cacheRead:0,cacheWrite:0}`（= included），
+**压根没有 `cline-cloud/*` 条目** —— 说明这是新命名空间，成本归零逻辑还没覆盖。
+
+所以第 4.1 节那个 $0.043 更可能是**"市场价"估算/展示值**（恰好等于 DeepSeek 官方
+$0.30/$1.20/$0.006），而不是真实扣款。3 条 0 成本事件也说明该字段来源不稳定。
+
+**结论修正**：本地只能看到"运行时成本计数器"，它 **不是账单**；我上一轮把它当成扣费证据
+是过度推断了。是否真的扣 credit，只有 app.cline.bot → Settings → View Usage 能回答
+（沙箱里没有你的 Cline API token，`/proc/1/environ` 里只有 `CLINE_USER_ID`，没有可用凭据，
+所以无法替你查询，也不应该去查）。
+
+仍然成立的部分：
+- `cline-cloud/deepseek-v4.1-flash` **不在** `cline-free/*` 免费促销桶里。
+- 文档层面 Cloud Agents 的三个 provider 中，**ClineFree 才是免费通道**；"按量扣 credit"
+  只是文档给出的可能路径，**不是我能证实的既成事实**。
+
+### 4.4 限额
+> 注：下表第 1 行按 4.3 节的修正理解——本地计数器不等于账单。
 
 | 场景 | 限制 |
 |---|---|
-| `cline-cloud/deepseek-v4.1-flash`（本会话） | 无"免费额度"；按量扣 Cline credits，或走 ClinePass 订阅额度 |
+| `cline-cloud/deepseek-v4.1-flash`（本会话） | 不在免费促销桶；按文档属于 Cline(usage-billing)/ClinePass 通道，但**你实测没被扣费**——是否计入额度以 View Usage 为准 |
 | ClinePass（`cline-pass/deepseek-v4.1-flash`） | $9.99/月，2-5x 标准 API 速率；用量按 **5 小时滚动窗口 / 周 / 月** 计量，官方未公布具体 token 数 |
 | Cline usage-billing | 限额 = credits 余额 |
 | Cloud Agents 平台 | 最多 **10 个并发会话**、每天最多新建 **50 个会话** |

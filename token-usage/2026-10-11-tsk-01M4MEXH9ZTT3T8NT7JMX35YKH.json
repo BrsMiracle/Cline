@@ -1,0 +1,171 @@
+{
+ "sessionId": "tsk-01M4MEXH9ZTT3T8NT7JMX35YKH",
+ "model": "cline-cloud/deepseek-v4.1-flash",
+ "provider": "cline",
+ "generatedAt": "2026-10-11 03:35 UTC",
+ "rates": {
+  "input": 0.3,
+  "output": 1.2,
+  "cacheRead": 0.006
+ },
+ "totals": {
+  "inputTokens": 19709616,
+  "outputTokens": 60044,
+  "cacheReadTokens": 19042026,
+  "cacheWriteTokens": 0,
+  "reasoningTokenCount": 49395,
+  "totalCost": 0.43895841999999996,
+  "calls": 149,
+  "zeroCostCalls": 4
+ },
+ "uncachedInputTokens": 667590,
+ "outputPlusReasoning": 109439,
+ "cacheHitRate": 96.6129,
+ "costByTokens": {
+  "input": 0.314529,
+  "output": 0.131327,
+  "naiveNoCache": 6.044212
+ },
+ "latency": {
+  "ttftMedian": 1.338,
+  "tpsMedian": 161.13,
+  "samples": 127
+ },
+ "runs": [
+  {
+   "n": 1,
+   "calls": 26,
+   "input": 803375,
+   "cacheRead": 737380,
+   "out": 11345,
+   "cost": 0.031561759999999994,
+   "duration": 128.637
+  },
+  {
+   "n": 2,
+   "calls": 2,
+   "input": 101739,
+   "cacheRead": 99184,
+   "out": 1050,
+   "cost": 0.002621604,
+   "duration": 0.0
+  },
+  {
+   "n": 3,
+   "calls": 13,
+   "input": 889604,
+   "cacheRead": 865966,
+   "out": 9905,
+   "cost": 0.024173195999999997,
+   "duration": 108.579
+  },
+  {
+   "n": 4,
+   "calls": 2,
+   "input": 153826,
+   "cacheRead": 151522,
+   "out": 1298,
+   "cost": 0.003157932,
+   "duration": 0.0
+  },
+  {
+   "n": 5,
+   "calls": 27,
+   "input": 2905922,
+   "cacheRead": 2854322,
+   "out": 16404,
+   "cost": 0.052290732000000006,
+   "duration": 175.444
+  },
+  {
+   "n": 6,
+   "calls": 4,
+   "input": 514059,
+   "cacheRead": 509034,
+   "out": 4609,
+   "cost": 0.010092504,
+   "duration": 44.003
+  },
+  {
+   "n": 7,
+   "calls": 3,
+   "input": 400194,
+   "cacheRead": 394550,
+   "out": 2268,
+   "cost": 0.0067821,
+   "duration": 0.0
+  },
+  {
+   "n": 8,
+   "calls": 1,
+   "input": 141858,
+   "cacheRead": 138386,
+   "out": 1067,
+   "cost": 0.0031523159999999988,
+   "duration": 0.0
+  },
+  {
+   "n": 9,
+   "calls": 8,
+   "input": 1169288,
+   "cacheRead": 1017436,
+   "out": 3720,
+   "cost": 0.056124215999999984,
+   "duration": 0.0
+  },
+  {
+   "n": 11,
+   "calls": 7,
+   "input": 1084061,
+   "cacheRead": 1075696,
+   "out": 4818,
+   "cost": 0.014745276,
+   "duration": 0.0
+  },
+  {
+   "n": 12,
+   "calls": 19,
+   "input": 3543239,
+   "cacheRead": 3513130,
+   "out": 12232,
+   "cost": 0.04207098000000001,
+   "duration": 0.0
+  },
+  {
+   "n": 13,
+   "calls": 24,
+   "input": 4913044,
+   "cacheRead": 4874602,
+   "out": 25028,
+   "cost": 0.07081381199999998,
+   "duration": 0.0
+  },
+  {
+   "n": 14,
+   "calls": 5,
+   "input": 1142939,
+   "cacheRead": 902144,
+   "out": 7266,
+   "cost": 0.087272708,
+   "duration": 26.919
+  },
+  {
+   "n": 15,
+   "calls": 6,
+   "input": 1448831,
+   "cacheRead": 1415038,
+   "out": 6970,
+   "cost": 0.028186368,
+   "duration": 0.0
+  },
+  {
+   "n": 16,
+   "calls": 2,
+   "input": 497637,
+   "cacheRead": 493636,
+   "out": 1459,
+   "cost": 0.005912915999999997,
+   "duration": 0.0
+  }
+ ]
+}

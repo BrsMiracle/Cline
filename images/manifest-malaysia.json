@@ -1,0 +1,205 @@
+{
+ "group": "malaysia",
+ "images": [
+  {
+   "file": "images/malaysia/petronas_towers.jpg",
+   "slug": "petronas_towers",
+   "title": "Petronas Towers",
+   "caption": "吉隆坡双子塔（国油双峰塔），452 米地标",
+   "bytes": 35959,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Petronas_Towers",
+   "meta_error": "meta-error: HTTP Error 429: Too Many Requests"
+  },
+  {
+   "file": "images/malaysia/bukit_bintang.jpg",
+   "slug": "bukit_bintang",
+   "title": "Bukit Bintang",
+   "caption": "武吉免登商圈，购物与美食核心区",
+   "bytes": 376787,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Bukit_Bintang",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/batu_caves.jpg",
+   "slug": "batu_caves",
+   "title": "Batu Caves",
+   "caption": "黑风洞：272 级彩虹阶梯与 140 英尺高的穆鲁干神像",
+   "bytes": 688802,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Batu_Caves",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/jalan_alor.jpg",
+   "slug": "jalan_alor",
+   "title": "Jalan Alor",
+   "caption": "亚罗街夜市——吉隆坡最有名的美食街",
+   "bytes": 679267,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/List_of_roads_in_Kuala_Lumpur",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/thean_hou_temple.jpg",
+   "slug": "thean_hou_temple",
+   "title": "Thean Hou Temple",
+   "caption": "天后宫，吉隆坡最华丽的中式庙宇之一",
+   "bytes": 313584,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Thean_Hou_Temple",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/petaling_street.jpg",
+   "slug": "petaling_street",
+   "title": "Petaling Street",
+   "caption": "茨厂街（唐人街）夜市",
+   "bytes": 850134,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Petaling_Street",
+   "meta_error": "meta-error: HTTP Error 429: Too Many Requests"
+  },
+  {
+   "file": "images/malaysia/melaka_straits_mosque.jpg",
+   "slug": "melaka_straits_mosque",
+   "title": "Malacca Straits Mosque",
+   "caption": "马六甲海峡清真寺，涨潮时像漂浮在海上",
+   "bytes": 205381,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Malacca_Straits_Mosque",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/melaka_river.jpg",
+   "slug": "melaka_river",
+   "title": "Malacca River",
+   "caption": "马六甲河与河畔壁画，可乘游船",
+   "bytes": 300940,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Malacca_River",
+   "meta_error": ""
+  }
+ ],
+ "failed": [
+  [
+   "jamek_mosque",
+   "Masjid Jamek",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "klcc_park",
+   "KLCC Park",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "merdeka_square",
+   "Merdeka Square, Kuala Lumpur",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "sultan_abdul_samad",
+   "Sultan Abdul Samad Building",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "kl_tower",
+   "Kuala Lumpur Tower",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "central_market_kl",
+   "Central Market, Kuala Lumpur",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "islamic_arts_museum",
+   "Islamic Arts Museum Malaysia",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "aquaria_klcc",
+   "Aquaria KLCC",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "pavilion_kl",
+   "Pavilion Kuala Lumpur",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "kl_bird_park",
+   "Kuala Lumpur Bird Park",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "masjid_negara",
+   "Masjid Negara",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "kl_forest_eco_park",
+   "KL Forest Eco Park",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "kl_sentral",
+   "Kuala Lumpur Sentral",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "royal_selangor",
+   "Royal Selangor",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "klia",
+   "Kuala Lumpur International Airport",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "sunway_lagoon",
+   "Sunway Lagoon",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "klia_ekspres",
+   "KLIA Ekspres",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "christ_church_melaka",
+   "Christ Church, Malacca",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "st_pauls_church",
+   "St. Paul's Church, Malacca",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "stadthuys",
+   "Stadthuys",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "a_famosa",
+   "A Famosa",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "jonker_street",
+   "Jonker Walk",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ]
+ ]
+}

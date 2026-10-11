@@ -1,0 +1,368 @@
+{
+ "group": "singapore",
+ "images": [
+  {
+   "file": "images/singapore/merlion.jpg",
+   "slug": "merlion",
+   "title": "Merlion",
+   "caption": "鱼尾狮像（Merlion Park）——新加坡的城市符号，位于滨海湾",
+   "bytes": 356822,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Merlion",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/marina_bay_sands.jpg",
+   "slug": "marina_bay_sands",
+   "title": "Marina Bay Sands",
+   "caption": "滨海湾金沙酒店与购物中心，顶部 Skypark 观景台",
+   "bytes": 271525,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Marina_Bay_Sands",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/gardens_by_the_bay.jpg",
+   "slug": "gardens_by_the_bay",
+   "title": "Gardens by the Bay",
+   "caption": "滨海湾花园：花穹 Flower Dome 与云雾林 Cloud Forest",
+   "bytes": 444131,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Gardens_by_the_Bay",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/supertree_grove.jpg",
+   "slug": "supertree_grove",
+   "title": "Supertree Grove",
+   "caption": "擎天树丛 Supertree Grove，每晚 19:45／20:45 有灯光秀",
+   "bytes": 444131,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Gardens_by_the_Bay",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/marina_bay.jpg",
+   "slug": "marina_bay",
+   "title": "Marina Bay, Singapore",
+   "caption": "滨海湾环湖步道，看金沙与天际线的最佳角度",
+   "bytes": 309782,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Marina_Bay%2C_Singapore",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/esplanade.jpg",
+   "slug": "esplanade",
+   "title": "Esplanade – Theatres on the Bay",
+   "caption": "滨海艺术中心（榴莲壳），免费户外演出平台",
+   "bytes": 193042,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Esplanade_%E2%80%93_Theatres_on_the_Bay",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/singapore_flyer.jpg",
+   "slug": "singapore_flyer",
+   "title": "Singapore Flyer",
+   "caption": "新加坡观景轮，165 米高，可俯瞰滨海湾",
+   "bytes": 615596,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Singapore_Flyer",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/artsscience_museum.jpg",
+   "slug": "artsscience_museum",
+   "title": "ArtScience Museum",
+   "caption": "艺术科学博物馆（莲花造型），《未来世界》常设展",
+   "bytes": 250515,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/ArtScience_Museum",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/national_gallery.jpg",
+   "slug": "national_gallery",
+   "title": "National Gallery Singapore",
+   "caption": "国家美术馆，东南亚规模最大的现代艺术馆",
+   "bytes": 328099,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/National_Gallery_Singapore",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/raffles_hotel.jpg",
+   "slug": "raffles_hotel",
+   "title": "Raffles Hotel",
+   "caption": "莱佛士酒店，新加坡司令鸡尾酒的发源地",
+   "bytes": 56224,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Raffles_Hotel",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/chinatown.jpg",
+   "slug": "chinatown",
+   "title": "Chinatown, Singapore",
+   "caption": "牛车水：佛牙寺、马里安曼兴都庙与麦士威熟食中心",
+   "bytes": 680720,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Chinatown%2C_Singapore",
+   "meta_error": "meta-error: HTTP Error 429: Too Many Requests"
+  },
+  {
+   "file": "images/singapore/sri_mariamman.jpg",
+   "slug": "sri_mariamman",
+   "title": "Sri Mariamman Temple, Singapore",
+   "caption": "马里安曼兴都庙——牛车水最古老的印度教寺庙",
+   "bytes": 533007,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Sri_Mariamman_Temple%2C_Singapore",
+   "meta_error": "meta-error: HTTP Error 429: Too Many Requests"
+  },
+  {
+   "file": "images/singapore/buddha_tooth_relic_temple.jpg",
+   "slug": "buddha_tooth_relic_temple",
+   "title": "Buddha Tooth Relic Temple and Museum",
+   "caption": "佛牙寺龙华院，牛车水地标",
+   "bytes": 473815,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Buddha_Tooth_Relic_Temple_and_Museum",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/maxwell_food_centre.jpg",
+   "slug": "maxwell_food_centre",
+   "title": "Maxwell Food Centre",
+   "caption": "麦士威熟食中心——天天海南鸡饭所在地",
+   "bytes": 402879,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Maxwell_Food_Centre",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/lau_pa_sat.jpg",
+   "slug": "lau_pa_sat",
+   "title": "Lau Pa Sat",
+   "caption": "老巴刹：维多利亚式铸铁建筑，晚上 Satay Street 封路烤肉",
+   "bytes": 480045,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Lau_Pa_Sat",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/little_india.jpg",
+   "slug": "little_india",
+   "title": "Little India, Singapore",
+   "caption": "小印度：竹脚中心、维达帕蒂亚兴都庙与花环街",
+   "bytes": 332191,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Little_India%2C_Singapore",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/kampong_glam.jpg",
+   "slug": "kampong_glam",
+   "title": "Kampong Glam",
+   "caption": "甘榜格南：苏丹回教堂与马来/阿拉伯风情街区",
+   "bytes": 531541,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Kampong_Glam",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/masjid_sultan.jpg",
+   "slug": "masjid_sultan",
+   "title": "Masjid Sultan",
+   "caption": "苏丹回教堂，甘榜格南的地标金色圆顶",
+   "bytes": 686626,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Sultan_Mosque",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/bugis_street.jpg",
+   "slug": "bugis_street",
+   "title": "Bugis Street",
+   "caption": "武吉士街市集，平价服饰与小吃的夜市",
+   "bytes": 302424,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Bugis_Street",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/clarke_quay.jpg",
+   "slug": "clarke_quay",
+   "title": "Clarke Quay",
+   "caption": "克拉码头：河畔酒吧街与新加坡河游船",
+   "bytes": 208742,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Clarke_Quay",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/singapore_river.jpg",
+   "slug": "singapore_river",
+   "title": "Singapore River",
+   "caption": "新加坡河游船：从驳船码头到滨海湾",
+   "bytes": 385831,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Singapore_River",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/fort_canning.jpg",
+   "slug": "fort_canning",
+   "title": "Fort Canning Park",
+   "caption": "福康宁公园：网红螺旋楼梯与香料园",
+   "bytes": 430798,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Fort_Canning_Hill",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/singapore_skyline.jpg",
+   "slug": "singapore_skyline",
+   "title": "Singapore",
+   "caption": "新加坡城市天际线",
+   "bytes": 10017,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Singapore",
+   "meta_error": "meta-error: HTTP Error 429: Too Many Requests"
+  },
+  {
+   "file": "images/singapore/henderson_waves.jpg",
+   "slug": "henderson_waves",
+   "title": "Henderson Waves",
+   "caption": "南部山脊步道上的亨德森波浪桥",
+   "bytes": 267343,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Henderson_Waves",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/haw_par_villa.jpg",
+   "slug": "haw_par_villa",
+   "title": "Haw Par Villa",
+   "caption": "虎豹别墅：十殿阎罗与东方神话雕塑园（免费）",
+   "bytes": 491417,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Haw_Par_Villa",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/mrt_singapore.jpg",
+   "slug": "mrt_singapore",
+   "title": "Mass Rapid Transit (Singapore)",
+   "caption": "新加坡地铁 MRT——市内最主流的交通方式",
+   "bytes": 305687,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Mass_Rapid_Transit_(Singapore)",
+   "meta_error": ""
+  }
+ ],
+ "failed": [
+  [
+   "newton_food_centre",
+   "Newton Food Centre",
+   "no lead image"
+  ],
+  [
+   "haji_lane",
+   "Haji Lane",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "newton_food_centre",
+   "Newton Food Centre",
+   "no lead image"
+  ],
+  [
+   "orchard_road",
+   "Orchard Road",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "jewel_changi",
+   "Jewel Changi Airport",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "haji_lane",
+   "Haji Lane",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "joo_chiat",
+   "Joo Chiat",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "changi_airport",
+   "Singapore Changi Airport",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "botanic_gardens",
+   "Singapore Botanic Gardens",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "night_safari",
+   "Night Safari, Singapore",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "river_wonders",
+   "River Wonders",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "singapore_zoo",
+   "Singapore Zoo",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "universal_studios_singapore",
+   "Universal Studios Singapore",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "sentosa",
+   "Sentosa",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ],
+  [
+   "siloso_beach",
+   "Siloso Beach",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ]
+ ]
+}

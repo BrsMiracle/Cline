@@ -869,6 +869,17 @@
    "license": "",
    "source": "https://en.wikipedia.org/wiki/Roti_canai",
    "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/taming_sari.jpg",
+   "slug": "taming_sari",
+   "title": "Menara Taming Sari",
+   "caption": "旋转观景塔，可 360° 俯瞰马六甲老城",
+   "bytes": 308019,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Taming_Sari_Tower",
+   "meta_error": ""
   }
  ],
  "failed": [
@@ -1390,6 +1401,11 @@
   [
    "royal_selangor",
    "Royal Selangor",
+   "no lead image"
+  ],
+  [
+   "eagle_square",
+   "Eagle Square",
    "no lead image"
   ]
  ]

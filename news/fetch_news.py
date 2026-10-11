@@ -2,7 +2,7 @@
 """抓取多个新闻源 RSS/Atom，输出原始 JSON + 自包含 HTML 头条板。
 
 用法：
-    python3 news/fetch_news.py            # 输出 news/raw/<date>.json 和 news/<date>-board.html
+    python3 news/fetch_news.py            # 输出 news/<date>-raw.json 和 news/<date>-board.html
     python3 news/fetch_news.py 2026-10-11 # 指定日期标签
 
 只依赖标准库。中文摘要由 agent 手写在 news/<date>-digest.md 里。
@@ -145,12 +145,11 @@ def render_board(date: str, data: dict[str, dict[str, object]]) -> str:
 def main() -> None:
     date = sys.argv[1] if len(sys.argv) > 1 else dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
     root = pathlib.Path(__file__).resolve().parent
-    (root / "raw").mkdir(exist_ok=True)
 
     print(f"抓取 {len(FEEDS)} 个源…")
     data = fetch_all()
 
-    raw_path = root / "raw" / f"{date}.json"
+    raw_path = root / f"{date}-raw.json"
     raw_path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
 
     board_path = root / f"{date}-board.html"

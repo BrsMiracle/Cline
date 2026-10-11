@@ -21,7 +21,7 @@ await page.screenshot({ path: path.join(shots, '01-first-screen.png') });
 
 // 1. 键位数量与首屏要素
 const stats = await page.evaluate(() => ({
-  keys: window.__MIMO__.kb.capRecords.length,
+  keys: window.__KESTREL__.kb.capRecords.length,
   title: document.querySelector('.hero__title')?.textContent.trim(),
   intro: !!document.querySelector('.hero__intro'),
   panel: !!document.querySelector('#config-panel'),
@@ -39,11 +39,11 @@ await page.screenshot({ path: path.join(shots, '02-silver-cream.png') });
 // 3. 拆解视图（随后快速连点 5 次，验证最终收敛回组装态）
 await page.click('#btn-explode');
 await page.waitForTimeout(1400);
-console.log('EXPLODED_Y', await page.evaluate(() => window.__MIMO__.kb.capLayer.position.y.toFixed(3)));
+console.log('EXPLODED_Y', await page.evaluate(() => window.__KESTREL__.kb.capLayer.position.y.toFixed(3)));
 await page.screenshot({ path: path.join(shots, '03-exploded.png') });
 for (let i = 0; i < 5; i++) { await page.click('#btn-explode'); await page.waitForTimeout(90); }
 await page.waitForTimeout(1600);
-console.log('AFTER_RAPID_TOGGLE_Y', await page.evaluate(() => window.__MIMO__.kb.capLayer.position.y.toFixed(3)));
+console.log('AFTER_RAPID_TOGGLE_Y', await page.evaluate(() => window.__KESTREL__.kb.capLayer.position.y.toFixed(3)));
 await page.screenshot({ path: path.join(shots, '04-reassembled.png') });
 
 // 4. 体验模式：物理按键 A/Z/空格 → 键帽下压
@@ -51,14 +51,14 @@ await page.click('#stage'); // 让焦点回到页面
 await page.keyboard.down('a');
 await page.waitForTimeout(120);
 const aPress = await page.evaluate(() => {
-  const r = window.__MIMO__.kb.capRecords.find((x) => x.key.code === 'KeyA');
+  const r = window.__KESTREL__.kb.capRecords.find((x) => x.key.code === 'KeyA');
   return r.press.toFixed(4);
 });
 console.log('KEY_A_PRESS', aPress);
 await page.keyboard.up('a');
 await page.waitForTimeout(500);
 console.log('KEY_A_RELEASED', await page.evaluate(() => {
-  const r = window.__MIMO__.kb.capRecords.find((x) => x.key.code === 'KeyA');
+  const r = window.__KESTREL__.kb.capRecords.find((x) => x.key.code === 'KeyA');
   return r.press.toFixed(4);
 }));
 
@@ -67,7 +67,7 @@ await page.click('#config-name');
 await page.keyboard.down('s');
 await page.waitForTimeout(120);
 const sInInput = await page.evaluate(() => {
-  const r = window.__MIMO__.kb.capRecords.find((x) => x.key.code === 'KeyS');
+  const r = window.__KESTREL__.kb.capRecords.find((x) => x.key.code === 'KeyS');
   return r.press.toFixed(4);
 });
 console.log('KEY_S_IN_INPUT_PRESS', sInInput);
@@ -92,7 +92,7 @@ await page.click('#btn-reset-config');
 await page.waitForTimeout(300);
 console.log('AFTER_RESET_COMBO', await page.textContent('#sum-combo'));
 console.log('OTHER_KEY_SURVIVED', await page.evaluate(() => localStorage.getItem('other-app-key')));
-console.log('OUR_KEY_CLEARED', await page.evaluate(() => localStorage.getItem('mimo26-flash.config.v1')));
+console.log('OUR_KEY_CLEARED', await page.evaluate(() => localStorage.getItem('kestrel67.config.v1')));
 
 // 7. 视角复位与缩放按钮可点
 await page.click('#btn-zoom-in');

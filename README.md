@@ -1,6 +1,6 @@
-# MIMO 2.6 Flash — 紧凑机械键盘 · 交互式 3D 产品展示与配置
+# Kestrel 67（红隼）— 紧凑机械键盘 · 交互式 3D 产品展示与配置
 
-一把原创紧凑机械键盘（MIMO 2.6 Flash）的交互式产品页：用 **Three.js** 渲染完整 3D 键盘，配置界面全部是**普通 HTML/CSS 控件**（不把页面画进 Canvas）。无后端，纯前端。
+一把原创紧凑机械键盘（Kestrel 67，中文名「红隼」）的交互式产品页：用 **Three.js** 渲染完整 3D 键盘，配置界面全部是**普通 HTML/CSS 控件**（不把页面画进 Canvas）。无后端，纯前端。
 
 ![首屏](.verify/01-first-screen.png)
 
@@ -30,7 +30,7 @@ npm run preview    # 本地预览构建产物
 npm run build:single
 ```
 
-会在仓库根目录额外生成 **`MIMO2.6-Flash.html`** —— 一个完全自包含的单文件版本（Three.js、样式、逻辑全部内联，无任何外部引用），双击即可在浏览器打开，也可直接分发。
+会在仓库根目录额外生成 **`Kestrel67.html`** —— 一个完全自包含的单文件版本（Three.js、样式、逻辑全部内联，无任何外部引用），双击即可在浏览器打开，也可直接分发。
 
 ## 使用说明
 
@@ -53,7 +53,7 @@ npm run build:single
   - `src/scene.js` — 渲染器、灯光、相机、轨道控制、拆解与按压动画（弹簧积分）、点击拾取
   - `src/input.js` — 物理键盘 → 键帽联动（不劫持输入控件）
   - `src/sound.js` — WebAudio 实时合成按键音（无音频资源文件）
-  - `src/config.js` / `src/store.js` — 主题定义与状态 + `localStorage` 持久化（键名 `mimo26-flash.config.v1`）
+  - `src/config.js` / `src/store.js` — 主题定义与状态 + `localStorage` 持久化（键名 `kestrel67.config.v1`）
   - `src/ui.js` — 配置面板与摘要渲染
   - `src/main.js` — 装配入口
 - **动画健壮性**：拆解与按压均采用「目标值 + 每帧收敛」的写法（指数趋近 / 弹簧积分），不依赖一次性补间，因此快速反复触发不会错位。
@@ -81,5 +81,6 @@ npm run verify     # 需先 npm run build
 
 ## 说明
 
+- 产品名为原创设计：**Kestrel 67（红隼）**，取自小型迅捷的红隼，呼应 67 键紧凑配列与轻快敲击手感；页面中不含任何其它产品或模型的名称。
 - 产品为原创虚构设计，键位配列为通用紧凑布局，不复刻任何具体品牌型号。
 - 声音为 WebAudio 实时合成，可在面板中关闭。

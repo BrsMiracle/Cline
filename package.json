@@ -1,9 +1,9 @@
 {
-  "name": "mimo26-flash-keyboard",
+  "name": "kestrel67-keyboard",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "MIMO 2.6 Flash 紧凑机械键盘 — 交互式 3D 产品展示与配置页面",
+  "description": "Kestrel 67 紧凑机械键盘 — 交互式 3D 产品展示与配置页面",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

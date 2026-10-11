@@ -1,5 +1,5 @@
 /**
- * 产出以作品名命名的自包含单文件版本：MIMO2.6-Flash.html
+ * 产出以作品名命名的自包含单文件版本：Kestrel67.html
  * vite-plugin-singlefile 已把 JS/CSS 内联进 dist/index.html，
  * 这里只做拷贝 + 完整性断言（无外部引用）。
  */
@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const src = path.join(root, 'dist', 'index.html');
-const out = path.join(root, 'MIMO2.6-Flash.html');
+const out = path.join(root, 'Kestrel67.html');
 
 if (!fs.existsSync(src)) {
   console.error('未找到 dist/index.html，请先运行 npm run build');

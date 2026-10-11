@@ -1,5 +1,5 @@
 /**
- * MIMO 2.6 Flash 键盘三维模型。
+ * Kestrel 67 键盘三维模型。
  *
  * 三层结构（拆解动画即在这三层之间展开）：
  *   1. caseLayer   —— 楔形底壳（前低后高 6° 打字倾角）+ 橡胶脚垫 + USB-C 口 + 铭牌
@@ -113,7 +113,7 @@ export function buildKeyboard(caseColor, capTheme) {
   pctx.font = '600 52px "Segoe UI", Arial, sans-serif';
   pctx.textAlign = 'center';
   pctx.textBaseline = 'middle';
-  pctx.fillText('MIMO 2.6 FLASH', 256, 50);
+  pctx.fillText('KESTREL 67', 256, 50);
   const plaqueTex = new THREE.CanvasTexture(plaqueCanvas);
   plaqueTex.colorSpace = THREE.SRGBColorSpace;
   const plaque = new THREE.Mesh(

@@ -3,7 +3,7 @@
  * 三种外壳配色 × 三种键帽主题，任意组合共 9 种外观。
  */
 
-export const STORAGE_KEY = 'mimo26-flash.config.v1';
+export const STORAGE_KEY = 'kestrel67.config.v1';
 
 /** 三种外壳配色（底壳材质） */
 export const CASE_COLORS = [

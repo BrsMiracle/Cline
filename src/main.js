@@ -1,5 +1,5 @@
 /**
- * MIMO 2.6 Flash —— 入口：装配 3D 键盘、配置界面与交互逻辑。
+ * Kestrel 67 —— 入口：装配 3D 键盘、配置界面与交互逻辑。
  * 页面结构为普通 HTML（Hero + 配置面板），只有键盘模型绘制在 Canvas 中。
  */
 import './styles.css';
@@ -63,4 +63,4 @@ window.addEventListener('pointerdown', function once() {
 }, { once: true });
 
 // 开发期调试句柄
-window.__MIMO__ = { getState, kb, sceneApi, LAYOUT };
+window.__KESTREL__ = { getState, kb, sceneApi, LAYOUT };

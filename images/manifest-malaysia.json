@@ -1381,6 +1381,11 @@
    "taming_sari",
    "Menara Taming Sari",
    "<HTTPError 404: 'Not Found'>"
+  ],
+  [
+   "royal_selangor",
+   "Royal Selangor",
+   "no lead image"
   ]
  ]
 }

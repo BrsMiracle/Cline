@@ -16,15 +16,21 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import glob
+import hashlib
 import json
 import os
 import pathlib
+import re
 import sqlite3
 import statistics as st
 import sys
 
 # 参考单价（美元 / 百万 token），默认按 DeepSeek V4.1 Flash
 DEFAULT_RATES = {"input": 0.30, "output": 1.20, "cacheRead": 0.006}
+DEFAULT_PRICE_SOURCE = (
+    "ClinePass Reference pricing（DeepSeek V4.1 Flash）"
+    " — docs.cline.bot/getting-started/clinepass"
+)
 
 
 def find_db(explicit: str | None = None) -> pathlib.Path:
@@ -66,6 +72,8 @@ def collect(events):
     runs: list[dict] = []
     iters: list[dict] = []
     session_meta: dict = {}
+    session: dict = {}
+    prompts: list[dict] = []
     cur_run = None
     cur_it = None
 
@@ -90,8 +98,22 @@ def collect(events):
             meta.setdefault("provider", "?")
             meta.setdefault("model", "?")
             meta.setdefault("source", "?")
+            session = dict(sess)
+            snap = pl.get("snapshot") or {}
+            session["_lineage"] = snap.get("lineage")
+            session["_status"] = snap.get("status")
+            session["_prompt"] = snap.get("prompt") or sess.get("prompt")
             session_meta.update(meta)
             cur_run = None
+        elif event == "session.pending_prompt_submitted":
+            pr = pl.get("prompt", {})
+            prompts.append({
+                "ts": ts,
+                "id": pr.get("id"),
+                "text": pr.get("prompt", ""),
+                "attachments": pr.get("attachmentCount", 0),
+                "delivery": pr.get("delivery"),
+            })
         elif event == "run.started":
             close_run()
             cur_run = {"start": ts, "iters": [], "durationMs": None, "finishReason": None, "sessionId": None}
@@ -125,7 +147,7 @@ def collect(events):
     for run in runs:
         for it in run.get("iters", []):
             iters.append(it)
-    return runs, iters, session_meta
+    return runs, iters, session_meta, session, prompts
 
 
 def fmt(n, nd=0):
@@ -173,7 +195,8 @@ def analyze(runs, iters, rates):
         o = sum(u.get("outputTokens", 0) + u.get("reasoningTokenCount", 0) for u in rs)
         c = sum(u.get("totalCost", 0) for u in rs)
         run_rows.append({"n": n, "calls": len(rs), "input": i, "cacheRead": cr,
-                         "out": o, "cost": c, "duration": (run.get("durationMs") or 0) / 1000})
+                         "out": o, "cost": c, "duration": (run.get("durationMs") or 0) / 1000,
+                         "start": run.get("start", 0)})
 
     return {"tot": tot, "uncached": uncached, "out_all": out_all, "cost_in": cost_in,
             "cost_out": cost_out, "naive": naive, "lat": lat, "runs": run_rows}
@@ -189,7 +212,139 @@ def mean(values):
     return st.fmean(vals) if vals else float("nan")
 
 
-def render_md(a, meta, rates, db_path, now):
+def load_session_file(db_path: pathlib.Path, session_id: str) -> dict:
+    """读会话 JSON（初始 prompt、标题、team 等只在文件里有）。"""
+    if not session_id:
+        return {}
+    cand = [
+        db_path.parent.parent / "sessions" / session_id / f"{session_id}.json",
+        pathlib.Path.home() / ".cline" / "data" / "sessions" / session_id / f"{session_id}.json",
+    ]
+    for path in cand:
+        if path.exists():
+            try:
+                return json.loads(path.read_text(encoding="utf-8"))
+            except Exception:
+                return {}
+    return {}
+
+
+def load_session_row(db_path: pathlib.Path) -> dict:
+    """从同目录的 sessions.db 读会话行（conversation_id / team / 结束时间等）。"""
+    path = db_path.parent / "sessions.db"
+    if not path.exists():
+        return {}
+    try:
+        con = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+        cols = [d[1] for d in con.execute("PRAGMA table_info(sessions)")]
+        row = con.execute("select * from sessions order by rowid desc limit 1").fetchone()
+        return dict(zip(cols, row)) if row else {}
+    except Exception:
+        return {}
+
+
+def hhmmss(ms) -> str:
+    if not ms:
+        return "-"
+    return dt.datetime.fromtimestamp(ms / 1000, dt.UTC).strftime("%Y-%m-%d %H:%M:%S UTC")
+
+
+def render_meta_sections(session, meta, prompts, rates, price_source, a, span, row):
+    """会话参数 / 价格口径 / 对话轮次 三段。"""
+    m = dict(session.get("metadata", {}) or {})
+    sysp = str(m.pop("systemPrompt", "") or "")
+    git = m.get("git") or {}
+    t = a["tot"]
+    out = ["## 会话参数", "", "| 项 | 值 |", "|---|---|"]
+    rows = [
+        ("会话 ID", f"`{meta.get('sessionId', '?')}`"),
+        ("会话标题", (session.get("_title") or "-")[:60]),
+        ("模型", f"`{meta.get('model', '?')}`"),
+        ("Provider", f"`{meta.get('provider', '?')}`"),
+        ("来源", f"`{meta.get('source', '?')}`"),
+        ("模式", f"`{m.get('mode', '?')}`"),
+        ("思考", f"thinking=`{m.get('thinking')}` ｜ reasoningEffort=`{m.get('reasoningEffort')}` "
+                 f"｜ thinkingBudgetTokens=`{m.get('thinkingBudgetTokens')}`"),
+        ("交互 / 自动批准", f"interactive=`{m.get('interactive')}` ｜ "
+                          f"autoApproveTools=`{m.get('autoApproveTools')}`"),
+        ("能力开关", f"tools=`{session.get('runtimeOptions', {}).get('enableTools')}` ｜ "
+                    f"spawn=`{session.get('runtimeOptions', {}).get('enableSpawn')}` ｜ "
+                    f"teams=`{session.get('runtimeOptions', {}).get('enableTeams')}`"),
+        ("工作区", f"`{session.get('workspaceRoot', '?')}`（cwd `{session.get('cwd', '?')}`）"),
+        ("代码库", f"{git.get('url', '?')} @ `{git.get('branch', '?')}`"),
+        ("子代理", f""
+                       f"isSubagent=`{(session.get('_lineage') or session.get('lineage') or {}).get('isSubagent', m.get('isSubagent', '?'))}`"),
+        ("会话状态", f"`{session.get('_status') or row.get('status') or '?'}`"),
+        ("conversation_id", f"`{row.get('conversation_id') or '-'}`"),
+        ("team", f"`{row.get('team_name') or session.get('teamName') or '-'}`"),
+        ("会话开始", hhmmss(span[0])),
+        ("最后事件", hhmmss(span[1])),
+        ("时长", f"{(span[1] - span[0]) / 60000:.1f} 分钟"),
+        ("系统提示", f"{len(sysp):,} 字符 ｜ sha256=`{hashlib.sha256(sysp.encode()).hexdigest()[:12]}`"),
+        ("沙箱", f"`{os.uname().nodename}` ｜ pid `{session.get('_pid') or os.getpid()}` "
+                 f"｜ Python `{sys.version.split()[0]}`"),
+        ("用户消息数", f"{len(prompts)} 条（下面按轮次展开）"),
+    ]
+    out += [f"| {k} | {v} |" for k, v in rows]
+
+    out += ["", "## 价格口径", "", "| 项 | 值 |", "|---|---:|",
+            f"| 输入 | ${rates['input']} / Mtok |",
+            f"| 输出 | ${rates['output']} / Mtok |",
+            f"| 缓存读取 | ${rates['cacheRead']} / Mtok |",
+            "| 缓存写入 | $0（本会话未产生 cacheWrite） |",
+            f"| 价格来源 | {price_source} |",
+            f"| 价格抓取时间 | {dt.datetime.now(dt.UTC).strftime('%Y-%m-%d')} |",
+            f"| 运行时计数器成本 | ${t['totalCost']:.4f}（provider 上报，可能是市场价估算） |",
+            f"| 按上表单价计算 | ${a['cost_in'] + a['cost_out']:.4f} |"]
+
+    out += ["", "## 对话轮次", "",
+            "| # | 时间 | 你的消息 | 调用 | 输入 | 输出 | 成本 | 墙钟(秒) |",
+            "|---:|---|---|---:|---:|---:|---:|---:|"]
+    # prompt → run 的配对：消息可能排队，这里用"最早一个开始时间 ≥ 消息时间"的 run 做近似
+    runs_sorted = sorted(a["runs"], key=lambda r: r.get("start", 0))
+    assigned: dict[int, dict] = {}
+    pool = list(runs_sorted)
+    for pr in prompts:
+        target = None
+        for cand in pool:
+            if cand.get("start", 0) >= pr["ts"]:
+                target = cand
+                break
+        if target is None:
+            continue
+        pool.remove(target)
+        assigned[id(target)] = pr
+
+    initial = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", str(session.get("_prompt") or ""))).strip()
+    for r in a["runs"]:
+        pr = assigned.get(id(r))
+        if pr is not None:
+            text = pr["text"].replace("\n", " ")[:48] + "…"
+        elif initial and r is runs_sorted[0]:
+            text = initial[:48] + "…"
+        else:
+            text = "（无新消息 / 续跑）"
+        when = dt.datetime.fromtimestamp(r.get("start", 0) / 1000, dt.UTC).strftime("%H:%M:%S")
+        out.append(f"| {r['n']} | {when} | {text} | {r['calls']} | {fmt(r['input'])} | "
+                   f"{fmt(r['out'])} | ${r['cost']:.4f} | {r['duration']:.1f} |")
+
+    out += ["", "<sub>注：用户消息可能排队（在你上一条还在执行时发出），"
+              "因此消息与 run 的配对是按时间就近推断的**近似值**；"
+              "token/成本数据则精确对应各自的 run。</sub>"]
+
+
+    if prompts:
+        out += ["", "<details><summary>原始 prompt 记录（含 id / 投递方式 / 附件数）</summary>", ""]
+        out += ["| 时间 | id | delivery | 附件 | 文本 |", "|---|---|---|---:|---|"]
+        for pr in prompts:
+            text = pr["text"].replace("\n", " ")[:60].replace("|", "\\|")
+            out.append(f"| {hhmmss(pr['ts'])[11:19]} | `{pr['id']}` | {pr['delivery']} | "
+                       f"{pr['attachments']} | {text} |")
+        out += ["", "</details>"]
+    return out
+
+
+def render_md(a, meta, rates, db_path, now, session, prompts, price_source, span, row):
     t = a["tot"]
     lat = a["lat"]
     hit = t["cacheReadTokens"] / t["inputTokens"] * 100 if t["inputTokens"] else 0
@@ -200,8 +355,10 @@ def render_md(a, meta, rates, db_path, now):
         f"> 生成时间：{now} ｜ 数据源：`{db_path.name}`",
         f"> 模型：`{meta.get('model', '?')}` ｜ provider：`{meta.get('provider', '?')}` "
         f"｜ source：`{meta.get('source', '?')}`",
-        f"> 参考单价：输入 ${rates['input']}/Mtok、输出 ${rates['output']}/Mtok、"
-        f"缓存读 ${rates['cacheRead']}/Mtok",
+        "",
+    ]
+    L += render_meta_sections(session, meta, prompts, rates, price_source, a, span, row)
+    L += [
         "",
         "## 总量",
         "",
@@ -283,19 +440,32 @@ def main() -> None:
     ap.add_argument("--price-in", type=float, default=DEFAULT_RATES["input"])
     ap.add_argument("--price-out", type=float, default=DEFAULT_RATES["output"])
     ap.add_argument("--price-cache", type=float, default=DEFAULT_RATES["cacheRead"])
+    ap.add_argument("--price-source", default=DEFAULT_PRICE_SOURCE, help="价格来源说明")
     args = ap.parse_args()
 
     rates = {"input": args.price_in, "output": args.price_out, "cacheRead": args.price_cache}
     db_path = find_db(args.db)
     events = load_events(db_path)
-    runs, iters, meta = collect(events)
+    runs, iters, meta, session, prompts = collect(events)
     a = analyze(runs, iters, rates)
+    row = load_session_row(db_path)
+    sfile = load_session_file(db_path, str(meta.get("sessionId") or ""))
+    if sfile:
+        session["_prompt"] = sfile.get("prompt")
+        session["_title"] = (sfile.get("metadata") or {}).get("title")
+        session.setdefault("teamName", sfile.get("team_name"))
+        session["_pid"] = sfile.get("pid")
+        session["_fileStartedAt"] = sfile.get("started_at")
+    if row:
+        session.setdefault("teamName", row.get("team_name"))
+        session.setdefault("conversationId", row.get("conversation_id"))
 
     started = None
     for _, event, ts, _pl in events:
         if event == "session.created":
             started = ts
             break
+    span = (started or events[0][2], events[-1][2])
     day = dt.datetime.fromtimestamp((started or events[0][2]) / 1000, dt.UTC).strftime("%Y-%m-%d")
     now = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d %H:%M UTC")
     sid = str(meta.get("sessionId") or "session")
@@ -316,11 +486,36 @@ def main() -> None:
         out_dir = pathlib.Path(args.out_dir)
         out_dir.mkdir(parents=True, exist_ok=True)
         md_path = out_dir / f"{tag}-{sid}.md"
-        md_path.write_text(render_md(a, meta, rates, db_path, now), encoding="utf-8")
+        md_path.write_text(
+            render_md(a, meta, rates, db_path, now, session, prompts, args.price_source, span, row),
+            encoding="utf-8",
+        )
         json_path = out_dir / f"{tag}-{sid}.json"
         json_path.write_text(json.dumps({
             "sessionId": sid, "model": meta.get("model"), "provider": meta.get("provider"),
-            "generatedAt": now, "rates": rates, "totals": t,
+            "generatedAt": now, "rates": rates, "priceSource": args.price_source,
+            "sessionStart": span[0], "sessionEnd": span[1],
+            "durationMinutes": round((span[1] - span[0]) / 60000, 2),
+            "sessionParams": {
+                "mode": (session.get("metadata") or {}).get("mode"),
+                "thinking": (session.get("metadata") or {}).get("thinking"),
+                "reasoningEffort": (session.get("metadata") or {}).get("reasoningEffort"),
+                "thinkingBudgetTokens": (session.get("metadata") or {}).get("thinkingBudgetTokens"),
+                "interactive": (session.get("metadata") or {}).get("interactive"),
+                "autoApproveTools": (session.get("metadata") or {}).get("autoApproveTools"),
+                "source": (session.get("metadata") or {}).get("source"),
+                "git": (session.get("metadata") or {}).get("git"),
+                "workspaceRoot": session.get("workspaceRoot"),
+                "cwd": session.get("cwd"),
+                "teamName": session.get("teamName"),
+                "lineage": session.get("lineage"),
+                "runtimeOptions": {k: v for k, v in (session.get("runtimeOptions") or {}).items() if k != "systemPrompt"},
+                "systemPromptChars": len(str((session.get("metadata") or {}).get("systemPrompt") or "")),
+                "systemPromptSha256": hashlib.sha256(str((session.get("metadata") or {}).get("systemPrompt") or "").encode()).hexdigest()[:12],
+            },
+            "prompts": [{"ts": pr["ts"], "id": pr["id"], "delivery": pr["delivery"],
+                         "attachments": pr["attachments"], "text": pr["text"][:200]} for pr in prompts],
+            "totals": t,
             "uncachedInputTokens": a["uncached"], "outputPlusReasoning": a["out_all"],
             "cacheHitRate": round(hit, 4),
             "costByTokens": {"input": round(a["cost_in"], 6), "output": round(a["cost_out"], 6),

@@ -53,6 +53,14 @@ python3 token-usage/session_stats.py --write --price-in 3 --price-out 15 --price
 
 ## 报告包含什么
 
+- **会话参数**：会话 ID / 标题 / 模型 / provider / 来源 / 模式（act・plan）/ 思考开关与
+  `reasoningEffort` / interactive / autoApproveTools / 能力开关（tools・spawn・teams）/ 工作区 /
+  代码库与分支 / 是否子代理 / 会话状态 / `conversation_id` / team / 开始与结束时间 / 时长 /
+  系统提示长度 + sha256 指纹 / 沙箱 hostname + pid
+- **价格口径**：输入・输出・缓存读写单价、**价格来源**、价格抓取时间，
+  以及「运行时计数器成本」与「按单价计算成本」两个口径并列
+- **对话轮次**：每条用户消息 → 对应 run 的时间、调用次数、输入/输出 token、成本、墙钟时间；
+  附原始 prompt 记录（id / 投递方式 / 附件数 / 文本）
 - **总量**：调用次数、输入/输出/reasoning token、缓存读写、总 token
 - **缓存命中率**：`cacheRead / inputTokens`
 - **成本结构**：未缓存输入 / 缓存读取 / 输出 各自金额与占比，以及成本对比（"若全部不命中缓存会花多少"）

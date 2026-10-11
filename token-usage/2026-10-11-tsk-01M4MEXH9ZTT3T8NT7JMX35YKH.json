@@ -2,34 +2,114 @@
  "sessionId": "tsk-01M4MEXH9ZTT3T8NT7JMX35YKH",
  "model": "cline-cloud/deepseek-v4.1-flash",
  "provider": "cline",
- "generatedAt": "2026-10-11 03:35 UTC",
+ "generatedAt": "2026-10-11 03:37 UTC",
  "rates": {
   "input": 0.3,
   "output": 1.2,
   "cacheRead": 0.006
  },
+ "priceSource": "ClinePass Reference pricing（DeepSeek V4.1 Flash） — docs.cline.bot/getting-started/clinepass",
+ "sessionStart": 1791688126353,
+ "sessionEnd": 1791689871115,
+ "durationMinutes": 29.08,
+ "sessionParams": {
+  "mode": "act",
+  "thinking": true,
+  "reasoningEffort": "xhigh",
+  "thinkingBudgetTokens": null,
+  "interactive": true,
+  "autoApproveTools": false,
+  "source": "dashboard",
+  "git": {
+   "url": "https://github.com/BrsMiracle/Cline.git",
+   "branch": "1010test"
+  },
+  "workspaceRoot": "/workspace",
+  "cwd": "/workspace",
+  "teamName": "team-LgswG",
+  "lineage": null,
+  "runtimeOptions": {
+   "enableTools": true,
+   "enableSpawn": true,
+   "enableTeams": true,
+   "mode": "act"
+  },
+  "systemPromptChars": 1476,
+  "systemPromptSha256": "3a2b38541d9c"
+ },
+ "prompts": [
+  {
+   "ts": 1791688415417,
+   "id": "pending_1791688329442_ALeLP",
+   "delivery": "queue",
+   "attachments": 0,
+   "text": "那我现在在用的是什么模型？"
+  },
+  {
+   "ts": 1791688875043,
+   "id": "pending_1791688793787_O4IQP",
+   "delivery": "queue",
+   "attachments": 0,
+   "text": "把这些都保存到一个DailyReport的分支，并且文件命名的时候附上日期"
+  },
+  {
+   "ts": 1791688926821,
+   "id": "pending_1791688810804_NTTsc",
+   "delivery": "queue",
+   "attachments": 0,
+   "text": "然后帮我查询一下codex重置的新闻，今天是否重置？"
+  },
+  {
+   "ts": 1791688966642,
+   "id": "pending_1791688870148_L2qsy",
+   "delivery": "queue",
+   "attachments": 0,
+   "text": "新闻最好做成能直接阅读的模式，且可观赏性很强，附上相应的图片，比如html格式？但是html格式我是否必须下载文件才能看？还是说我不下载就能看？"
+  },
+  {
+   "ts": 1791689173646,
+   "id": "pending_1791688918625_wM2X9",
+   "delivery": "queue",
+   "attachments": 0,
+   "text": "并且daily report要按每日的文件夹归档，不然太乱了"
+  },
+  {
+   "ts": 1791689231614,
+   "id": "pending_1791689064400_C3AcL",
+   "delivery": "queue",
+   "attachments": 0,
+   "text": "然后给我汇报一下目前的token使用量，以及缓存命中率"
+  },
+  {
+   "ts": 1791689748642,
+   "id": "pending_1791689688349__DJiL",
+   "delivery": "queue",
+   "attachments": 0,
+   "text": "归档的时候要注意时间、token消耗数据以及对应价格（如有），以及模型，对话等参数"
+  }
+ ],
  "totals": {
-  "inputTokens": 19709616,
-  "outputTokens": 60044,
-  "cacheReadTokens": 19042026,
+  "inputTokens": 24982253,
+  "outputTokens": 71890,
+  "cacheReadTokens": 24284164,
   "cacheWriteTokens": 0,
-  "reasoningTokenCount": 49395,
-  "totalCost": 0.43895841999999996,
-  "calls": 149,
+  "reasoningTokenCount": 56694,
+  "totalCost": 0.502534948,
+  "calls": 169,
   "zeroCostCalls": 4
  },
- "uncachedInputTokens": 667590,
- "outputPlusReasoning": 109439,
- "cacheHitRate": 96.6129,
+ "uncachedInputTokens": 698089,
+ "outputPlusReasoning": 128584,
+ "cacheHitRate": 97.2057,
  "costByTokens": {
-  "input": 0.314529,
-  "output": 0.131327,
-  "naiveNoCache": 6.044212
+  "input": 0.355132,
+  "output": 0.154301,
+  "naiveNoCache": 7.648977
  },
  "latency": {
-  "ttftMedian": 1.338,
-  "tpsMedian": 161.13,
-  "samples": 127
+  "ttftMedian": 1.352,
+  "tpsMedian": 158.66,
+  "samples": 141
  },
  "runs": [
   {
@@ -39,7 +119,8 @@
    "cacheRead": 737380,
    "out": 11345,
    "cost": 0.031561759999999994,
-   "duration": 128.637
+   "duration": 128.637,
+   "start": 1791688127557
   },
   {
    "n": 2,
@@ -48,7 +129,8 @@
    "cacheRead": 99184,
    "out": 1050,
    "cost": 0.002621604,
-   "duration": 0.0
+   "duration": 0.0,
+   "start": 1791688306766
   },
   {
    "n": 3,
@@ -57,7 +139,8 @@
    "cacheRead": 865966,
    "out": 9905,
    "cost": 0.024173195999999997,
-   "duration": 108.579
+   "duration": 108.579,
+   "start": 1791688329441
   },
   {
    "n": 4,
@@ -66,7 +149,8 @@
    "cacheRead": 151522,
    "out": 1298,
    "cost": 0.003157932,
-   "duration": 0.0
+   "duration": 0.0,
+   "start": 1791688415454
   },
   {
    "n": 5,
@@ -75,7 +159,8 @@
    "cacheRead": 2854322,
    "out": 16404,
    "cost": 0.052290732000000006,
-   "duration": 175.444
+   "duration": 175.444,
+   "start": 1791688475819
   },
   {
    "n": 6,
@@ -84,7 +169,8 @@
    "cacheRead": 509034,
    "out": 4609,
    "cost": 0.010092504,
-   "duration": 44.003
+   "duration": 44.003,
+   "start": 1791688713060
   },
   {
    "n": 7,
@@ -93,7 +179,8 @@
    "cacheRead": 394550,
    "out": 2268,
    "cost": 0.0067821,
-   "duration": 0.0
+   "duration": 0.0,
+   "start": 1791688757386
   },
   {
    "n": 8,
@@ -102,7 +189,8 @@
    "cacheRead": 138386,
    "out": 1067,
    "cost": 0.0031523159999999988,
-   "duration": 0.0
+   "duration": 0.0,
+   "start": 1791688793787
   },
   {
    "n": 9,
@@ -111,7 +199,8 @@
    "cacheRead": 1017436,
    "out": 3720,
    "cost": 0.056124215999999984,
-   "duration": 0.0
+   "duration": 0.0,
+   "start": 1791688810803
   },
   {
    "n": 11,
@@ -120,7 +209,8 @@
    "cacheRead": 1075696,
    "out": 4818,
    "cost": 0.014745276,
-   "duration": 0.0
+   "duration": 0.0,
+   "start": 1791688875105
   },
   {
    "n": 12,
@@ -129,7 +219,8 @@
    "cacheRead": 3513130,
    "out": 12232,
    "cost": 0.04207098000000001,
-   "duration": 0.0
+   "duration": 0.0,
+   "start": 1791688918624
   },
   {
    "n": 13,
@@ -138,7 +229,8 @@
    "cacheRead": 4874602,
    "out": 25028,
    "cost": 0.07081381199999998,
-   "duration": 0.0
+   "duration": 0.0,
+   "start": 1791689064399
   },
   {
    "n": 14,
@@ -147,7 +239,8 @@
    "cacheRead": 902144,
    "out": 7266,
    "cost": 0.087272708,
-   "duration": 26.919
+   "duration": 26.919,
+   "start": 1791689606475
   },
   {
    "n": 15,
@@ -156,16 +249,28 @@
    "cacheRead": 1415038,
    "out": 6970,
    "cost": 0.028186368,
-   "duration": 0.0
+   "duration": 0.0,
+   "start": 1791689653967
   },
   {
    "n": 16,
-   "calls": 2,
-   "input": 497637,
-   "cacheRead": 493636,
-   "out": 1459,
-   "cost": 0.005912915999999997,
-   "duration": 0.0
+   "calls": 8,
+   "input": 2017721,
+   "cacheRead": 2007662,
+   "out": 5082,
+   "cost": 0.021162071999999997,
+   "duration": 94.578,
+   "start": 1791689688347
+  },
+  {
+   "n": 17,
+   "calls": 14,
+   "input": 3752553,
+   "cacheRead": 3728112,
+   "out": 15522,
+   "cost": 0.04832737200000001,
+   "duration": 0.0,
+   "start": 1791689748721
   }
  ]
 }

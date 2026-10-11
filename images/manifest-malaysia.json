@@ -836,6 +836,39 @@
    "license": "",
    "source": "https://en.wikipedia.org/wiki/Langkawi",
    "meta_error": "meta-error: HTTP Error 429: Too Many Requests"
+  },
+  {
+   "file": "images/malaysia/chilli_crab.jpg",
+   "slug": "chilli_crab",
+   "title": "Chili crab",
+   "caption": "辣椒螃蟹——新加坡国菜",
+   "bytes": 207104,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Chilli_crab",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/char_kway_teow.jpg",
+   "slug": "char_kway_teow",
+   "title": "Char kway teow",
+   "caption": "炒粿条",
+   "bytes": 179368,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Char_kway_teow",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/roti_canai.jpg",
+   "slug": "roti_canai",
+   "title": "Roti canai",
+   "caption": "印度煎饼 Roti Canai",
+   "bytes": 341173,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Roti_canai",
+   "meta_error": ""
   }
  ],
  "failed": [
@@ -1343,6 +1376,11 @@
    "eagle_square",
    "Eagle Square",
    "no lead image"
+  ],
+  [
+   "taming_sari",
+   "Menara Taming Sari",
+   "<HTTPError 404: 'Not Found'>"
   ]
  ]
 }

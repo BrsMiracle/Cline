@@ -56,7 +56,49 @@ Cline 官方推荐的模型目录接口（`GET /api/v1/ai/cline/recommended-mode
 当前 `free` 桶里的 4 个 `cline-free/*` 模型；且 DeepSeek-V4.1-Flash 的免费促销已被官方
 暂停。是否计费取决于你账号的方案/额度，请以 **Cline 设置 → View Usage** 为准。
 
-## 4. 想确认/切换到免费模型
+## 4. 追问：`cline-cloud/deepseek-v4.1-flash` 免费吗？有限额吗？（实测）
+
+### 4.1 不免费：本会话正在按标准价计费
+
+hub 事件库 `.cline-home/data/db/hub-events-hub-487d82e7ae44.db` 的 `hub_events` 表里，
+本会话有 29 条 `usage.updated` 事件，其中 26 条 `delta.totalCost > 0`：
+
+- 累计：input 949,068 / output 7,915 / cacheRead 885,642 tokens → **$0.043477**
+- 对 26 条非零事件做最小二乘拟合（实测 `inputTokens` 含 cacheRead）：
+
+| 项 | 拟合值（$/Mtok） | 官方参考价 |
+|---|---|---|
+| 输入（input − cacheRead） | **0.3001** | $0.30 |
+| 输出（output + reasoning） | **1.2001** | $1.20 |
+| 缓存读取 | **0.0060** | $0.006 |
+
+残差：平均相对误差 0.1%，最大 1.0%。**计费口径与 DeepSeek V4.1 Flash 标准价完全一致，
+没有任何"免费归零"。**
+
+代码佐证：`apps/cli/src/utils/free-model-cost.ts` 的 `shouldZeroClineFreeModelCost()`
+只对 `free` 桶（`cline-free/*`）id 归零成本；本会话模型是 `cline-cloud/*`，不在其中。
+
+价格来源：ClinePass 文档 "Reference pricing" 表（DeepSeek V4.1 Flash: Input $0.30 /
+Output $1.20 / Cached Read $0.006 per 1M）；目录接口 `GET /api/v1/ai/cline/models` 里
+`deepseek/deepseek-v4.1-flash` 的 pricing = 3e-7 / 1.2e-6 / 6e-9，完全吻合。
+
+> 备注：29 条里 3 条 delta 成本为 0（totals 不增长），疑似该请求未带回成本信息，不影响
+> 结论。成本为运行时计费估算，最终以 Cline 设置 → View Usage 为准。
+
+### 4.2 限额
+
+| 场景 | 限制 |
+|---|---|
+| `cline-cloud/deepseek-v4.1-flash`（本会话） | 无"免费额度"；按量扣 Cline credits，或走 ClinePass 订阅额度 |
+| ClinePass（`cline-pass/deepseek-v4.1-flash`） | $9.99/月，2-5x 标准 API 速率；用量按 **5 小时滚动窗口 / 周 / 月** 计量，官方未公布具体 token 数 |
+| Cline usage-billing | 限额 = credits 余额 |
+| Cloud Agents 平台 | 最多 **10 个并发会话**、每天最多新建 **50 个会话** |
+| `cline-free/*` 免费位 | 有额度但不公布数字；**不支持 Cline API**，仅 CLI/IDE/ClineFree |
+
+另外：Cline 已因 "abnormally high abuse" **暂停 DeepSeek-V4.1-Flash 的免费促销**
+（约 6 天前，rss.bz 报道），所以现在也蹭不到该模型的免费额度。
+
+## 5. 想确认/切换到免费模型
 
 - Cloud Agents：新建任务时在模型选择器里选 **ClineFree**（或标了 FREE 的模型）。
 - CLI / IDE：`/settings` → provider 选 `Cline`，挑带 FREE 标记的模型。

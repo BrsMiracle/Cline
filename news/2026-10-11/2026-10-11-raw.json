@@ -190,6 +190,13 @@
   "url": "https://www.theverge.com/rss/index.xml",
   "items": [
    {
+    "title": "Satya Nadella says we should assume all AI models are ‘compromised’",
+    "link": "https://www.theverge.com/ai-artificial-intelligence/1009337/satya-nadella-says-we-should-assume-all-ai-models-are-compromised",
+    "date": "2026-10-10T18:10:17-04:00",
+    "summary": "In a lengthy post on X, Microsoft's CEO laid out his views on the dangers posed by highly advanced AI models and how to confront those risks. Nadella says we can no longer accept a world where AI is treated as a \"set of nested black boxes\" whose advice and actions we simply accept or […]",
+    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/10/STK178_Satya_Nadella_B.jpg?quality=90&strip=all&crop=0%2C9.9676601489831%2C100%2C80.064679702034&w=1200"
+   },
+   {
     "title": "DistroKid has been quietly taking down songs in response to UMG lawsuit",
     "link": "https://www.theverge.com/entertainment/1009309/distrokid-take-down-songs-umg-lawsuit",
     "date": "2026-10-10T17:23:38-04:00",
@@ -237,13 +244,6 @@
     "date": "2026-10-09T17:26:33-04:00",
     "summary": "At this year's OpenAI DevDay, CEO Sam Altman unveiled the company's new AI agent Dots - and told the crowd that the company wants to \"set a new standard for privacy in frontier AI.\" OpenAI would spend the day taking veiled shots at Meta's Muse, its primary competitor, for failing to keep users' data safe. […]",
     "image": "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25299205/STK453_Privacy_D_CVirginia.jpg?quality=90&strip=all&crop=0%2C9.9676601489831%2C100%2C80.064679702034&w=1200"
-   },
-   {
-    "title": "The techlash has gone Hollywood",
-    "link": "https://www.theverge.com/tech/1008836/social-reckoning-cupertino-techlash-installer",
-    "date": "2026-10-09T12:53:54-04:00",
-    "summary": "Hi, friends! Welcome to Installer No. 147, your guide to the best and Verge-iest stuff in the world. (If you're new here, welcome, I missed you all, and also you can read all the old editions at the Installer homepage.) I'm back from parental leave! Part time, anyway. Thanks to everyone who sent well wishes […]",
-    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/Installer-147.jpg?quality=90&strip=all&crop=0%2C3.4987011938249%2C100%2C93.00259761235&w=1200"
    }
   ]
  },

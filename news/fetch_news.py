@@ -323,33 +323,68 @@ def render_cover_svg(date: str, data: dict[str, dict[str, object]]) -> str:
     return "\n".join(parts) + "\n"
 
 
+def render_index(root: pathlib.Path) -> str:
+    """扫描 news/ 下的日期文件夹，生成总索引 INDEX.md。"""
+    days = sorted(
+        (d.name for d in root.iterdir() if d.is_dir() and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d.name)),
+        reverse=True,
+    )
+    rows = []
+    for day in days:
+        base = f"./{day}/{day}"
+        rows.append(
+            f"| {day} | [board]({base}-board.md) | [digest]({base}-digest.md) "
+            f"| [html]({base}-board.html) | [raw]({base}-raw.json) |"
+        )
+    return "\n".join(
+        [
+            "# 📚 Daily Report 归档索引",
+            "",
+            f"共 {len(days)} 天。每天一个文件夹，文件名为 `YYYY-MM-DD-<类型>.<后缀>`。",
+            "",
+            "| 日期 | 可读版（推荐） | 中文摘要 | 花哨版 HTML | 原始数据 |",
+            "|---|---|---|---|---|",
+            *rows,
+            "",
+            "<sub>本文件由 `news/fetch_news.py` 自动生成。</sub>",
+            "",
+        ]
+    )
+
+
 def main() -> None:
     date = sys.argv[1] if len(sys.argv) > 1 else dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
     root = pathlib.Path(__file__).resolve().parent
+    day = root / date
+    day.mkdir(parents=True, exist_ok=True)
 
     with_og = "--og" in sys.argv
     print(f"抓取 {len(FEEDS)} 个源…")
     data = fetch_all(with_og=with_og)
 
-    raw_path = root / f"{date}-raw.json"
+    raw_path = day / f"{date}-raw.json"
     raw_path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
 
-    board_path = root / f"{date}-board.html"
+    board_path = day / f"{date}-board.html"
     board_path.write_text(render_board(date, data), encoding="utf-8")
 
-    md_path = root / f"{date}-board.md"
+    md_path = day / f"{date}-board.md"
     md_path.write_text(render_markdown(date, data), encoding="utf-8")
 
-    assets = root / "assets"
+    assets = day / "assets"
     assets.mkdir(exist_ok=True)
     cover_path = assets / f"{date}-cover.svg"
     cover_path.write_text(render_cover_svg(date, data), encoding="utf-8")
+
+    index_path = root / "INDEX.md"
+    index_path.write_text(render_index(root), encoding="utf-8")
 
     total = sum(len(f["items"]) for f in data.values())
     print(f"\n✅ {total} 条头条 → {raw_path.relative_to(root.parent)}")
     print(f"✅ 头条板     → {board_path.relative_to(root.parent)}")
     print(f"✅ 可读版     → {md_path.relative_to(root.parent)}")
     print(f"✅ 封面       → {cover_path.relative_to(root.parent)}")
+    print(f"✅ 归档索引   → {index_path.relative_to(root.parent)}")
 
 
 if __name__ == "__main__":

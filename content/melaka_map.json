@@ -1,15 +1,132 @@
 [
-{"city":"melaka","slug":"christ_church_melaka","ctrip":"荷兰红屋","en":"Christ Church & Stadthuys","mrt":"马六甲没有地铁，老城内步行或坐花车","dur":"1–1.5 小时","desc":"1753 年的荷兰基督堂与旁边的荷兰红屋（Stadthuys）构成马六甲最标志性的红色广场。","tip":"广场上午逆光、下午顺光，人最多的时段是 10:00–16:00；花车（Trishaw）喊价要砍。"},
-{"city":"melaka","slug":"a_famosa","ctrip":"爱化摩沙度假堡","en":"A Famosa","mrt":"老城内步行","dur":"0.5 小时","desc":"1511 年葡萄牙人建的圣地亚哥城堡仅存的城门，是东南亚最老的欧洲建筑遗迹之一。","tip":"就在圣保罗山脚下，和红屋、圣保罗堂可以一条线走完。"},
-{"city":"melaka","slug":"st_pauls_church","ctrip":"圣保罗堂","en":"St. Paul's Church","mrt":"老城内步行（上山）","dur":"0.5–1 小时","desc":"建在山顶的教堂遗址，斑驳墙体＋俯瞰海峡的视角，是马六甲看日落的好位置。","tip":"上山路不长但晒，带水；傍晚有街头艺人驻唱。"},
-{"city":"melaka","slug":"jonker_street","ctrip":"鸡场街夜市","en":"Jonker Street Night Market","mrt":"老城内步行","dur":"2–3 小时","desc":"马六甲最有名的夜市，只在周五至周日晚上封街营业，小吃、手信与街头表演一路排开。","tip":"只有周五、周六、周日晚上有夜市！平日来就只是一条老街；人非常挤，看好随身物品。"},
-{"city":"melaka","slug":"baba_nyonya","ctrip":"峇峇娘惹祖屋博物馆","en":"Baba & Nyonya Heritage Museum","mrt":"老城内步行","dur":"1 小时","desc":"19 世纪峇峇娘惹家族的祖屋，木雕、瓷砖与家什保存完整，是理解娘惹文化最快的方式。","tip":"需跟着导览时段入内，不能自由乱走；室内不允许用闪光灯。"},
-{"city":"melaka","slug":"cheng_hoon_teng","ctrip":"","en":"Cheng Hoon Teng Temple","mrt":"老城内步行","dur":"0.5 小时","desc":"青云亭建于 1645 年，是马来西亚最古老的中国庙宇，木雕与彩绘保存极好。","tip":"与旁边的印度庙、清真寺同在一条“和谐街”，五分钟能看三种宗教。"},
-{"city":"melaka","slug":"melaka_river","ctrip":"马六甲河","en":"Melaka River","mrt":"老城内步行","dur":"1–2 小时","desc":"穿城而过的马六甲河，两岸是壁画与咖啡店，晚上亮灯后沿河散步非常舒服。","tip":"河边蚊虫多，傍晚记得防蚊；游船约 45 分钟，在红屋附近码头买票。"},
-{"city":"melaka","slug":"melaka_straits_mosque","ctrip":"马六甲海峡清真寺","en":"Malacca Straits Mosque","mrt":"打车约 10 分钟（人工岛）","dur":"1 小时","desc":"建在填海人工岛上的清真寺，涨潮时看起来像浮在海面上，日落与夜景都极美。","tip":"免费入场但着装要求严格，现场可借长袍；日落时段最出片，需打车往返。"},
-{"city":"melaka","slug":"taming_sari","ctrip":"马六甲旋转塔","en":"Menara Taming Sari","mrt":"老城内步行","dur":"0.5 小时","desc":"110 米高的旋转观景塔，7 分钟升到顶再缓缓转一圈，能一次看清老城与海峡。","tip":"黄昏场次景色最好；不适合严重恐高者。"},
-{"city":"melaka","slug":"maritime_museum","ctrip":"海事博物馆","en":"Maritime Museum","mrt":"老城内步行","dur":"1 小时","desc":"以一艘葡萄牙大帆船复制品为主体的博物馆，讲马六甲作为香料贸易港口的历史。","tip":"与红屋、A Famosa 同在一条步行线上，可顺路进。"},
-{"city":"melaka","slug":"melaka_sultanate_palace","ctrip":"马六甲王朝皇宫博物馆","en":"Malacca Sultanate Palace Museum","mrt":"圣保罗山脚","dur":"1 小时","desc":"按史料复建的木造苏丹皇宫，现在是文化博物馆，展示马六甲王朝的服饰与器物。","tip":"就在 A Famosa 旁边，可与圣保罗堂一起安排。"},
-{"city":"melaka","slug":"portuguese_settlement","ctrip":"","en":"Portuguese Settlement","mrt":"打车约 15 分钟","dur":"1–1.5 小时","desc":"葡萄牙后裔聚居的渔村，海鲜大排档与葡式料理是本地人的心头好。","tip":"晚上去吃海鲜最好，价格比老城便宜；没有车不太方便，建议打车往返。"},
-{"city":"melaka","slug":"shore_sky_tower","ctrip":"海岸天空塔","en":"The Shore Sky Tower","mrt":"老城内步行","dur":"0.5 小时","desc":"43 层的玻璃观景台，可以俯瞰整个马六甲老城与远处海峡。","tip":"与旋转塔二选一即可；傍晚去能同时拍到日落和亮灯。"}
+ {
+  "city": "melaka",
+  "slug": "christ_church_melaka",
+  "ctrip": "荷兰红屋",
+  "en": "Christ Church & Stadthuys",
+  "mrt": "马六甲没有地铁，老城内步行或坐花车",
+  "dur": "1–1.5 小时",
+  "desc": "1753 年的荷兰基督堂与旁边的荷兰红屋（Stadthuys）构成马六甲最标志性的红色广场。",
+  "tip": "广场上午逆光、下午顺光，人最多的时段是 10:00–16:00；花车（Trishaw）喊价要砍。"
+ },
+ {
+  "city": "melaka",
+  "slug": "a_famosa",
+  "ctrip": "爱化摩沙度假堡",
+  "en": "A Famosa",
+  "mrt": "老城内步行",
+  "dur": "0.5 小时",
+  "desc": "1511 年葡萄牙人建的圣地亚哥城堡仅存的城门，是东南亚最老的欧洲建筑遗迹之一。",
+  "tip": "就在圣保罗山脚下，和红屋、圣保罗堂可以一条线走完。"
+ },
+ {
+  "city": "melaka",
+  "slug": "st_pauls_church",
+  "ctrip": "圣保罗堂",
+  "en": "St. Paul's Church",
+  "mrt": "老城内步行（上山）",
+  "dur": "0.5–1 小时",
+  "desc": "建在山顶的教堂遗址，斑驳墙体＋俯瞰海峡的视角，是马六甲看日落的好位置。",
+  "tip": "上山路不长但晒，带水；傍晚有街头艺人驻唱。"
+ },
+ {
+  "city": "melaka",
+  "slug": "jonker_street",
+  "ctrip": "鸡场街夜市",
+  "en": "Jonker Street Night Market",
+  "mrt": "老城内步行",
+  "dur": "2–3 小时",
+  "desc": "马六甲最有名的夜市，只在周五至周日晚上封街营业，小吃、手信与街头表演一路排开。",
+  "tip": "只有周五、周六、周日晚上有夜市！平日来就只是一条老街；人非常挤，看好随身物品。"
+ },
+ {
+  "city": "melaka",
+  "slug": "baba_nyonya",
+  "ctrip": "峇峇娘惹祖屋博物馆",
+  "en": "Baba & Nyonya Heritage Museum",
+  "mrt": "老城内步行",
+  "dur": "1 小时",
+  "desc": "19 世纪峇峇娘惹家族的祖屋，木雕、瓷砖与家什保存完整，是理解娘惹文化最快的方式。",
+  "tip": "需跟着导览时段入内，不能自由乱走；室内不允许用闪光灯。"
+ },
+ {
+  "city": "melaka",
+  "slug": "cheng_hoon_teng",
+  "ctrip": "",
+  "en": "Cheng Hoon Teng Temple",
+  "mrt": "老城内步行",
+  "dur": "0.5 小时",
+  "desc": "青云亭建于 1645 年，是马来西亚最古老的中国庙宇，木雕与彩绘保存极好。",
+  "tip": "与旁边的印度庙、清真寺同在一条“和谐街”，五分钟能看三种宗教。"
+ },
+ {
+  "city": "melaka",
+  "slug": "melaka_river",
+  "ctrip": "马六甲河",
+  "en": "Melaka River",
+  "mrt": "老城内步行",
+  "dur": "1–2 小时",
+  "desc": "穿城而过的马六甲河，两岸是壁画与咖啡店，晚上亮灯后沿河散步非常舒服。",
+  "tip": "河边蚊虫多，傍晚记得防蚊；游船约 45 分钟，在红屋附近码头买票。"
+ },
+ {
+  "city": "melaka",
+  "slug": "melaka_straits_mosque",
+  "ctrip": "马六甲海峡清真寺",
+  "en": "Malacca Straits Mosque",
+  "mrt": "打车约 10 分钟（人工岛）",
+  "dur": "1 小时",
+  "desc": "建在填海人工岛上的清真寺，涨潮时看起来像浮在海面上，日落与夜景都极美。",
+  "tip": "免费入场但着装要求严格，现场可借长袍；日落时段最出片，需打车往返。"
+ },
+ {
+  "city": "melaka",
+  "slug": "malacca",
+  "ctrip": "马六甲旋转塔",
+  "en": "Menara Taming Sari",
+  "mrt": "老城内步行",
+  "dur": "0.5 小时",
+  "desc": "110 米高的旋转观景塔，7 分钟升到顶再缓缓转一圈，能一次看清老城与海峡。",
+  "tip": "黄昏场次景色最好；不适合严重恐高者。"
+ },
+ {
+  "city": "melaka",
+  "slug": "maritime_museum",
+  "ctrip": "海事博物馆",
+  "en": "Maritime Museum",
+  "mrt": "老城内步行",
+  "dur": "1 小时",
+  "desc": "以一艘葡萄牙大帆船复制品为主体的博物馆，讲马六甲作为香料贸易港口的历史。",
+  "tip": "与红屋、A Famosa 同在一条步行线上，可顺路进。"
+ },
+ {
+  "city": "melaka",
+  "slug": "melaka_sultanate_palace",
+  "ctrip": "马六甲王朝皇宫博物馆",
+  "en": "Malacca Sultanate Palace Museum",
+  "mrt": "圣保罗山脚",
+  "dur": "1 小时",
+  "desc": "按史料复建的木造苏丹皇宫，现在是文化博物馆，展示马六甲王朝的服饰与器物。",
+  "tip": "就在 A Famosa 旁边，可与圣保罗堂一起安排。"
+ },
+ {
+  "city": "melaka",
+  "slug": "portuguese_settlement",
+  "ctrip": "",
+  "en": "Portuguese Settlement",
+  "mrt": "打车约 15 分钟",
+  "dur": "1–1.5 小时",
+  "desc": "葡萄牙后裔聚居的渔村，海鲜大排档与葡式料理是本地人的心头好。",
+  "tip": "晚上去吃海鲜最好，价格比老城便宜；没有车不太方便，建议打车往返。"
+ },
+ {
+  "city": "melaka",
+  "slug": "shore_sky_tower",
+  "ctrip": "海岸天空塔",
+  "en": "The Shore Sky Tower",
+  "mrt": "老城内步行",
+  "dur": "0.5 小时",
+  "desc": "43 层的玻璃观景台，可以俯瞰整个马六甲老城与远处海峡。",
+  "tip": "与旋转塔二选一即可；傍晚去能同时拍到日落和亮灯。"
+ }
 ]

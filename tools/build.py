@@ -74,6 +74,7 @@ def credits(manifests):
     out = []
     for r in rows:
         author = r.get("author") or "见来源页"
+        author = re.sub(r"\{\{[^}]*\}\}", "", author).strip(" ,;") or "见来源页"
         lic = r.get("license") or "见来源页"
         src = r.get("source") or ""
         link = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (esc(src), esc(r.get("title", ""))) if src else esc(r.get("title", ""))
@@ -85,20 +86,22 @@ def credits(manifests):
 # content loaders + renderers
 # --------------------------------------------------------------------------
 def load_ctrip(slug):
-    """city slug -> {attraction name: row} from the scraped Ctrip TSVs."""
-    path = os.path.join(ROOT, "research", "ctrip-%s-detail.tsv" % slug)
-    if not os.path.exists(path):
-        path = os.path.join(ROOT, "research", "ctrip-%s.tsv" % slug)
+    """city slug -> {attraction name: row}, merging the list TSV with the detail TSV."""
     rows = {}
-    if not os.path.exists(path):
-        return rows
-    lines = [l.rstrip("\n").split("\t") for l in open(path, encoding="utf-8")]
-    head = lines[0]
-    for r in lines[1:]:
-        if len(r) < len(head):
-            r = r + [""] * (len(head) - len(r))
-        rec = dict(zip(head, r))
-        rows[rec["name"]] = rec
+    for suffix in ("", "-detail"):
+        path = os.path.join(ROOT, "research", "ctrip-%s%s.tsv" % (slug, suffix))
+        if not os.path.exists(path):
+            continue
+        lines = [l.rstrip("\n").split("\t") for l in open(path, encoding="utf-8")]
+        head = lines[0]
+        for r in lines[1:]:
+            if len(r) < len(head):
+                r = r + [""] * (len(head) - len(r))
+            rec = dict(zip(head, r))
+            prev = rows.setdefault(rec["name"], {})
+            for k, v in rec.items():
+                if v and not prev.get(k):
+                    prev[k] = v
     return rows
 
 
@@ -114,7 +117,10 @@ def short_hours(text, limit=58):
         return ""
     t = re.split(r"[;；]", text)[0]
     t = re.sub(r"特殊营业时间：", "", t)
-    return t[:limit]
+    if len(t) > limit:
+        cut = max(t.rfind("、", 0, limit), t.rfind("，", 0, limit), t.rfind(",", 0, limit))
+        t = t[:cut] if cut > limit * 0.5 else t[:limit - 1] + "…"
+    return t
 
 
 def render_cards(items, ctrip_rows, group):
@@ -259,6 +265,7 @@ def main():
     sg_map = load("sg_map.json")
     kl_map = load("kl_map.json")
     melaka_map = load("melaka_map.json")
+    penang_map = load("penang_map.json")
     food = load("food.json")
     prose = load("prose.json") if os.path.exists(os.path.join(ROOT, "content", "prose.json")) else {}
 
@@ -285,6 +292,7 @@ def main():
         "SG_CARDS": render_cards(sg_map, sg_ctrip, "singapore"),
         "KL_CARDS": render_cards(kl_map, kl_ctrip, "malaysia"),
         "MELAKA_CARDS": render_cards(melaka_map, melaka_ctrip, "malaysia"),
+        "PENANG_CARDS": render_cards(penang_map, penang_ctrip, "malaysia"),
         "SG_FOOD": render_food(food["sg"], "singapore"),
         "MY_FOOD": render_food(food["my"], "malaysia"),
         "CREDITS": credits(manifests),
@@ -303,7 +311,9 @@ def main():
         return tokens.get(key, "<!-- missing:%s -->" % key)
 
     html = body
-    for _ in range(4):
+    for _ in range(5):
+        html = re.sub(r"\{\{IMG:([a-z0-9_]+)\}\}",
+                      lambda m: img_tag(m.group(1), "malaysia", m.group(1), width=560, quality=72), html)
         html, n = re.subn(r"\{\{([A-Z_]+)\}\}", sub, html)
         if not n:
             break

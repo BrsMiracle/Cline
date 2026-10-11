@@ -663,7 +663,116 @@
    "http_status": "200",
    "error": "",
    "commons_file": "Singapore Marina Bay Dusk 2018-02-27.jpg"
+  },
+  {
+   "file": "images/singapore/cloud_forest.jpg",
+   "slug": "cloud_forest",
+   "title": "Cloud Forest",
+   "caption": "云雾林：滨海湾花园内的巨型室内瀑布温室",
+   "bytes": 470588,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Cloud_forest",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/flower_dome.jpg",
+   "slug": "flower_dome",
+   "title": "Flower Dome",
+   "caption": "花穹：全球最大的玻璃温室",
+   "bytes": 444131,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Gardens_by_the_Bay",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/luge.jpg",
+   "slug": "luge",
+   "title": "Skyline Luge Singapore",
+   "caption": "圣淘沙天际线斜坡滑车",
+   "bytes": 185645,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Skyline_Luge_Singapore",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/national_museum.jpg",
+   "slug": "national_museum",
+   "title": "National Museum of Singapore",
+   "caption": "新加坡国家博物馆",
+   "bytes": 126497,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/National_Museum_of_Singapore",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/sea_aquarium.jpg",
+   "slug": "sea_aquarium",
+   "title": "S.E.A. Aquarium",
+   "caption": "新加坡海洋生态馆（S.E.A. 海洋馆）",
+   "bytes": 168465,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Singapore_Oceanarium",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/singapore_river_cruise.jpg",
+   "slug": "singapore_river_cruise",
+   "title": "Singapore River",
+   "caption": "新加坡河游船",
+   "bytes": 385831,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Singapore_River",
+   "meta_error": ""
+  },
+  {
+   "file": "images/singapore/marina_barrage.jpg",
+   "slug": "marina_barrage",
+   "title": "Marina Barrage",
+   "caption": "滨海堤坝",
+   "bytes": 260200,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Marina_Barrage",
+   "meta_error": "meta-error: HTTP Error 429: Too Many Requests"
+  },
+  {
+   "file": "images/singapore/cable_car.jpg",
+   "slug": "cable_car",
+   "title": "Singapore Cable Car",
+   "caption": "新加坡缆车：花柏山—港湾—圣淘沙",
+   "bytes": 331144,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Singapore_Cable_Car",
+   "meta_error": ""
   }
  ],
- "failed": []
+ "failed": [
+  [
+   "cable_car",
+   "Singapore Cable Car",
+   "<HTTPError 429: 'Too many requests (f061ab2)'>"
+  ],
+  [
+   "luge",
+   "Skyline Luge",
+   "<HTTPError 404: 'Not Found'>"
+  ],
+  [
+   "national_museum",
+   "National Museum of Singapore",
+   "<HTTPError 429: 'Too many requests (f061ab2)'>"
+  ],
+  [
+   "cable_car",
+   "Singapore Cable Car",
+   "<HTTPError 429: 'Too Many Requests'>"
+  ]
+ ]
 }

@@ -27,6 +27,12 @@ import sys
 
 # 参考单价（美元 / 百万 token），默认按 DeepSeek V4.1 Flash
 DEFAULT_RATES = {"input": 0.30, "output": 1.20, "cacheRead": 0.006}
+# DeepSeek 官方：谷时价为峰时价的一半。峰时 = 周一~周五 01:00-04:00 与 06:00-10:00 UTC
+# （不含中国法定节假日）；其余时段（含整个周末）均为谷时。
+PEAK_WINDOWS_UTC = ((1, 4), (6, 10))
+PEAK_RATES = {"input": 0.30, "output": 1.20, "cacheRead": 0.006}
+OFFPEAK_RATES = {k: v / 2 for k, v in PEAK_RATES.items()}
+
 DEFAULT_PRICE_SOURCE = (
     "ClinePass Reference pricing（DeepSeek V4.1 Flash）"
     " — docs.cline.bot/getting-started/clinepass"
@@ -154,6 +160,11 @@ def fmt(n, nd=0):
     return f"{n:,.{nd}f}"
 
 
+def cost_of(uncached, cache_read, out_all, rates):
+    return (uncached / 1e6 * rates["input"] + cache_read / 1e6 * rates["cacheRead"]
+            + out_all / 1e6 * rates["output"])
+
+
 def analyze(runs, iters, rates):
     usages = [it["usage"] for it in iters if it.get("usage")]
     tot = {k: sum(u.get(k, 0) for u in usages) for k in KEYS}
@@ -163,9 +174,26 @@ def analyze(runs, iters, rates):
 
     uncached = tot["inputTokens"] - tot["cacheReadTokens"] - tot["cacheWriteTokens"]
     out_all = tot["outputTokens"] + tot["reasoningTokenCount"]
-    cost_in = uncached / 1e6 * rates["input"] + tot["cacheReadTokens"] / 1e6 * rates["cacheRead"]
-    cost_out = out_all / 1e6 * rates["output"]
-    naive = tot["inputTokens"] / 1e6 * rates["input"] + out_all / 1e6 * rates["output"]
+
+    # 按调用时刻自动判定峰/谷
+    cost_auto = 0.0
+    peak_calls = off_calls = 0
+    for it in iters:
+        u = it.get("usage")
+        if not u:
+            continue
+        peak = is_peak(it.get("usage_ts") or it.get("start") or 0)
+        peak_calls += 1 if peak else 0
+        off_calls += 0 if peak else 1
+        r = PEAK_RATES if peak else OFFPEAK_RATES
+        u_unc = u.get("inputTokens", 0) - u.get("cacheReadTokens", 0) - u.get("cacheWriteTokens", 0)
+        u_out = u.get("outputTokens", 0) + u.get("reasoningTokenCount", 0)
+        cost_auto += cost_of(u_unc, u.get("cacheReadTokens", 0), u_out, r)
+
+    cost_peak = cost_of(uncached, tot["cacheReadTokens"], out_all, PEAK_RATES)
+    cost_off = cost_of(uncached, tot["cacheReadTokens"], out_all, OFFPEAK_RATES)
+    naive_peak = (tot["inputTokens"] / 1e6 * PEAK_RATES["input"]
+                  + out_all / 1e6 * PEAK_RATES["output"])
 
     lat = []
     for it in iters:
@@ -187,19 +215,36 @@ def analyze(runs, iters, rates):
 
     run_rows = []
     for n, run in enumerate(runs, 1):
-        rs = [it["usage"] for it in run["iters"] if it.get("usage")]
+        rs = [it for it in run["iters"] if it.get("usage")]
         if not rs:
             continue
-        i = sum(u.get("inputTokens", 0) for u in rs)
-        cr = sum(u.get("cacheReadTokens", 0) for u in rs)
-        o = sum(u.get("outputTokens", 0) + u.get("reasoningTokenCount", 0) for u in rs)
-        c = sum(u.get("totalCost", 0) for u in rs)
+        i = sum(it["usage"].get("inputTokens", 0) for it in rs)
+        cr = sum(it["usage"].get("cacheReadTokens", 0) for it in rs)
+        o = sum(it["usage"].get("outputTokens", 0) + it["usage"].get("reasoningTokenCount", 0)
+                for it in rs)
+        c = sum(it["usage"].get("totalCost", 0) for it in rs)
+        pk = sum(1 for it in rs if is_peak(it.get("usage_ts") or it.get("start") or 0))
+        tier = "峰时" if pk == len(rs) else ("谷时" if pk == 0 else f"混合({pk}/{len(rs)}峰)")
         run_rows.append({"n": n, "calls": len(rs), "input": i, "cacheRead": cr,
                          "out": o, "cost": c, "duration": (run.get("durationMs") or 0) / 1000,
-                         "start": run.get("start", 0)})
+                         "start": run.get("start", 0), "tier": tier,
+                         "cost_auto": sum(
+                             cost_of(it["usage"].get("inputTokens", 0)
+                                     - it["usage"].get("cacheReadTokens", 0),
+                                     it["usage"].get("cacheReadTokens", 0),
+                                     it["usage"].get("outputTokens", 0)
+                                     + it["usage"].get("reasoningTokenCount", 0),
+                                     PEAK_RATES if is_peak(it.get("usage_ts") or it.get("start") or 0)
+                                     else OFFPEAK_RATES)
+                             for it in rs)})
 
-    return {"tot": tot, "uncached": uncached, "out_all": out_all, "cost_in": cost_in,
-            "cost_out": cost_out, "naive": naive, "lat": lat, "runs": run_rows}
+    return {"tot": tot, "uncached": uncached, "out_all": out_all,
+            "cost_in": cost_of(uncached, tot["cacheReadTokens"], 0, rates),
+            "cost_out": out_all / 1e6 * rates["output"],
+            "naive": naive_peak, "lat": lat, "runs": run_rows,
+            "cost_peak": cost_peak, "cost_off": cost_off, "cost_auto": cost_auto,
+            "peak_calls": peak_calls, "off_calls": off_calls}
+
 
 
 def med(values, nd=2):
@@ -241,6 +286,17 @@ def load_session_row(db_path: pathlib.Path) -> dict:
         return dict(zip(cols, row)) if row else {}
     except Exception:
         return {}
+
+
+def is_peak(ts_ms: int) -> bool:
+    """按 DeepSeek 规则判断某个时刻是否处于峰时（UTC）。"""
+    if not ts_ms:
+        return False
+    t = dt.datetime.fromtimestamp(ts_ms / 1000, dt.UTC)
+    if t.weekday() >= 5:  # 周六 / 周日 全谷时
+        return False
+    hour = t.hour + t.minute / 60
+    return any(lo <= hour < hi for lo, hi in PEAK_WINDOWS_UTC)
 
 
 def hhmmss(ms) -> str:
@@ -287,15 +343,34 @@ def render_meta_sections(session, meta, prompts, rates, price_source, a, span, r
     ]
     out += [f"| {k} | {v} |" for k, v in rows]
 
-    out += ["", "## 价格口径", "", "| 项 | 值 |", "|---|---:|",
-            f"| 输入 | ${rates['input']} / Mtok |",
-            f"| 输出 | ${rates['output']} / Mtok |",
-            f"| 缓存读取 | ${rates['cacheRead']} / Mtok |",
-            "| 缓存写入 | $0（本会话未产生 cacheWrite） |",
-            f"| 价格来源 | {price_source} |",
-            f"| 价格抓取时间 | {dt.datetime.now(dt.UTC).strftime('%Y-%m-%d')} |",
-            f"| 运行时计数器成本 | ${t['totalCost']:.4f}（provider 上报，可能是市场价估算） |",
-            f"| 按上表单价计算 | ${a['cost_in'] + a['cost_out']:.4f} |"]
+    tier = ("峰时 PEAK" if a["off_calls"] == 0 else
+            ("谷时 OFF-PEAK" if a["peak_calls"] == 0 else "跨峰谷混合"))
+    out += ["", "## 价格口径（含峰谷价）", "",
+            "DeepSeek 官方对同一模型给**峰时/谷时两档价**，**谷时价 = 峰时价的一半**；",
+            "Cline 的 ClinePass 参考价表里，DeepSeek V4.1 Flash 只列了**峰时价**一档",
+            "（V4 Pro 则明确列了 Peak / Off-peak 两行）。",
+            "",
+            "| 档位 | 输入（未命中缓存） | 输入（命中缓存） | 输出 | 缓存写入 |",
+            "|---|---:|---:|---:|---:|",
+            f"| 峰时 PEAK | ${PEAK_RATES['input']} | ${PEAK_RATES['cacheRead']} | "
+            f"${PEAK_RATES['output']} | $0 |",
+            f"| 谷时 OFF-PEAK | ${OFFPEAK_RATES['input']} | ${OFFPEAK_RATES['cacheRead']} | "
+            f"${OFFPEAK_RATES['output']} | $0 |",
+            "",
+            "**峰时判定规则**（UTC）：周一~周五 `01:00–04:00` 与 `06:00–10:00` 为峰时；",
+            "其余时段（含**整个周末**和中国法定节假日）均为谷时。",
+            "（中国节假日无法离线判定，脚本按「非周末即按上表峰段」近似。）",
+            "",
+            "| 本会话计费情况 | 值 |",
+            "|---|---:|",
+            f"| 所处时段 | **{tier}** |",
+            f"| 峰时调用 / 谷时调用 | {a['peak_calls']} / {a['off_calls']} |",
+            f"| 按峰时价计 | ${a['cost_peak']:.4f} |",
+            f"| 按谷时价计 | ${a['cost_off']:.4f} |",
+            f"| **按时段自动计（推荐）** | **${a['cost_auto']:.4f}** |",
+            f"| 运行时计数器（provider 上报） | ${t['totalCost']:.4f} |",
+            "",
+            f"价格来源：{price_source} ｜ 抓取时间：{dt.datetime.now(dt.UTC).strftime('%Y-%m-%d')}"]
 
     out += ["", "## 对话轮次", "",
             "| # | 时间 | 你的消息 | 调用 | 输入 | 输出 | 成本 | 墙钟(秒) |",
@@ -478,7 +553,10 @@ def main() -> None:
     print(f"调用      : {t['calls']} 次")
     print(f"输入/输出 : {fmt(t['inputTokens'])} / {fmt(a['out_all'])} tok")
     print(f"缓存命中  : {hit:.2f}%  (cacheRead {fmt(t['cacheReadTokens'])})")
-    print(f"成本      : 计数器 ${t['totalCost']:.4f} ｜ 按单价算 ${a['cost_in'] + a['cost_out']:.4f}")
+    tier = "峰时" if a["off_calls"] == 0 else ("谷时" if a["peak_calls"] == 0 else "跨峰谷")
+    print(f"时段      : {tier}（峰 {a['peak_calls']} / 谷 {a['off_calls']} 次调用）")
+    print(f"成本      : 按时段自动 ${a['cost_auto']:.4f} ｜ 全按峰时 ${a['cost_peak']:.4f} "
+          f"｜ 全按谷时 ${a['cost_off']:.4f} ｜ 计数器 ${t['totalCost']:.4f}")
     print(f"延迟      : TTFT 中位 {med([r['ttft'] for r in a['lat']]):.2f}s ｜ "
           f"TPS 中位 {med([r['tps'] for r in a['lat']], 1):.1f} tok/s")
 
@@ -494,6 +572,13 @@ def main() -> None:
         json_path.write_text(json.dumps({
             "sessionId": sid, "model": meta.get("model"), "provider": meta.get("provider"),
             "generatedAt": now, "rates": rates, "priceSource": args.price_source,
+            "pricingTiers": {
+                "rule": "peak = Mon-Fri 01:00-04:00 & 06:00-10:00 UTC; off-peak = half price, all other times incl. weekends",
+                "peak": PEAK_RATES, "offPeak": OFFPEAK_RATES,
+                "peakCalls": a["peak_calls"], "offPeakCalls": a["off_calls"],
+                "costPeak": round(a["cost_peak"], 6), "costOffPeak": round(a["cost_off"], 6),
+                "costAuto": round(a["cost_auto"], 6),
+            },
             "sessionStart": span[0], "sessionEnd": span[1],
             "durationMinutes": round((span[1] - span[0]) / 60000, 2),
             "sessionParams": {

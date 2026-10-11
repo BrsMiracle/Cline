@@ -2,16 +2,34 @@
  "sessionId": "tsk-01M4MEXH9ZTT3T8NT7JMX35YKH",
  "model": "cline-cloud/deepseek-v4.1-flash",
  "provider": "cline",
- "generatedAt": "2026-10-11 03:37 UTC",
+ "generatedAt": "2026-10-11 12:11 UTC",
  "rates": {
   "input": 0.3,
   "output": 1.2,
   "cacheRead": 0.006
  },
  "priceSource": "ClinePass Reference pricing（DeepSeek V4.1 Flash） — docs.cline.bot/getting-started/clinepass",
+ "pricingTiers": {
+  "rule": "peak = Mon-Fri 01:00-04:00 & 06:00-10:00 UTC; off-peak = half price, all other times incl. weekends",
+  "peak": {
+   "input": 0.3,
+   "output": 1.2,
+   "cacheRead": 0.006
+  },
+  "offPeak": {
+   "input": 0.15,
+   "output": 0.6,
+   "cacheRead": 0.003
+  },
+  "peakCalls": 0,
+  "offPeakCalls": 163,
+  "costPeak": 0.65616,
+  "costOffPeak": 0.32808,
+  "costAuto": 0.32808
+ },
  "sessionStart": 1791688126353,
- "sessionEnd": 1791689871115,
- "durationMinutes": 29.08,
+ "sessionEnd": 1791720674121,
+ "durationMinutes": 542.46,
  "sessionParams": {
   "mode": "act",
   "thinking": true,
@@ -22,7 +40,7 @@
   "source": "dashboard",
   "git": {
    "url": "https://github.com/BrsMiracle/Cline.git",
-   "branch": "1010test"
+   "branch": "token-usage"
   },
   "workspaceRoot": "/workspace",
   "cwd": "/workspace",
@@ -89,27 +107,27 @@
   }
  ],
  "totals": {
-  "inputTokens": 24982253,
-  "outputTokens": 71890,
-  "cacheReadTokens": 24284164,
+  "inputTokens": 23557717,
+  "outputTokens": 68907,
+  "cacheReadTokens": 22309410,
   "cacheWriteTokens": 0,
-  "reasoningTokenCount": 56694,
-  "totalCost": 0.502534948,
-  "calls": 169,
+  "reasoningTokenCount": 54269,
+  "totalCost": 0.6492676000000001,
+  "calls": 163,
   "zeroCostCalls": 4
  },
- "uncachedInputTokens": 698089,
- "outputPlusReasoning": 128584,
- "cacheHitRate": 97.2057,
+ "uncachedInputTokens": 1248307,
+ "outputPlusReasoning": 123176,
+ "cacheHitRate": 94.7011,
  "costByTokens": {
-  "input": 0.355132,
-  "output": 0.154301,
-  "naiveNoCache": 7.648977
+  "input": 0.508349,
+  "output": 0.147811,
+  "naiveNoCache": 7.215126
  },
  "latency": {
-  "ttftMedian": 1.352,
-  "tpsMedian": 158.66,
-  "samples": 141
+  "ttftMedian": 1.351,
+  "tpsMedian": 160.1,
+  "samples": 137
  },
  "runs": [
   {
@@ -120,7 +138,9 @@
    "out": 11345,
    "cost": 0.031561759999999994,
    "duration": 128.637,
-   "start": 1791688127557
+   "start": 1791688127557,
+   "tier": "谷时",
+   "cost_auto": 0.01891839
   },
   {
    "n": 2,
@@ -130,7 +150,9 @@
    "out": 1050,
    "cost": 0.002621604,
    "duration": 0.0,
-   "start": 1791688306766
+   "start": 1791688306766,
+   "tier": "谷时",
+   "cost_auto": 0.001310802
   },
   {
    "n": 3,
@@ -140,7 +162,9 @@
    "out": 9905,
    "cost": 0.024173195999999997,
    "duration": 108.579,
-   "start": 1791688329441
+   "start": 1791688329441,
+   "tier": "谷时",
+   "cost_auto": 0.012086598
   },
   {
    "n": 4,
@@ -150,7 +174,9 @@
    "out": 1298,
    "cost": 0.003157932,
    "duration": 0.0,
-   "start": 1791688415454
+   "start": 1791688415454,
+   "tier": "谷时",
+   "cost_auto": 0.0015789660000000002
   },
   {
    "n": 5,
@@ -160,7 +186,9 @@
    "out": 16404,
    "cost": 0.052290732000000006,
    "duration": 175.444,
-   "start": 1791688475819
+   "start": 1791688475819,
+   "tier": "谷时",
+   "cost_auto": 0.026145366000000003
   },
   {
    "n": 6,
@@ -170,7 +198,9 @@
    "out": 4609,
    "cost": 0.010092504,
    "duration": 44.003,
-   "start": 1791688713060
+   "start": 1791688713060,
+   "tier": "谷时",
+   "cost_auto": 0.005046251999999999
   },
   {
    "n": 7,
@@ -180,7 +210,9 @@
    "out": 2268,
    "cost": 0.0067821,
    "duration": 0.0,
-   "start": 1791688757386
+   "start": 1791688757386,
+   "tier": "谷时",
+   "cost_auto": 0.00339105
   },
   {
    "n": 8,
@@ -190,7 +222,9 @@
    "out": 1067,
    "cost": 0.0031523159999999988,
    "duration": 0.0,
-   "start": 1791688793787
+   "start": 1791688793787,
+   "tier": "谷时",
+   "cost_auto": 0.0015761579999999998
   },
   {
    "n": 9,
@@ -200,7 +234,9 @@
    "out": 3720,
    "cost": 0.056124215999999984,
    "duration": 0.0,
-   "start": 1791688810803
+   "start": 1791688810803,
+   "tier": "谷时",
+   "cost_auto": 0.028062107999999995
   },
   {
    "n": 11,
@@ -210,7 +246,9 @@
    "out": 4818,
    "cost": 0.014745276,
    "duration": 0.0,
-   "start": 1791688875105
+   "start": 1791688875105,
+   "tier": "谷时",
+   "cost_auto": 0.007372638
   },
   {
    "n": 12,
@@ -220,7 +258,9 @@
    "out": 12232,
    "cost": 0.04207098000000001,
    "duration": 0.0,
-   "start": 1791688918624
+   "start": 1791688918624,
+   "tier": "谷时",
+   "cost_auto": 0.022394939999999995
   },
   {
    "n": 13,
@@ -230,7 +270,9 @@
    "out": 25028,
    "cost": 0.07081381199999998,
    "duration": 0.0,
-   "start": 1791689064399
+   "start": 1791689064399,
+   "tier": "谷时",
+   "cost_auto": 0.035406906
   },
   {
    "n": 14,
@@ -240,7 +282,9 @@
    "out": 7266,
    "cost": 0.087272708,
    "duration": 26.919,
-   "start": 1791689606475
+   "start": 1791689606475,
+   "tier": "谷时",
+   "cost_auto": 0.043185282
   },
   {
    "n": 15,
@@ -250,7 +294,9 @@
    "out": 6970,
    "cost": 0.028186368,
    "duration": 0.0,
-   "start": 1791689653967
+   "start": 1791689653967,
+   "tier": "谷时",
+   "cost_auto": 0.013496064
   },
   {
    "n": 16,
@@ -260,17 +306,21 @@
    "out": 5082,
    "cost": 0.021162071999999997,
    "duration": 94.578,
-   "start": 1791689688347
+   "start": 1791689688347,
+   "tier": "谷时",
+   "cost_auto": 0.010581036
   },
   {
    "n": 17,
-   "calls": 14,
-   "input": 3752553,
-   "cacheRead": 3728112,
-   "out": 15522,
-   "cost": 0.04832737200000001,
+   "calls": 8,
+   "input": 2328017,
+   "cacheRead": 1753358,
+   "out": 10114,
+   "cost": 0.19506002400000003,
    "duration": 0.0,
-   "start": 1791689748721
+   "start": 1791720581636,
+   "tier": "谷时",
+   "cost_auto": 0.097527324
   }
  ]
 }

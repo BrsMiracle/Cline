@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MIMO 2.6 Flash — 紧凑机械键盘 · 交互式产品展示与配置</title>
+    <meta
+      name="description"
+      content="MIMO 2.6 Flash 紧凑机械键盘：三色外壳 × 三款键帽自由组合，3D 拆解视图、键帽敲击体验与本地配置保存。"
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111318'/%3E%3Cpath d='M8 20l4-8 4 8 4-8 4 8' stroke='%23ff7a45' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- 3D 展示区：只有键盘模型画在 Canvas 里，配置界面全部是普通网页元素 -->
+      <div id="stage" aria-label="键盘 3D 展示区"></div>
+
+      <!-- 首屏：产品名称 + 简短介绍 + 主要配置控件 -->
+      <header class="hero">
+        <div class="hero__brand">
+          <span class="hero__logo" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="30" height="30">
+              <rect width="32" height="32" rx="8" fill="rgba(255,255,255,.06)" />
+              <path d="M8 20l4-8 4 8 4-8 4 8" stroke="#ff7a45" stroke-width="2.4" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <div>
+            <p class="hero__eyebrow">MIMO LAB · 2026 旗舰外设</p>
+            <h1 class="hero__title">MIMO 2.6 <em>Flash</em></h1>
+          </div>
+        </div>
+        <p class="hero__intro">
+          63 键紧凑布局机械键盘。阳极氧化底壳 + 快拆定位板，三种外壳配色与三款键帽主题可自由组合；
+          转一转、拆开来、敲两下——你的配置，所见即所得。
+        </p>
+        <ul class="hero__specs">
+          <li>63 键 · 五行</li>
+          <li>6° 打字倾角</li>
+          <li>3 外壳 × 3 键帽 = 9 种组合</li>
+        </ul>
+      </header>
+
+      <!-- 配置面板：正常 HTML 控件 -->
+      <aside class="panel" id="config-panel" aria-label="配置面板">
+        <div class="panel__scroll">
+          <section class="group">
+            <h3 class="group__title">外壳配色 <output id="case-name">深空灰</output></h3>
+            <div class="swatches" id="case-swatches" role="radiogroup" aria-label="外壳配色"></div>
+          </section>
+
+          <section class="group">
+            <h3 class="group__title">键帽主题 <output id="cap-name">碳墨橙迹</output></h3>
+            <div class="cap-themes" id="cap-themes" role="radiogroup" aria-label="键帽主题"></div>
+          </section>
+
+          <section class="group">
+            <h3 class="group__title">展示视图</h3>
+            <div class="btn-row">
+              <button class="btn btn--primary" id="btn-explode" type="button" aria-pressed="false">拆解视图</button>
+              <button class="btn" id="btn-reset-view" type="button">复位视角</button>
+              <button class="btn btn--icon" id="btn-zoom-out" type="button" aria-label="缩小">−</button>
+              <button class="btn btn--icon" id="btn-zoom-in" type="button" aria-label="放大">＋</button>
+            </div>
+          </section>
+
+          <section class="group">
+            <h3 class="group__title">键盘体验</h3>
+            <div class="btn-row">
+              <label class="switch"><input type="checkbox" id="toggle-typing" checked /><span></span>体验模式</label>
+              <label class="switch"><input type="checkbox" id="toggle-sound" checked /><span></span>按键音</label>
+            </div>
+            <p class="hint" id="typing-hint">体验模式已开启：直接按下 A–Z 或空格，对应键帽会下压回弹；触屏可直接点击键帽。</p>
+          </section>
+
+          <section class="group">
+            <h3 class="group__title">配置摘要</h3>
+            <label class="field">
+              <span>配置名称</span>
+              <input type="text" id="config-name" maxlength="24" placeholder="例如：工位黑橙" autocomplete="off" />
+            </label>
+            <dl class="summary">
+              <div><dt>外壳</dt><dd id="sum-case">深空灰</dd></div>
+              <div><dt>键帽</dt><dd id="sum-cap">碳墨橙迹</dd></div>
+              <div><dt>组合</dt><dd id="sum-combo">深空灰 × 碳墨橙迹</dd></div>
+              <div><dt>视图</dt><dd id="sum-view">组装完成</dd></div>
+              <div><dt>模式</dt><dd id="sum-mode">体验模式 · 按键音开</dd></div>
+              <div><dt>布局</dt><dd id="sum-layout">63 键 · 5 行</dd></div>
+            </dl>
+          </section>
+
+          <footer class="panel__foot">
+            <div class="btn-row">
+              <button class="btn btn--primary" id="btn-save" type="button">保存配置</button>
+              <button class="btn btn--ghost" id="btn-reset-config" type="button">恢复默认</button>
+            </div>
+            <p class="status" id="save-status">配置会自动保存到本机浏览器（仅本页面）</p>
+          </footer>
+        </div>
+      </aside>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

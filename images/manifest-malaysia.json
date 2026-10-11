@@ -880,6 +880,72 @@
    "license": "",
    "source": "https://en.wikipedia.org/wiki/Taming_Sari_Tower",
    "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/danga_bay.jpg",
+   "slug": "danga_bay",
+   "title": "Danga Bay",
+   "caption": "金海湾 Danga Bay 海滨",
+   "bytes": 488198,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Danga_Bay",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/iskandar_puteri.jpg",
+   "slug": "iskandar_puteri",
+   "title": "Iskandar Puteri",
+   "caption": "依斯干达公主城（乐高乐园所在地）",
+   "bytes": 227741,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Iskandar_Puteri",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/sultan_ibrahim_building.jpg",
+   "slug": "sultan_ibrahim_building",
+   "title": "Sultan Ibrahim Building",
+   "caption": "苏丹依布拉欣大楼",
+   "bytes": 209956,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Sultan_Ibrahim_Building",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/johor_zoo.jpg",
+   "slug": "johor_zoo",
+   "title": "Johor Zoo",
+   "caption": "新山动物园（柔佛王室兴建）",
+   "bytes": 228423,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Johor_Zoo",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/johor_bahru_city.jpg",
+   "slug": "johor_bahru_city",
+   "title": "Johor Bahru",
+   "caption": "新山市区天际线",
+   "bytes": 539588,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Johor_Bahru",
+   "meta_error": ""
+  },
+  {
+   "file": "images/malaysia/johor_ancient_temple.jpg",
+   "slug": "johor_ancient_temple",
+   "title": "Johor Ancient Temple",
+   "caption": "柔佛古庙：新山最古老的华人庙宇",
+   "bytes": 539588,
+   "author": "",
+   "license": "",
+   "source": "https://en.wikipedia.org/wiki/Johor_Bahru",
+   "meta_error": ""
   }
  ],
  "failed": [
@@ -1009,61 +1075,6 @@
    "<HTTPError 429: 'Too Many Requests'>"
   ],
   [
-   "merdeka_square",
-   "Merdeka Square, Kuala Lumpur",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "sultan_abdul_samad",
-   "Sultan Abdul Samad Building",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "jamek_mosque",
-   "Masjid Jamek",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "pavilion_kl",
-   "Pavilion Kuala Lumpur",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "kl_forest_eco_park",
-   "KL Forest Eco Park",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "sunway_lagoon",
-   "Sunway Lagoon",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "royal_selangor",
-   "Royal Selangor",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "stadthuys",
-   "Stadthuys",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "a_famosa",
-   "A Famosa",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "st_pauls_church",
-   "St. Paul's Church, Malacca",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "taming_sari",
-   "Menara Taming Sari",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
    "george_town",
    "George Town, Penang",
    "<HTTPError 429: 'Too Many Requests'>"
@@ -1107,86 +1118,6 @@
    "kilim_karst",
    "Kilim Karst Geoforest Park",
    "<HTTPError 404: 'Not Found'>"
-  ],
-  [
-   "mossy_forest",
-   "Mossy Forest",
-   "<HTTPError 404: 'Not Found'>"
-  ],
-  [
-   "jamek_mosque",
-   "Masjid Jamek",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "pavilion_kl",
-   "Pavilion Kuala Lumpur",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "kl_forest_eco_park",
-   "KL Forest Eco Park",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "royal_selangor",
-   "Royal Selangor",
-   "no lead image"
-  ],
-  [
-   "sunway_lagoon",
-   "Sunway Lagoon",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "stadthuys",
-   "Stadthuys",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "taming_sari",
-   "Menara Taming Sari",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "george_town",
-   "George Town, Penang",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "kek_lok_si",
-   "Kek Lok Si",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "penang_hill",
-   "Penang Hill",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "penang_bridge",
-   "Penang Bridge",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "langkawi_sky_bridge",
-   "Langkawi Sky Bridge",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "pantai_cenang",
-   "Pantai Cenang",
-   "<HTTPError 404: 'Not Found'>"
-  ],
-  [
-   "eagle_square",
-   "Eagle Square",
-   "no lead image"
-  ],
-  [
-   "kilim_karst",
-   "Kilim Karst Geoforest Park",
-   "<HTTPError 429: 'Too Many Requests'>"
   ],
   [
    "mossy_forest",
@@ -1249,164 +1180,9 @@
    "<HTTPError 429: 'Too Many Requests'>"
   ],
   [
-   "royal_selangor",
-   "Royal Selangor",
-   "no lead image"
-  ],
-  [
-   "jamek_mosque",
-   "Masjid Jamek",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "stadthuys",
-   "Stadthuys",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "royal_selangor",
-   "Royal Selangor",
-   "no lead image"
-  ],
-  [
-   "stadthuys",
-   "Stadthuys",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "taming_sari",
-   "Menara Taming Sari",
-   "<HTTPError 429: 'Too many requests (f061ab2)'>"
-  ],
-  [
-   "george_town",
-   "George Town, Penang",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "eagle_square",
-   "Eagle Square",
-   "no lead image"
-  ],
-  [
-   "pantai_cenang",
-   "Pantai Cenang",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "kilim_karst",
-   "Kilim Karst Geoforest Park",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "kellies_castle",
-   "Kellie's Castle",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "royal_selangor",
-   "Royal Selangor",
-   "no lead image"
-  ],
-  [
-   "eagle_square",
-   "Eagle Square",
-   "no lead image"
-  ],
-  [
-   "taming_sari",
-   "Menara Taming Sari",
+   "johor_ancient_temple",
+   "Johor Ancient Temple",
    "<HTTPError 404: 'Not Found'>"
-  ],
-  [
-   "pantai_cenang",
-   "Pantai Cenang",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "ets_train",
-   "KTM ETS",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "grab_app",
-   "Grab (company)",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "chilli_crab",
-   "Chili crab",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "char_kway_teow",
-   "Char kway teow",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "roti_canai",
-   "Roti canai",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "royal_selangor",
-   "Royal Selangor",
-   "no lead image"
-  ],
-  [
-   "eagle_square",
-   "Eagle Square",
-   "no lead image"
-  ],
-  [
-   "taming_sari",
-   "Menara Taming Sari",
-   "<HTTPError 404: 'Not Found'>"
-  ],
-  [
-   "chilli_crab",
-   "Chili crab",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "char_kway_teow",
-   "Char kway teow",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "roti_canai",
-   "Roti canai",
-   "<HTTPError 429: 'Too Many Requests'>"
-  ],
-  [
-   "royal_selangor",
-   "Royal Selangor",
-   "no lead image"
-  ],
-  [
-   "eagle_square",
-   "Eagle Square",
-   "no lead image"
-  ],
-  [
-   "taming_sari",
-   "Menara Taming Sari",
-   "<HTTPError 404: 'Not Found'>"
-  ],
-  [
-   "royal_selangor",
-   "Royal Selangor",
-   "no lead image"
-  ],
-  [
-   "royal_selangor",
-   "Royal Selangor",
-   "no lead image"
-  ],
-  [
-   "eagle_square",
-   "Eagle Square",
-   "no lead image"
   ]
  ]
 }

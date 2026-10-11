@@ -266,6 +266,7 @@ def main():
     kl_map = load("kl_map.json")
     melaka_map = load("melaka_map.json")
     penang_map = load("penang_map.json")
+    jb_map = load("jb_map.json")
     food = load("food.json")
     prose = load("prose.json") if os.path.exists(os.path.join(ROOT, "content", "prose.json")) else {}
 
@@ -293,6 +294,7 @@ def main():
         "KL_CARDS": render_cards(kl_map, kl_ctrip, "malaysia"),
         "MELAKA_CARDS": render_cards(melaka_map, melaka_ctrip, "malaysia"),
         "PENANG_CARDS": render_cards(penang_map, penang_ctrip, "malaysia"),
+        "JB_CARDS": render_cards(jb_map, load_ctrip("johorbahru"), "malaysia"),
         "SG_FOOD": render_food(food["sg"], "singapore"),
         "MY_FOOD": render_food(food["my"], "malaysia"),
         "CREDITS": credits(manifests),

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-label="Daily Report 2026-10-11">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0d1117"/><stop offset="55%" stop-color="#161b22"/><stop offset="100%" stop-color="#1f2937"/></linearGradient><linearGradient id="bar" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#58a6ff"/><stop offset="50%" stop-color="#a371f7"/><stop offset="100%" stop-color="#f778ba"/></linearGradient>
+<style>.k{font:600 13px ui-monospace,Menlo,monospace;fill:#8b949e;letter-spacing:.28em}.d{font:700 78px -apple-system,Segoe UI,Helvetica,sans-serif;fill:#e6edf3}.n{font:600 20px -apple-system,Segoe UI,sans-serif;fill:#58a6ff}.t{font:400 17px -apple-system,Segoe UI,PingFang SC,sans-serif;fill:#c9d1d9}.s{font:400 13px ui-monospace,Menlo,monospace;fill:#6e7681}</style>
+</defs>
+<rect width="1200" height="400" fill="url(#bg)"/>
+<rect width="1200" height="6" fill="url(#bar)"/>
+<circle cx="1080" cy="70" r="190" fill="#58a6ff" opacity="0.07"/>
+<circle cx="980" cy="330" r="150" fill="#a371f7" opacity="0.06"/>
+<text x="64" y="88" class="k">DAILY REPORT</text>
+<text x="64" y="172" class="d">2026-10-11</text>
+<text x="64" y="212" class="n">64 headlines · 8 sources</text>
+<text x="64" y="258" class="t">• &#x27;Time for Ukraine to get new president,&#x27; says Trump after Zele</text><text x="64" y="292" class="t">• Twelve killed in attack on airport in Saudi capital Riyadh</text><text x="64" y="326" class="t">• Young men live in fear of being snatched off the streets and s</text>
+<text x="64" y="366" class="s">BBC World · Al Jazeera · The Guardian · The Verge · Ars Techni</text>
+</svg>

@@ -162,3 +162,123 @@ details p,details ul{color:var(--ink-2); font-size:14px}
 /* ---------- image credits / lightbox hint ---------- */
 .img-hint{font-size:12.4px;color:var(--ink-3);text-align:center;margin:10px 0 0}
 
+/* ============================================================
+   v2 视觉升级：更精致的排版、卡片、表格与细节
+   ============================================================ */
+:root{
+  --radius:16px;
+  --shadow-md:0 2px 4px rgba(13,45,60,.06),0 12px 32px rgba(13,45,60,.10);
+  --shadow-lg:0 4px 10px rgba(13,45,60,.08),0 24px 60px rgba(13,45,60,.16);
+}
+body{font-size:15.6px; line-height:1.78; text-rendering:optimizeLegibility}
+
+/* 顶部阅读进度条 */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:99;
+  background:linear-gradient(90deg,var(--teal),var(--teal-2) 45%,var(--gold) 75%,var(--coral));
+  transition:width .12s linear; box-shadow:0 0 8px rgba(18,112,127,.5)}
+
+/* 顶栏 */
+.topbar{box-shadow:0 1px 0 rgba(13,45,60,.06),0 8px 24px -18px rgba(13,45,60,.5)}
+.topbar .wrap{height:62px}
+.topnav a{transition:background .18s,color .18s,transform .18s}
+.topnav a:hover{transform:translateY(-1px)}
+.topnav a.active{box-shadow:0 4px 12px -4px rgba(13,79,92,.5)}
+
+/* Hero */
+.hero{background:linear-gradient(150deg,#062a33 0%,#0b414f 38%,#0f6272 72%,#12798a 100%)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);
+  background-size:22px 22px; -webkit-mask-image:linear-gradient(115deg,transparent 30%,#000 100%);
+  mask-image:linear-gradient(115deg,transparent 30%,#000 100%)}
+.hero .wrap{padding:66px 20px 52px}
+.hero h1{font-size:44px; line-height:1.18; letter-spacing:-1px; text-shadow:0 2px 20px rgba(0,0,0,.25)}
+.hero p.lede{font-size:17px; line-height:1.8; color:#dceef2}
+.chip{transition:transform .18s,border-color .18s,background .18s}
+.chip:hover{transform:translateY(-2px); background:rgba(255,255,255,.17); border-color:rgba(255,255,255,.4)}
+.chip b{font-size:17px}
+
+/* 章节标题 */
+section{padding:54px 0 10px; scroll-margin-top:74px}
+.sec-head{position:relative; padding-left:16px; margin-bottom:26px}
+.sec-head::before{content:""; position:absolute; left:0; top:6px; bottom:6px; width:4px;
+  border-radius:4px; background:linear-gradient(var(--coral),var(--gold))}
+.sec-head .num{letter-spacing:2.6px; font-weight:800}
+.sec-head h2{font-size:29px; margin:8px 0 10px}
+
+/* 卡片 */
+.card{transition:box-shadow .22s ease, transform .22s ease}
+.card:hover{box-shadow:var(--shadow-md)}
+.acard{transition:transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s ease, border-color .22s}
+.acard:hover{transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:#cfdae2}
+.acard img{transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.acard:hover img{transform:scale(1.045)}
+.acard .body{padding:15px 17px 17px; gap:9px}
+.acard h3{font-size:17px; line-height:1.42}
+.acard .desc{font-size:13.8px}
+.kv span{transition:background .18s,border-color .18s}
+.acard:hover .kv span{background:#eef4f7; border-color:#d8e4ea}
+.stars{display:inline-flex; align-items:center; gap:7px; background:linear-gradient(90deg,#fff8e8,#fdf3e2);
+  border:1px solid #f3e2c0; border-radius:999px; padding:4px 11px 4px 9px; font-size:12.6px; color:#8a5a10;
+  width:fit-content; font-weight:600}
+.stars a{border:0; color:#b57a12}
+.tip{display:flex; gap:7px; align-items:flex-start; line-height:1.6}
+
+/* 表格 */
+.tw{border-radius:14px; box-shadow:var(--shadow)}
+table{font-size:13.8px}
+thead th{background:linear-gradient(#f4f8fa,#eef4f7); border-bottom:1px solid #dde7ec; letter-spacing:.3px}
+tbody tr:nth-child(even){background:#fbfdfe}
+tbody tr:hover{background:#f2f8fb}
+tbody tr{transition:background .15s}
+td,th{padding:11px 13px}
+.price{font-variant-numeric:tabular-nums; letter-spacing:.1px}
+
+/* 人民币换算标签 */
+.cny{display:inline-block; margin-left:5px; font-size:11.6px; font-weight:700; color:#0f7a5f;
+  background:#e8f7f1; border:1px solid #c8ebdd; border-radius:6px; padding:1px 6px; white-space:nowrap;
+  vertical-align:1px}
+.fxbar{display:flex; flex-wrap:wrap; gap:9px; align-items:center; background:#f2f9f7;
+  border:1px solid #d3ece3; border-radius:12px; padding:11px 15px; margin:0 0 16px; font-size:13.4px; color:#0d5f4a}
+.fxbar b{color:#0a4a3a}
+.fxbar code{background:#fff; border:1px solid #cde8dd; border-radius:6px; padding:2px 7px; font-size:12.6px}
+
+/* KPI */
+.kpi{position:relative; overflow:hidden; transition:transform .2s, box-shadow .2s}
+.kpi:hover{transform:translateY(-3px); box-shadow:var(--shadow-md)}
+.kpi::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+  background:linear-gradient(var(--teal-2),var(--gold))}
+.kpi .v{font-size:24px; background:linear-gradient(90deg,var(--teal),var(--teal-2));
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+.kpi .l{line-height:1.5}
+
+/* 时间线 */
+.day{transition:background .18s, padding-left .18s}
+.day:hover{background:#f8fcfe; border-radius:12px}
+.day .dnum{position:relative; padding-left:16px}
+.day .dnum::before{content:""; position:absolute; left:0; top:8px; width:9px; height:9px;
+  border-radius:50%; background:var(--teal-2); box-shadow:0 0 0 3px rgba(18,112,127,.15)}
+
+/* 提示框 */
+.note{border-radius:6px 12px 12px 6px; line-height:1.75; box-shadow:0 1px 2px rgba(13,45,60,.04)}
+details{transition:box-shadow .2s, border-color .2s}
+details[open]{box-shadow:var(--shadow)}
+summary::marker{color:var(--coral)}
+
+/* 回到顶部 */
+#toTop{position:fixed; right:20px; bottom:22px; z-index:80; width:44px; height:44px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.3); background:linear-gradient(145deg,var(--teal),var(--teal-2));
+  color:#fff; font-size:18px; cursor:pointer; box-shadow:var(--shadow-lg); opacity:0; pointer-events:none;
+  transition:opacity .25s, transform .25s; display:flex; align-items:center; justify-content:center}
+#toTop.on{opacity:1; pointer-events:auto}
+#toTop:hover{transform:translateY(-3px) scale(1.05)}
+
+/* 滚动渐显 */
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1; transform:none}}
+@media(max-width:660px){
+  .hero h1{font-size:30px} section{padding:38px 0 8px}
+  .sec-head h2{font-size:23px} .kpi .v{font-size:21px}
+}
+
+

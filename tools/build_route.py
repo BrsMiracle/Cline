@@ -96,6 +96,7 @@ def main():
     tokens = {
         "CSS": css, "JS": js,
         "UPDATED": "2026-10-11（沙箱生成日期）",
+        "FX_BAR": B.FX_BAR_HTML,
         "FLIGHTS_BODY": (render_flight_block(flights["dirA"]["title"], flights["dirA"]["in"], flights["dirA"]["out"],
                                              "去程 · 珠三角 → 新加坡", "回程 · 槟城 → 珠三角")
                          + render_flight_block(flights["dirB"]["title"], flights["dirB"]["in"], flights["dirB"]["out"],
@@ -133,6 +134,7 @@ def main():
         if not n:
             break
     html = html.replace("{{IMGCOUNT}}", str(html.count("<img")))
+    html = B.add_cny(html)
 
     with open(OUT, "w", encoding="utf-8") as fh:
         fh.write("<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"utf-8\">\n"

@@ -211,9 +211,11 @@ def render_calendars(cals):
             '<h4 style="margin:20px 0 8px;font-size:15.5px">%s <span class="badge air">%s</span></h4>'
             '<div class="tw"><table><thead><tr><th>11月</th>%s</tr></thead><tbody><tr><td><b>%s</b></td>%s</tr></tbody></table></div>'
             '<div class="tw" style="margin-top:8px"><table><thead><tr><th>11月</th>%s</tr></thead><tbody><tr><td><b>%s</b></td>%s</tr></tbody></table></div>'
-            '<div class="scroll-hint">来源：%s。绿色=该航线 11 月低价档，红色=高价档，「—」=页面当日未给出价格。</div>'
+            '<div class="scroll-hint">来源：%s。绿色=该航线 11 月低价档，红色=高价档，「—」=页面当日未给出价格。%s</div>'
             % (esc(c["route"]), esc(c["cur"]), h1, esc(c["cur"]), "".join(cells[:15]),
-               h2, esc(c["cur"]), "".join(cells[15:]), esc(c["src"])))
+               h2, esc(c["cur"]), "".join(cells[15:]), esc(c["src"]),
+               ("折算区间约 ¥%s–%s（1 %s ≈ ¥%.2f）" % (format(lo * FX[c["cur"]], ',.0f'),
+                format(hi * FX[c["cur"]], ',.0f'), c["cur"], FX[c["cur"]])) if c["cur"] in FX and vals else ""))
     return "\n".join(out)
 
 
@@ -275,7 +277,7 @@ def render_flight_detail(routes):
         cal_html = ""
         if cal:
             vals = [float(v) for v in cal.values()]
-            lo = min(vals)
+            lo, hi = min(vals), max(vals)
             cells = []
             for d in range(1, 31):
                 v = cal.get(str(d))
@@ -297,14 +299,83 @@ def render_flight_detail(routes):
             '<p style="margin:0 0 6px;font-size:13.6px;color:var(--ink-2)"><b>班次与时长：</b>%s</p>'
             '<p style="margin:0 0 12px;font-size:13.6px;color:var(--ink-2)"><b>行李：</b>%s</p>'
             '<h4 style="margin:14px 0 6px;font-size:15px">该航线 11 月逐日最低价</h4>%s'
-            '<div class="scroll-hint">来源：%s。绿色＝该月低价档，「—」＝页面当日未给出价格。</div>'
+            '<div class="scroll-hint">来源：%s。绿色＝该月低价档，「—」＝页面当日未给出价格。%s</div>'
             '<h4 style="margin:16px 0 6px;font-size:15px">已知航班时刻（航司 / 航班号 / 起飞 / 到达 / 时长 / 类型）</h4>'
             '<div class="tw"><table><thead><tr><th>航司</th><th>航班号</th><th>起飞</th><th>到达</th><th>时长</th><th>类型</th></tr></thead><tbody>%s</tbody></table></div>'
             '</div>'
             % (esc(r["route"]), esc(r["cur"]), esc(r["low"]), esc(r.get("alt", "")), esc(r.get("alt", "")),
-               esc(r["freq"]), esc(r["bag"]), cal_html, esc(r["cal"]), srows))
+               esc(r["freq"]), esc(r["bag"]), cal_html, esc(r["cal"]),
+               ("折算区间约 ¥%s–%s（1 %s ≈ ¥%.2f）" % (format(lo * FX[r["cur"]], ',.0f'),
+                format(hi * FX[r["cur"]], ',.0f'), r["cur"], FX[r["cur"]]))
+               if (r.get("cur") in FX and vals) else "",
+               srows))
     return "\n".join(out)
 
+
+
+# --------------------------------------------------------------------------
+# 外币 -> 人民币 自动标注
+# --------------------------------------------------------------------------
+# open.er-api.com, 2026-10-11: 1 CNY = 0.190881 SGD = 0.608347 MYR = 1.16994 HKD = 0.149102 USD
+FX = {"SGD": 5.2390, "MYR": 1.6438, "HKD": 0.8548, "USD": 6.7068}
+CUR_ALIAS = {"S$": "SGD", "SGD": "SGD", "RM": "MYR", "MYR": "MYR",
+             "HK$": "HKD", "HKD": "HKD", "US$": "USD", "USD": "USD"}
+CUR_RE = re.compile(
+    r"(?<![A-Za-z¥$])(S\$|SGD|RM|MYR|HK\$|HKD|US\$|USD)\s?(\d[\d,]*(?:\.\d+)?)"
+    r"(?:\s*[–—~-]\s*(?:(?:S\$|RM|HK\$|US\$)\s?)?(\d[\d,]*(?:\.\d+)?))?")
+SKIP_BLOCK = re.compile(r"(<script\b[^>]*>.*?</script>|<style\b[^>]*>.*?</style>|<svg\b[^>]*>.*?</svg>|<!--.*?-->)", re.S)
+
+
+def fx_html(cur, lo, hi=None):
+    """A small inline badge with the CNY equivalent."""
+    r = FX[cur]
+    a = lo * r
+    b = (hi if hi is not None else lo) * r
+    if b == a:
+        return ' <span class="cny">≈¥%s</span>' % format(a, ',.0f')
+    return ' <span class="cny">≈¥%s–%s</span>' % (format(a, ',.0f'), format(b, ',.0f'))
+
+
+def _annotate(text):
+    def repl(m):
+        cur = CUR_ALIAS[m.group(1)]
+        try:
+            lo = float(m.group(2).replace(",", ""))
+            hi = float(m.group(3).replace(",", "")) if m.group(3) else None
+        except (TypeError, ValueError):
+            return m.group(0)
+        if lo > 200000:
+            return m.group(0)
+        return m.group(0) + fx_html(cur, lo, hi)
+    return CUR_RE.sub(repl, text)
+
+
+def add_cny(html):
+    """Append CNY equivalents to foreign-currency amounts, skipping code blocks."""
+    blocks = []
+
+    def stash(m):
+        blocks.append(m.group(1))
+        return "\x00BLOCK%d\x00" % (len(blocks) - 1)
+
+    html = SKIP_BLOCK.sub(stash, html)
+    parts = re.split(r"(<[^>]*>)", html)
+    for i, p in enumerate(parts):
+        if p.startswith("<"):
+            continue
+        parts[i] = _annotate(p)
+    html = "".join(parts)
+    for i, b in enumerate(blocks):
+        html = html.replace("\x00BLOCK%d\x00" % i, b)
+    return html
+
+
+FX_BAR_HTML = (
+    '<div class="fxbar"><b>💱 汇率速查</b>'
+    '<span>本文所有外币金额都自动附上了人民币等值（绿色标签），按 2026-10-11 中间价折算：</span>'
+    '<code>1 SGD ≈ ¥5.24</code><code>1 MYR ≈ ¥1.64</code>'
+    '<code>1 HKD ≈ ¥0.85</code><code>1 USD ≈ ¥6.71</code>'
+    '<span>汇率会波动，付款时以银行为准。</span></div>')
 
 def main():
     body = open(os.path.join(ROOT, "content", "body.html"), encoding="utf-8").read()
@@ -337,6 +408,7 @@ def main():
         "CSS": css,
         "JS": js,
         "UPDATED": "2026-10-11（沙箱生成日期）",
+        "FX_BAR": FX_BAR_HTML,
         "FLIGHTS_OUT": render_flights(flights["outbound"]),
         "FLIGHTS_RET": render_flights(flights["inbound"]),
         "FLIGHT_DETAIL": render_flight_detail(flight_detail["routes"]),
@@ -388,6 +460,7 @@ def main():
         if not n:
             break
     html = html.replace("{{IMGCOUNT}}", str(html.count("<img")))
+    html = add_cny(html)
     out_path = os.path.join(ROOT, "singapore-malaysia-november-guide.html")
     with open(out_path, "w", encoding="utf-8") as fh:
         fh.write("<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"utf-8\">\n"

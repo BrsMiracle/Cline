@@ -5,6 +5,8 @@
       <a href="#overview">总览</a>
       <a href="#flights">机票</a>
       <a href="#routes">路线</a>
+      <a href="#mainline">主线行程</a>
+      <a href="#land">陆路交通</a>
       <a href="#singapore">新加坡</a>
       <a href="#malaysia">马来西亚</a>
       <a href="#transport">城际交通</a>
@@ -56,6 +58,9 @@
   <h3 style="margin:26px 0 10px;font-size:19px">怎么买票最省：6 条实操建议</h3>
   {{BOOKING_TIPS}}
   {{FLIGHTS_PENANG}}
+  <h3 style="margin:30px 0 10px;font-size:19px">📋 8 条航线完整数据（逐日价格 + 航班时刻表）</h3>
+  <p style="margin:0 0 14px;color:var(--ink-2);font-size:14.2px">下面把主线会用到的 8 条航线逐条拆开：<b>该航线 11 月每一天的最低价，加上已知航班的航司、航班号、起飞到达时间、飞行时长与行李规则</b>，你可以直接照着挑航班。</p>
+  {{FLIGHT_DETAIL}}
   <h3 style="margin:26px 0 10px;font-size:19px">推荐组合方案（含真实航班示例）</h3>
   {{FLIGHT_PICKS}}
 </section>
@@ -67,6 +72,26 @@
     <p>{{ROUTES_LEAD}}</p>
   </div>
   {{ROUTES_BODY}}
+</section>
+
+<section id="mainline">
+  <div class="sec-head">
+    <div class="num">03B / MAIN LINE</div>
+    <h2>主线逐日行程：新加坡 → 新山 → 马六甲 → 吉隆坡 → 槟城</h2>
+    <p>这条主线怎么走、每一天几点做什么，都在下面。反向（槟城进、新加坡出）的走法见「路线规划」章节。</p>
+  </div>
+  {{ROUTE_DIAGRAM}}
+  {{ITINERARY}}
+</section>
+
+<section id="land">
+  <div class="sec-head">
+    <div class="num">03C / LAND</div>
+    <h2>陆路交通详解：每一段到底怎么走</h2>
+    <p>{{LAND_LEAD}}</p>
+  </div>
+  {{LAND_BODY}}
+  {{LAND_REVERSE}}
 </section>
 
 <section id="singapore">

@@ -266,6 +266,46 @@ def render_prose(html_text):
     return html_text
 
 
+
+def render_flight_detail(routes):
+    """Full per-route listing: November day-by-day prices + scheduled flights."""
+    out = []
+    for r in routes:
+        cal = r.get("caldays") or {}
+        cal_html = ""
+        if cal:
+            vals = [float(v) for v in cal.values()]
+            lo = min(vals)
+            cells = []
+            for d in range(1, 31):
+                v = cal.get(str(d))
+                cls = "low" if v and float(v) <= lo * 1.08 else ""
+                cells.append('<td class="num"><span class="badge %s">%s</span></td>' % (cls, fmt_int(v) if v else "—"))
+            cal_html = ('<div class="tw"><table><thead><tr><th>11月</th>%s</tr></thead><tbody><tr><td><b>%s</b></td>%s</tr></tbody></table></div>'
+                        '<div class="tw" style="margin-top:6px"><table><thead><tr><th>11月</th>%s</tr></thead><tbody><tr><td><b>%s</b></td>%s</tr></tbody></table></div>'
+                        % ("".join("<th class='num'>%d</th>" % d for d in range(1, 16)), esc(r["cur"]), "".join(cells[:15]),
+                           "".join("<th class='num'>%d</th>" % d for d in range(16, 31)), esc(r["cur"]), "".join(cells[15:])))
+        else:
+            cal_html = '<div class="note">该航线未查到逐日价格，仅见月度最低价。</div>'
+        srows = "".join("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % tuple(esc(x) for x in s)
+                       for s in r["sched"])
+        out.append(
+            '<div class="card pad" style="margin-bottom:18px">'
+            '<h3 style="margin:0 0 6px;font-size:17.5px">%s <span class="badge air">%s</span></h3>'
+            '<p style="margin:0 0 10px;font-size:14px;color:var(--ink-2)"><b>11 月最低：</b><span class="price">%s</span>　·　%s</p>'
+            '<p style="margin:0 0 10px;font-size:13.6px;color:var(--ink-2)"><b>其他渠道：</b>%s</p>'
+            '<p style="margin:0 0 6px;font-size:13.6px;color:var(--ink-2)"><b>班次与时长：</b>%s</p>'
+            '<p style="margin:0 0 12px;font-size:13.6px;color:var(--ink-2)"><b>行李：</b>%s</p>'
+            '<h4 style="margin:14px 0 6px;font-size:15px">该航线 11 月逐日最低价</h4>%s'
+            '<div class="scroll-hint">来源：%s。绿色＝该月低价档，「—」＝页面当日未给出价格。</div>'
+            '<h4 style="margin:16px 0 6px;font-size:15px">已知航班时刻（航司 / 航班号 / 起飞 / 到达 / 时长 / 类型）</h4>'
+            '<div class="tw"><table><thead><tr><th>航司</th><th>航班号</th><th>起飞</th><th>到达</th><th>时长</th><th>类型</th></tr></thead><tbody>%s</tbody></table></div>'
+            '</div>'
+            % (esc(r["route"]), esc(r["cur"]), esc(r["low"]), esc(r.get("alt", "")), esc(r.get("alt", "")),
+               esc(r["freq"]), esc(r["bag"]), cal_html, esc(r["cal"]), srows))
+    return "\n".join(out)
+
+
 def main():
     body = open(os.path.join(ROOT, "content", "body.html"), encoding="utf-8").read()
     css = open(os.path.join(ROOT, "content", "theme.css"), encoding="utf-8").read()
@@ -279,6 +319,7 @@ def main():
     penang_map = load("penang_map.json")
     jb_map = load("jb_map.json")
     food = load("food.json")
+    flight_detail = load("flight-detail.json")
     prose = load("prose.json") if os.path.exists(os.path.join(ROOT, "content", "prose.json")) else {}
 
     sg_ctrip = load_ctrip("singapore")
@@ -298,6 +339,7 @@ def main():
         "UPDATED": "2026-10-11（沙箱生成日期）",
         "FLIGHTS_OUT": render_flights(flights["outbound"]),
         "FLIGHTS_RET": render_flights(flights["inbound"]),
+        "FLIGHT_DETAIL": render_flight_detail(flight_detail["routes"]),
         "PRICE_CAL": render_calendars(cal["calendars"]),
         "BOOKING_TIPS": render_tips(cal["booking_tips"]),
         "FLIGHT_PICKS": render_picks(cal["picks"]),
@@ -313,6 +355,17 @@ def main():
     for k, v in prose.items():
         tokens[k] = v
 
+    route_dir = os.path.join(ROOT, "content", "route", "prose")
+    if os.path.isdir(route_dir):
+        for fn in sorted(os.listdir(route_dir)):
+            if fn.endswith(".html"):
+                tokens.setdefault(fn[:-5].upper(), open(os.path.join(route_dir, fn), encoding="utf-8").read())
+    land_p = os.path.join(ROOT, "content", "route", "land.json")
+    if os.path.exists(land_p):
+        import build_route as BR
+        land = json.load(open(land_p, encoding="utf-8"))
+        tokens["LAND_BODY"] = BR.render_land(land["legs"])
+        tokens["LAND_REVERSE"] = "".join('<div class="note" style="margin-top:6px"><b>%s</b>%s</div>' % (esc(t["t"]), t["d"]) for t in land["reverse"])
     prose_dir = os.path.join(ROOT, "content", "prose")
     if os.path.isdir(prose_dir):
         for fn in sorted(os.listdir(prose_dir)):

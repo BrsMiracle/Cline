@@ -1,0 +1,113 @@
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">主线攻略 · <span>新加坡→新山→马六甲→吉隆坡→槟城</span></div>
+    <nav class="topnav">
+      <a href="#overview">总览</a>
+      <a href="#flights">机票</a>
+      <a href="#itinerary">逐日行程</a>
+      <a href="#land">陆路交通</a>
+      <a href="#cities">各城市玩什么</a>
+      <a href="#food">美食</a>
+      <a href="#practical">出入境·实用</a>
+      <a href="#sources">数据来源</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">SINGAPORE · JOHOR BAHRU · MELAKA · KUALA LUMPUR · PENANG</div>
+    <h1>新加坡 × 马来西亚 <em>一条主线走到底</em></h1>
+    <p class="lede">{{HERO_LEDE}}</p>
+    <div class="chips">{{HERO_CHIPS}}</div>
+  </div>
+</div>
+
+<main class="wrap">
+{{HERO_GALLERY}}
+
+<section id="overview">
+  <div class="sec-head">
+    <div class="num">01 / OVERVIEW</div>
+    <h2>主线总览与结论</h2>
+    <p>{{OVERVIEW_LEAD}}</p>
+  </div>
+  {{ROUTE_DIAGRAM}}
+  <div class="grid g4" style="margin-top:18px">{{OVERVIEW_KPIS}}</div>
+  <div class="grid g2" style="margin-top:18px">{{OVERVIEW_CARDS}}</div>
+</section>
+
+<section id="flights">
+  <div class="sec-head">
+    <div class="num">02 / FLIGHTS</div>
+    <h2>机票：两个方向的价格与推荐</h2>
+    <p>{{FLIGHTS_LEAD}}</p>
+  </div>
+  {{FLIGHTS_BODY}}
+</section>
+
+<section id="itinerary">
+  <div class="sec-head">
+    <div class="num">03 / ITINERARY</div>
+    <h2>逐日行程（10 天版）</h2>
+    <p>每一天都写清了「怎么走、几点走、到了看什么」，可以直接照抄。</p>
+  </div>
+  {{ITINERARY}}
+</section>
+
+<section id="land">
+  <div class="sec-head">
+    <div class="num">04 / GROUND TRANSPORT</div>
+    <h2>陆路交通详解（重点）</h2>
+    <p>{{LAND_LEAD}}</p>
+  </div>
+  {{LAND_BODY}}
+  {{LAND_REVERSE}}
+</section>
+
+<section id="cities">
+  <div class="sec-head">
+    <div class="num">05 / CITIES</div>
+    <h2>各城市玩什么、门票多少</h2>
+    <p>{{CITIES_LEAD}}</p>
+  </div>
+  {{CITIES_BODY}}
+</section>
+
+<section id="food">
+  <div class="sec-head">
+    <div class="num">06 / FOOD</div>
+    <h2>一路吃过去</h2>
+    <p>从新加坡的小贩中心到槟城的街头摊，这条线刚好把新马两地最有代表性的食物串起来。</p>
+  </div>
+  {{FOOD_BODY}}
+</section>
+
+<section id="practical">
+  <div class="sec-head">
+    <div class="num">07 / PRACTICAL</div>
+    <h2>出入境、现金、打包与避坑</h2>
+    <p>{{PRACTICAL_LEAD}}</p>
+  </div>
+  {{PRACTICAL}}
+</section>
+
+<section id="sources">
+  <div class="sec-head">
+    <div class="num">08 / SOURCES</div>
+    <h2>数据来源、查询时间与图片版权</h2>
+    <p>{{SOURCES_LEAD}}</p>
+  </div>
+  {{SOURCES}}
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 8px"><b style="color:#fff">主线攻略 · 新加坡→新山→马六甲→吉隆坡→槟城</b> · 生成时间 {{UPDATED}}</p>
+    <p style="margin:0 0 8px">{{FOOTER_NOTE}}</p>
+    <p style="margin:0;font-size:12.6px">图片来源：Wikimedia Commons（作者与许可协议见「数据来源」章节）。机票与票价均为公开平台抓取快照，实时价格请以订票平台为准。</p>
+  </div>
+</footer>
+<script>/*{{JS}}*/</script>

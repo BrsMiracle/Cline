@@ -1,0 +1,36 @@
+{
+"note": "价格为 2026-10-11 从 AirAsia MOVE 官方航线页、Trip.com（携程）香港站、Skyscanner 抓取的快照，币种为来源页面自身币种。",
+"dirA": {
+ "title":"方向 A｜新加坡进 → 槟城出（推荐，本次主线）",
+ "in":[
+  {"route":"深圳 SZX → 新加坡 SIN","low":"CNY 1,001","when":"11/17、11/21、11/28","plat":"AirAsia MOVE（亚航官方）","detail":"页面最低 CNY 615 起；直飞由深圳航空执飞（10 月示例 21:50→02:00，4h10m，CNY 1,085）。Trip.com 同航线 11 月最低 HK$919","bag":"亚航手提 1 件 ≤7kg，托运需另购"},
+  {"route":"香港 HKG → 新加坡 SIN","low":"HK$901 / US$112","when":"Scoot 直飞示例","plat":"Trip.com / Skyscanner","detail":"每天多班直飞（酷航 Scoot、新航、国泰），航程约 4 小时","bag":"Scoot Basic 不含托运；手提 10kg（≤2 件）"},
+  {"route":"广州 CAN → 新加坡 SIN","low":"HK$543 / US$70","when":"九元航空直飞示例","plat":"Trip.com / Skyscanner","detail":"直飞另有南航、新航、酷航、春秋；这是三条去程里最便宜的","bag":"未查到，订票时看清票面"}
+ ],
+ "out":[
+  {"route":"槟城 PEN → 香港 HKG","low":"HK$692 / MYR 359","when":"11/13（该航线 11 月最低）","plat":"Trip.com / AirAsia MOVE","detail":"香港快运直飞：<b>UO747 16:25→20:20</b>（白天到）与 <b>UO769 00:50→04:45</b>（红眼）；每周 35 班，11 月单程均价 HK$589","bag":"香港快运手提合计 7kg，托运另购，超重 HKD 120/kg"},
+  {"route":"槟城 PEN → 深圳 SZX","low":"MYR 594 / HK$1,141","when":"11/23（另有 11/18、11/30）","plat":"AirAsia MOVE / Trip.com","detail":"深圳航空直飞 <b>ZH 13:25→17:30</b>（4h05m）；页面最低 MYR 595 起","bag":"未查到"},
+  {"route":"槟城 PEN → 广州 CAN","low":"MYR 577","when":"11/2、11/11、11/12","plat":"AirAsia MOVE","detail":"南方航空直飞 <b>CZ 19:00→23:00</b>（4h）；页面最低 MYR 529 起","bag":"未查到"}
+ ]
+},
+"dirB": {
+ "title":"方向 B｜槟城进 → 新加坡出（如果更便宜就走这条）",
+ "in":[
+  {"route":"深圳 SZX → 槟城 PEN","low":"CNY 971","when":"11/21（11/30 为 CNY 979）","plat":"AirAsia MOVE / Trip.com","detail":"页面最低 CNY 934 起；直飞由深圳航空执飞 <b>ZH335 08:25→12:25</b>（4h），每周 7 班；Trip.com 报 11 月最低 HK$872","bag":"手提 ≤7kg（亚航）"},
+  {"route":"香港 HKG → 槟城 PEN","low":"HKD 894","when":"11/5","plat":"AirAsia MOVE / Trip.com","detail":"香港快运直飞 <b>UO 20:20→00:05</b>（3h45m）；页面最低 HKD 886 起","bag":"手提合计 7kg"},
+  {"route":"广州 CAN → 槟城 PEN","low":"CNY 894","when":"11/4","plat":"AirAsia MOVE","detail":"页面最低 CNY 758 起；直飞由南方航空执飞 <b>CZ 14:00→18:00</b>（4h）","bag":"未查到"}
+ ],
+ "out":[
+  {"route":"新加坡 SIN → 深圳 SZX","low":"SGD 238 / HK$1,460","when":"11/9（11/26 为 SGD 244）","plat":"AirAsia MOVE / Trip.com","detail":"直飞有深航、南航、新航；南方航空 21:00→01:25 是红眼，深圳航空 13:40→18:00 / 18:45→22:55 是白天班","bag":"新航经济舱手提 1 件 ≤7kg"},
+  {"route":"新加坡 SIN → 香港 HKG","low":"HK$1,141 / US$143","when":"11/10","plat":"Trip.com / Skyscanner","detail":"酷航直飞 TR982 16:00→20:35；新航多班白天直飞","bag":"Scoot Basic 不含托运"},
+  {"route":"新加坡 SIN → 广州 CAN","low":"HK$1,050","when":"11/11（九元航空直飞）","plat":"Trip.com / Skyscanner","detail":"九元 AQ1276 01:10→05:25（凌晨到）；酷航 TR100 05:20→09:30","bag":"Scoot Basic 不含托运"}
+ ]
+},
+"totals": [
+ {"plan":"A｜深圳 → 新加坡，槟城 → 香港","calc":"CNY 1,001 + MYR 359","rmb":"≈ ¥1,591","note":"本次推荐的组合：去程最省、回程是白天到港的 UO747"},
+ {"plan":"A｜深圳 → 新加坡，槟城 → 深圳","calc":"CNY 1,001 + MYR 594","rmb":"≈ ¥1,978","note":"深圳进出最省事，但要接受槟城→深圳的白天直飞价格"},
+ {"plan":"B｜香港 → 槟城，新加坡 → 广州","calc":"HKD 894 + HK$1,050","rmb":"≈ ¥1,662","note":"方向 B 里最便宜的组合"},
+ {"plan":"B｜深圳 → 槟城，新加坡 → 深圳","calc":"CNY 971 + SGD 238","rmb":"≈ ¥2,218","note":"深圳往返但两端都偏贵，不推荐"}
+],
+"conclusion": "按 11 月的最低价算，<b>方向 A（新加坡进、槟城出）比方向 B 更便宜</b>——A 的最低组合约 ¥1,591，B 约 ¥1,662，差约 ¥70。而且方向 A 正好是「由南向北、越走越便宜」的顺路方向，所以本次主线就定为：<b>新加坡 → 新山 → 马六甲 → 吉隆坡 → 槟城</b>。如果你愿意从香港出发、回国落香港，方向 A 是唯一能同时拿到「最便宜去程 + 最便宜回程」的组合。"
+}

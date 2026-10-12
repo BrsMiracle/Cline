@@ -1,30 +1,198 @@
 {
-"sg": [
-{"slug":"chicken_rice","name":"海南鸡饭","en":"Hainanese Chicken Rice","where":"麦士威熟食中心「天天海南鸡饭」；文东记、五星鸡饭","price":"SGD 5–8（参考）","note":"新加坡的国民美食，鸡油饭香、辣椒酱是关键。天天海南鸡饭常年排队，14:00 后去人少。"},
-{"slug":"chilli_crab","name":"辣椒螃蟹","en":"Chilli Crab","where":"珍宝海鲜、无招牌海鲜（芽笼）、龙海鲜螃蟹王","price":"按重量计价，整只约 SGD 60–90（参考）","note":"新加坡国菜，酱汁甜辣带蛋花，一定要配炸馒头蘸汁。价格随螃蟹时价浮动，点单前先确认重量与单价。"},
-{"slug":"bak_kut_teh","name":"肉骨茶","en":"Bak Kut Teh","where":"松发肉骨茶（新桥路）、黄亚细","price":"SGD 8–12 / 碗（参考）","note":"新加坡版是白胡椒汤底，和马来西亚的药材黑汤完全不同，建议两国都试一次做对比。"},
-{"slug":"laksa","name":"叻沙","en":"Laksa","where":"328 加东叻沙、结霜桥叻沙","price":"SGD 5–7（参考）","note":"椰浆咖喱汤底配粗米粉，328 加东叻沙只给勺子不给筷子，是本地老规矩。"},
-{"slug":"kaya_toast","name":"咖椰吐司＋半熟蛋","en":"Kaya Toast Set","where":"亚坤 Ya Kun、Toast Box、基里尼咖啡店","price":"SGD 4–7 / 套（参考）","note":"新加坡式早餐标配：炭烤吐司夹咖椰与牛油，配两颗半熟蛋加酱油胡椒，再一杯 Kopi。"},
-{"slug":"satay","name":"沙嗲","en":"Satay","where":"老巴刹 Satay Street（晚间封路）、纽顿熟食中心","price":"SGD 0.7–1.2 / 串（参考）","note":"鸡肉、羊肉、牛肉串配花生酱、黄瓜与洋葱。老巴刹晚上 19:00 后整条街变烤肉街。"},
-{"slug":"char_kway_teow","name":"炒粿条","en":"Char Kway Teow","where":"纽顿熟食中心、麦士威熟食中心","price":"SGD 5–8（参考）","note":"黑酱油＋腊肠＋血蛤，锅气越重越香。想吃“重口味”可以要求加辣、加蛤。"},
-{"slug":"hokkien_mee","name":"福建面 / 虾面","en":"Hokkien Mee / Prawn Mee","where":"纽顿熟食中心、老巴刹","price":"SGD 5–8（参考）","note":"虾头熬的浓汤配黄面与米粉，挤上酸柑更清爽。"},
-{"slug":"rojak","name":"罗惹","en":"Rojak","where":"老巴刹、纽顿熟食中心","price":"SGD 4–6（参考）","note":"水果与油条拌虾膏花生酱，甜咸酸辣混在一起，接受度因人而异但很有特色。"},
-{"slug":"roti_canai","name":"印度煎饼 / 玛塔巴","en":"Roti Prata / Murtabak","where":"小印度 Zam Zam、Springleaf Prata Place","price":"SGD 2–6（参考）","note":"小印度的 Zam Zam 从 1908 年开到现在，羊肉玛塔巴分量巨大，两个人分一份刚好。"},
-{"slug":"durian","name":"榴莲与榴莲甜品","en":"Durian & Durian Desserts","where":"芽笼榴莲街（Geylang）、牛车水一带水果摊","price":"按品种与季节浮动（参考）","note":"猫山王、D24 等品种价格差很大，先问单价再让老板开；现开现吃最新鲜。"},
-{"slug":"cendol","name":"煎蕊 / 摩摩喳喳","en":"Chendol / Ice Kachang","where":"牛车水、老巴刹甜品摊","price":"SGD 3–5（参考）","note":"椰糖＋椰浆＋绿色粉条刨冰，新加坡湿热天气里的救命甜品。"}
-],
-"my": [
-{"slug":"nasi_lemak","name":"椰浆饭","en":"Nasi Lemak","where":"吉隆坡 Village Park Restaurant（八打灵再也）、路边 Nasi Lemak 摊","price":"RM 6–15（参考）","note":"椰浆煮的饭＋参巴辣酱＋江鱼仔＋花生＋炸鸡，是马来西亚的国民早餐。Village Park 的炸鸡椰浆饭常年被评为全马第一。"},
-{"slug":"bak_kut_teh","name":"肉骨茶（巴生式）","en":"Bak Kut Teh (Klang style)","where":"巴生（Klang）一带老店、吉隆坡 Sun Fong 等","price":"RM 15–30 / 人（参考）","note":"马来西亚版是药材黑汤，可加排骨、猪肚、油条。巴生是发源地，值得专程去吃一次。"},
-{"slug":"char_kway_teow","name":"炒粿条","en":"Char Kway Teow","where":"槟城（新关仔角、Lorong Selamat）、吉隆坡亚罗街","price":"RM 6–12（参考）","note":"槟城版用鸭蛋、虾与血蛤，锅气更足；全马公认槟城最好吃。"},
-{"slug":"chicken_rice","name":"鸡饭粒","en":"Chicken Rice Ball","where":"马六甲鸡场街「古城鸡饭粒」「和记鸡饭粒」","price":"RM 8–15 / 人（参考）","note":"马六甲独有的吃法——把鸡饭搓成乒乓球大小的饭粒，配白斩鸡和辣椒酱。"},
-{"slug":"laksa","name":"亚参叻沙","en":"Asam Laksa","where":"槟城（Air Itam 亚参叻沙、新关仔角）","price":"RM 6–10（参考）","note":"用鱼汤＋罗望子做的酸辣汤面，和新加坡的椰浆叻沙完全不同；槟城亚参叻沙被不少榜单评为全球最佳美食之一。"},
-{"slug":"cendol","name":"煎蕊","en":"Cendol","where":"槟城 Penang Road Famous Teochew Chendul、马六甲 Jonker 88","price":"RM 4–8（参考）","note":"马六甲的 Jonker 88 有榴莲煎蕊，槟城那家老字号则是最经典的椰糖版本。"},
-{"slug":"roti_canai","name":"印度煎饼＋拉茶","en":"Roti Canai & Teh Tarik","where":"Mamak 档（全天候印度穆斯林餐馆），如 Pelita、Nasi Kandar 店","price":"RM 2–6（参考）","note":"24 小时的 Mamak 档是马来西亚的深夜食堂，拉茶「拉」得越长泡沫越细。"},
-{"slug":"satay","name":"沙嗲","en":"Satay","where":"吉隆坡亚罗街、Kajang（加影沙嗲发源地）","price":"RM 1–2 / 串（参考）","note":"加影是马来西亚沙嗲的发源地，配花生酱、黄瓜与洋葱饭团（ketupat）。"},
-{"slug":"banana_leaf","name":"蕉叶饭 / 印度咖喱","en":"Banana Leaf Rice","where":"吉隆坡 Brickfields（小印度）、槟城 Little India","price":"RM 10–20（参考）","note":"白饭配多种咖喱与蔬菜不限量续，通常用手抓吃；Brickfields 是吉隆坡印度社区核心。"},
-{"slug":"seafood","name":"葡萄牙村海鲜","en":"Portuguese Settlement Seafood","where":"马六甲葡萄牙村（Portuguese Settlement）","price":"RM 30–60 / 人（参考）","note":"葡式烤鱼、辣炒螃蟹、Sambal 虾，价格比老城便宜，是本地人的聚餐地。"},
-{"slug":"durian","name":"榴莲","en":"Durian","where":"吉隆坡 SS2 榴莲街（八打灵再也）、马六甲路边摊","price":"按品种计价（参考）","note":"猫山王、D24、红虾等；SS2 是吉隆坡最有名的榴莲一条街，多为当季现开。"},
-{"slug":"dim_sum","name":"点心 / 大马早餐","en":"Dim Sum & Kopitiam Breakfast","where":"吉隆坡 Imbi Market（燕美巴刹）、老字号茶室","price":"RM 10–25 / 人（参考）","note":"炭烤面包＋生熟蛋＋咖啡，是马来西亚华人茶室的经典组合，配上一笼烧卖就是一顿早茶。"}
-]
+ "sg": [
+  {
+   "slug": "chicken_rice",
+   "name": "海南鸡饭",
+   "en": "Hainanese Chicken Rice",
+   "where": "麦士威熟食中心「天天海南鸡饭」；文东记、五星鸡饭",
+   "price": "SGD 5–8（参考）",
+   "note": "新加坡的国民美食，鸡油饭香、辣椒酱是关键。天天海南鸡饭常年排队，14:00 后去人少。"
+  },
+  {
+   "slug": "chilli_crab",
+   "name": "辣椒螃蟹",
+   "en": "Chilli Crab",
+   "where": "珍宝海鲜、无招牌海鲜（芽笼）、龙海鲜螃蟹王",
+   "price": "按重量计价，整只约 SGD 60–90（参考）",
+   "note": "新加坡国菜，酱汁甜辣带蛋花，一定要配炸馒头蘸汁。价格随螃蟹时价浮动，点单前先确认重量与单价。"
+  },
+  {
+   "slug": "bak_kut_teh",
+   "name": "肉骨茶",
+   "en": "Bak Kut Teh",
+   "where": "松发肉骨茶（新桥路）、黄亚细",
+   "price": "SGD 8–12 / 碗（参考）",
+   "note": "新加坡版是白胡椒汤底，和马来西亚的药材黑汤完全不同，建议两国都试一次做对比。"
+  },
+  {
+   "slug": "laksa",
+   "name": "叻沙",
+   "en": "Laksa",
+   "where": "328 加东叻沙、结霜桥叻沙",
+   "price": "SGD 5–7（参考）",
+   "note": "椰浆咖喱汤底配粗米粉，328 加东叻沙只给勺子不给筷子，是本地老规矩。"
+  },
+  {
+   "slug": "kaya_toast",
+   "name": "咖椰吐司＋半熟蛋",
+   "en": "Kaya Toast Set",
+   "where": "亚坤 Ya Kun、Toast Box、基里尼咖啡店",
+   "price": "SGD 4–7 / 套（参考）",
+   "note": "新加坡式早餐标配：炭烤吐司夹咖椰与牛油，配两颗半熟蛋加酱油胡椒，再一杯 Kopi。"
+  },
+  {
+   "slug": "satay",
+   "name": "沙嗲",
+   "en": "Satay",
+   "where": "老巴刹 Satay Street（晚间封路）、纽顿熟食中心",
+   "price": "SGD 0.7–1.2 / 串（参考）",
+   "note": "鸡肉、羊肉、牛肉串配花生酱、黄瓜与洋葱。老巴刹晚上 19:00 后整条街变烤肉街。"
+  },
+  {
+   "slug": "char_kway_teow",
+   "name": "炒粿条",
+   "en": "Char Kway Teow",
+   "where": "纽顿熟食中心、麦士威熟食中心",
+   "price": "SGD 5–8（参考）",
+   "note": "黑酱油＋腊肠＋血蛤，锅气越重越香。想吃“重口味”可以要求加辣、加蛤。"
+  },
+  {
+   "slug": "hokkien_mee",
+   "name": "福建面 / 虾面",
+   "en": "Hokkien Mee / Prawn Mee",
+   "where": "纽顿熟食中心、老巴刹",
+   "price": "SGD 5–8（参考）",
+   "note": "虾头熬的浓汤配黄面与米粉，挤上酸柑更清爽。"
+  },
+  {
+   "slug": "rojak",
+   "name": "罗惹",
+   "en": "Rojak",
+   "where": "老巴刹、纽顿熟食中心",
+   "price": "SGD 4–6（参考）",
+   "note": "水果与油条拌虾膏花生酱，甜咸酸辣混在一起，接受度因人而异但很有特色。"
+  },
+  {
+   "slug": "roti_canai",
+   "name": "印度煎饼 / 玛塔巴",
+   "en": "Roti Prata / Murtabak",
+   "where": "小印度 Zam Zam、Springleaf Prata Place",
+   "price": "SGD 2–6（参考）",
+   "note": "小印度的 Zam Zam 从 1908 年开到现在，羊肉玛塔巴分量巨大，两个人分一份刚好。"
+  },
+  {
+   "slug": "durian",
+   "name": "榴莲与榴莲甜品",
+   "en": "Durian & Durian Desserts",
+   "where": "芽笼榴莲街（Geylang）、牛车水一带水果摊",
+   "price": "按品种与季节浮动（参考）",
+   "note": "猫山王、D24 等品种价格差很大，先问单价再让老板开；现开现吃最新鲜。"
+  },
+  {
+   "slug": "cendol",
+   "name": "煎蕊 / 摩摩喳喳",
+   "en": "Chendol / Ice Kachang",
+   "where": "牛车水、老巴刹甜品摊",
+   "price": "SGD 3–5（参考）",
+   "note": "椰糖＋椰浆＋绿色粉条刨冰，新加坡湿热天气里的救命甜品。"
+  }
+ ],
+ "my": [
+  {
+   "slug": "nasi_lemak",
+   "name": "椰浆饭",
+   "en": "Nasi Lemak",
+   "where": "吉隆坡 Village Park Restaurant（八打灵再也）、路边 Nasi Lemak 摊",
+   "price": "RM 6–15（参考）",
+   "note": "椰浆煮的饭＋参巴辣酱＋江鱼仔＋花生＋炸鸡，是马来西亚的国民早餐。Village Park 的炸鸡椰浆饭常年被评为全马第一。"
+  },
+  {
+   "slug": "bak_kut_teh",
+   "name": "肉骨茶（巴生式）",
+   "en": "Bak Kut Teh (Klang style)",
+   "where": "巴生（Klang）一带老店、吉隆坡 Sun Fong 等",
+   "price": "RM 15–30 / 人（参考）",
+   "note": "马来西亚版是药材黑汤，可加排骨、猪肚、油条。巴生是发源地，值得专程去吃一次。"
+  },
+  {
+   "slug": "char_kway_teow",
+   "name": "炒粿条",
+   "en": "Char Kway Teow",
+   "where": "槟城（新关仔角、Lorong Selamat）、吉隆坡亚罗街",
+   "price": "RM 6–12（参考）",
+   "note": "槟城版用鸭蛋、虾与血蛤，锅气更足；全马公认槟城最好吃。"
+  },
+  {
+   "slug": "chicken_rice",
+   "name": "鸡饭粒",
+   "en": "Chicken Rice Ball",
+   "where": "马六甲鸡场街「古城鸡饭粒」「和记鸡饭粒」",
+   "price": "RM 8–15 / 人（参考）",
+   "note": "马六甲独有的吃法——把鸡饭搓成乒乓球大小的饭粒，配白斩鸡和辣椒酱。"
+  },
+  {
+   "slug": "laksa",
+   "name": "亚参叻沙",
+   "en": "Asam Laksa",
+   "where": "槟城（Air Itam 亚参叻沙、新关仔角）",
+   "price": "RM 6–10（参考）",
+   "note": "用鱼汤＋罗望子做的酸辣汤面，和新加坡的椰浆叻沙完全不同；槟城亚参叻沙被不少榜单评为全球最佳美食之一。"
+  },
+  {
+   "slug": "cendol",
+   "name": "煎蕊",
+   "en": "Cendol",
+   "where": "槟城 Penang Road Famous Teochew Chendul、马六甲 Jonker 88",
+   "price": "RM 4–8（参考）",
+   "note": "马六甲的 Jonker 88 有榴莲煎蕊，槟城那家老字号则是最经典的椰糖版本。"
+  },
+  {
+   "slug": "roti_canai",
+   "name": "印度煎饼＋拉茶",
+   "en": "Roti Canai & Teh Tarik",
+   "where": "Mamak 档（全天候印度穆斯林餐馆），如 Pelita、Nasi Kandar 店",
+   "price": "RM 2–6（参考）",
+   "note": "24 小时的 Mamak 档是马来西亚的深夜食堂，拉茶「拉」得越长泡沫越细。"
+  },
+  {
+   "slug": "satay",
+   "name": "沙嗲",
+   "en": "Satay",
+   "where": "吉隆坡亚罗街、Kajang（加影沙嗲发源地）",
+   "price": "RM 1–2 / 串（参考）",
+   "note": "加影是马来西亚沙嗲的发源地，配花生酱、黄瓜与洋葱饭团（ketupat）。"
+  },
+  {
+   "slug": "banana_leaf",
+   "name": "蕉叶饭 / 印度咖喱",
+   "en": "Banana Leaf Rice",
+   "where": "吉隆坡 Brickfields（小印度）、槟城 Little India",
+   "price": "RM 10–20（参考）",
+   "note": "白饭配多种咖喱与蔬菜不限量续，通常用手抓吃；Brickfields 是吉隆坡印度社区核心。"
+  },
+  {
+   "slug": "portuguese_settlement",
+   "name": "葡萄牙村海鲜",
+   "en": "Portuguese Settlement Seafood",
+   "where": "马六甲葡萄牙村（Portuguese Settlement）",
+   "price": "RM 30–60 / 人（参考）",
+   "note": "葡式烤鱼、辣炒螃蟹、Sambal 虾，价格比老城便宜，是本地人的聚餐地。"
+  },
+  {
+   "slug": "durian",
+   "name": "榴莲",
+   "en": "Durian",
+   "where": "吉隆坡 SS2 榴莲街（八打灵再也）、马六甲路边摊",
+   "price": "按品种计价（参考）",
+   "note": "猫山王、D24、红虾等；SS2 是吉隆坡最有名的榴莲一条街，多为当季现开。"
+  },
+  {
+   "slug": "dim_sum",
+   "name": "点心 / 大马早餐",
+   "en": "Dim Sum & Kopitiam Breakfast",
+   "where": "吉隆坡 Imbi Market（燕美巴刹）、老字号茶室",
+   "price": "RM 10–25 / 人（参考）",
+   "note": "炭烤面包＋生熟蛋＋咖啡，是马来西亚华人茶室的经典组合，配上一笼烧卖就是一顿早茶。"
+  }
+ ]
 }

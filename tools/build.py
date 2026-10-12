@@ -129,7 +129,7 @@ def render_cards(items, ctrip_rows, group):
         rec = ctrip_rows.get(it.get("ctrip") or "\u0000", {}) if it.get("ctrip") else {}
         name = it.get("name_override") or (it.get("ctrip") if rec else "") or it.get("en", "")
         parts = ['<div class="acard">']
-        parts.append(img_tag(it["slug"], group, name, width=560, quality=72))
+        parts.append(img_tag(it["slug"], group, name, width=520, quality=70))
         parts.append('<div class="body">')
         parts.append("<h3>%s</h3>" % esc(name))
         parts.append('<div class="en">%s</div>' % esc(it.get("en", "")))
@@ -239,11 +239,22 @@ def render_tips(tips):
 
 
 
+def find_image(slug, prefer="malaysia"):
+    """Return (group, slug) for the first group that actually has the file."""
+    for grp in (prefer, "singapore", "malaysia"):
+        if os.path.exists(os.path.join(ROOT, "images", grp, slug + ".jpg")):
+            return grp
+    return None
+
+
 def render_food(items, group):
     out = []
     for it in items:
+        slug = it.get("slug", "")
+        grp = find_image(slug, "malaysia") if slug else None
+        img = img_tag(slug, grp, it["name"], width=440, quality=68) if grp else '<div class="card-img img-missing">图片暂缺</div>'
         out.append(
-            '<div class="acard"><div class="body">'
+            '<div class="acard">' + img + '<div class="body">'
             '<h3>%s</h3><div class="en">%s</div>'
             '<p class="desc">%s</p>'
             '<div class="kv"><span>📍 %s</span><span>💰 %s</span></div>'
@@ -308,17 +319,22 @@ def main():
             if fn.endswith(".html"):
                 tokens[fn[:-5].upper()] = open(os.path.join(prose_dir, fn), encoding="utf-8").read()
 
+    deferred = {"IMGCOUNT"}
+
     def sub(m):
         key = m.group(1)
-        return tokens.get(key, "<!-- missing:%s -->" % key)
+        if key in tokens:
+            return tokens[key]
+        return m.group(0) if key in deferred else "<!-- missing:%s -->" % key
 
     html = body
     for _ in range(5):
         html = re.sub(r"\{\{IMG:([a-z0-9_]+)\}\}",
-                      lambda m: img_tag(m.group(1), "malaysia", m.group(1), width=560, quality=72), html)
+                      lambda m: img_tag(m.group(1), find_image(m.group(1)) or "malaysia", m.group(1), width=440, quality=68), html)
         html, n = re.subn(r"\{\{([A-Z_]+)\}\}", sub, html)
         if not n:
             break
+    html = html.replace("{{IMGCOUNT}}", str(html.count("<img")))
     out_path = os.path.join(ROOT, "singapore-malaysia-november-guide.html")
     with open(out_path, "w", encoding="utf-8") as fh:
         fh.write("<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"utf-8\">\n"

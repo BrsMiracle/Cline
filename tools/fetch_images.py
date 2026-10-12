@@ -87,8 +87,18 @@ def thumb_at(source, width=WIDTH):
     return clean
 
 
+def commons_file_name(url):
+    """Real Commons file name from either an original or a thumbnail URL.
+
+    The REST API sometimes hands back a thumb URL like
+    .../thumb/2/2e/Foo.jpg/3840px-Foo.jpg, whose basename is NOT the file name.
+    """
+    name = urllib.parse.unquote(url.split("?")[0].split("/")[-1])
+    return re.sub(r"^\d+px-", "", name)
+
+
 def commons_meta(orig_url):
-    name = urllib.parse.unquote(orig_url.split("/")[-1])
+    name = commons_file_name(orig_url)
     q = ("https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo"
          "&iiprop=extmetadata|url&titles=File:" + urllib.parse.quote(name))
     try:

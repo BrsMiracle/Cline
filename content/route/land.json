@@ -1,0 +1,47 @@
+{
+"note": "票价与班次抓取自 BusOnlineTicket / Causeway Link / KTMB 时刻表等公开来源，抓取日 2026-10-11；实际以购票时为准。",
+"legs": [
+{"id":"sg-jb","no":"第 1 段","from":"新加坡","to":"新山 JB","title":"怎么从新加坡到新山",
+ "rows":[
+  {"mode":"Causeway Link 跨境巴士 CW","detail":"CW1 从 Kranji 地铁站、CW2 从 Queen Street 巴士总站、CW5 从 Newton 上车，过新柔长堤到新山 CIQ","price":"S$2.60–4.80（单程）","time":"约 1 小时（含过关）","note":"最常用；车次密集，早班车服务在新加坡工作的马来西亚通勤者，末班车到午夜"},
+  {"mode":"新加坡公共巴士 170 / 170X / 160 / 950","detail":"170X 从 Queen Street 出发经兀兰过关到 Larkin；950 往返兀兰与 JB Sentral","price":"约 S$2.00 起（按里程计费）","time":"约 1 小时（38.5 公里）","note":"最便宜的方式；同样要下车过关再上车"},
+  {"mode":"KTM 接驳火车 Shuttle Tebrau","detail":"从兀兰火车关卡（Woodlands Train Checkpoint）直达 JB Sentral","price":"以 KTMB 官网为准","time":"约 5 分钟（过关在兀兰站内完成）","note":"最不容易堵，但班次少、常满座，必须提前在 KTMB 预订"},
+  {"mode":"地铁到兀兰 + 950","detail":"新加坡 MRT 到 Woodlands，转 950 过关","price":"MRT 按里程 + 巴士约 S$2","time":"约 1.5 小时","note":"适合住新加坡北部的行程"}
+ ],
+ "tips":["新山有两个主要关口：<b>新柔长堤（CIQ / Bangunan Sultan Iskandar）</b>与<b>第二通道（大士 Tuas）</b>。从新加坡市中心出发走长堤最直接。",
+  "<b>过关流程：</b>上车 → 到新加坡兀兰关卡全员下车、刷卡/盖章出境 → 回原车继续 → 到马来西亚 CIQ 下车入境、验 MDAC → 再上车进城。行李要来回搬两次，别带太多。",
+  "<b>高峰时段：</b>周五傍晚（新加坡→新山）、周日晚上（新山→新加坡）以及公共假期前后，排队 1–3 小时很常见，尽量避开。",
+  "<b>必须在出发前就填好 MDAC</b>（马来西亚电子入境卡），关卡没有网络给你慢慢填。"]},
+{"id":"jb-melaka","no":"第 2 段","from":"新山 JB","to":"马六甲 Melaka","title":"怎么从新山到马六甲",
+ "rows":[
+  {"mode":"长途巴士（唯一实用方式）","detail":"从 <b>Larkin Sentral</b>（拉庆巴士总站）发车，到 Melaka Sentral；先说清楚：<b>没有火车</b>","price":"RM 20–35（促销价曾低至 RM 18）","time":"约 3–3.5 小时（213 公里）","note":"注意：经 Batu Pahat 的车次可能绕到 6 小时，买票时确认是否直达"},
+  {"mode":"主要运营商与班次","detail":"KKKL Express（07:00–22:00，16 班，RM 31）／Jebat Express（08:30–19:30，9 班，RM 30）／Delima Express（17:30–20:00，3 班，RM 20）／Starmart（11:00–21:00，2 班，RM 25）／Causeway Link Express（08:45 一班，RM 35）／Maraliner（20:30，RM 27）／Super Nice（08:29，RM 33）","price":"最低 RM 20 起","time":"——","note":"7 家运营商、每天最多约 54 班，基本不用预约太久"}
+ ],
+ "tips":["<b>先到 Larkin Sentral：</b>从 JB Sentral（火车站/CIQ 一侧）打车到 Larkin Sentral 约 15–20 分钟、RM 10–20；也有本地巴士（如 Causeway Link 的 BAS.MY 线路）。",
+  "<b>买票：</b>可在 BusOnlineTicket / Easybook 提前买，也可以直接到 Larkin Sentral 柜台买；周末与假期建议提前一天。",
+  "<b>到站：</b>抵达 Melaka Sentral 后，打车或 Grab 到鸡场街（Jonker Street）一带约 10–15 分钟、RM 10–15。",
+  "<b>不要搞错：</b>新山有 Larkin Sentral（长途巴士总站）和 JB Sentral（火车站+市区）两个不同的地方，相距约 5 公里。"]},
+{"id":"melaka-kl","no":"第 3 段","from":"马六甲 Melaka","to":"吉隆坡 KL","title":"怎么从马六甲到吉隆坡",
+ "rows":[
+  {"mode":"长途巴士","detail":"Melaka Sentral → <b>TBS（Terminal Bersepadu Selatan，南湖镇巴士总站）</b>","price":"RM 12–25（促销价曾低至 RM 8.80）","time":"约 2–2.5 小时","note":"班次最密的一段，Delima Vision 一天 15 班（05:00–19:00）"},
+  {"mode":"主要运营商","detail":"Delima Vision（RM 12）／Kejora Masyhur（RM 20）／Billion Stars（RM 25）／Transnasional、KKKL 等","price":"最低 RM 12 起","time":"——","note":"TBS 是吉隆坡主要的长途巴士枢纽，接 LRT/KTM 进城"},
+  {"mode":"包车 / Grab","detail":"Melaka Sentral ↔ 吉隆坡市区","price":"约 RM 200–300（按车型）","time":"约 2 小时","note":"两人以上、行李多时可以考虑，门到门更省事"}
+ ],
+ "tips":["<b>TBS 进城：</b>到 TBS 后可直接换乘 KTM Komuter 或 LRT（Bandar Tasik Selatan 站与 TBS 连通），约 20–30 分钟到市中心。",
+  "<b>也可选到吉隆坡的 Puduraya / 中央艺术坊一带下车</b>，部分车次终点是市区车站，买票时可以问清楚，能少一次换乘。",
+  "<b>行李：</b>巴士下层行李舱免费存放，贵重物品随身。"]},
+{"id":"kl-penang","no":"第 4 段","from":"吉隆坡 KL","to":"槟城 Penang","title":"怎么从吉隆坡到槟城",
+ "rows":[
+  {"mode":"KTM ETS 电动列车（推荐）","detail":"KL Sentral → <b>Butterworth</b>（北海，紧邻 Penang Sentral 枢纽），再换渡轮或 Grab 过海到乔治市","price":"以 KTMB 官网 KITS 定价为准（按车次与座位浮动）","time":"ETS Express 3 小时 35 分／Platinum 4 小时 5 分／Gold 4 小时 20 分","note":"每天 7 班；2026 年 6 月 1 日时刻表：EP9124 08:05、EX9108 11:40、EP9130 13:40、EP9326 14:10、EP9136 15:55、EG9352 18:22、EP9138 20:15（均自 KL Sentral 出发）"},
+  {"mode":"飞机","detail":"KUL → PEN（亚航等）","price":"11 月最低 MYR 115（另见页面 CNY 起价）","time":"飞行约 1 小时，加机场往返约 4–5 小时","note":"吉隆坡机场到市区要 1 小时，槟城机场到乔治市约 30 分钟，总体不比火车快"},
+  {"mode":"长途巴士","detail":"TBS → Sungai Nibong（槟城）","price":"RM 38–57（促销曾低至 RM 26.60）","time":"约 5 小时","note":"最便宜但最慢；夜间车可以省一晚住宿"}
+ ],
+ "tips":["<b>到槟城后的最后一段：</b>Butterworth 站与 Penang Sentral 之间有一条约 200 米的空调连廊，走连廊到 Penang Sentral 二楼再按指示去渡轮码头；也可以直接 Grab 走槟城大桥到乔治市。",
+  "<b>发现一条隐藏线路：</b>ETS 的 <b>EP9326</b> 是从 <b>JB Sentral 09:55 始发</b>、经 KL Sentral 14:10、终到 Butterworth 18:15 的直通列车——也就是说<b>新山到槟城可以一趟火车直达，不用换车</b>。如果不想在马六甲/吉隆坡停留，这条线可以直接用。",
+  "<b>订票：</b>KTMB 的 KITS 官网/App 订票，节假日会加开班次；周末与长假建议提前 2 周以上。",
+  "<b>火车 vs 飞机怎么选：</b>火车市中心到市中心、能看沿途风景、准点率高；飞机只有在买到 MYR 115 那种特价时才更划算，且两头机场要各花 30–60 分钟。"]}
+],
+"reverse": [
+ {"t":"反过来的走法（槟城进 → 新加坡出）","d":"如果槟城进、新加坡出的机票更便宜，就整条线倒过来走：<b>槟城 → 吉隆坡 → 马六甲 → 新山 → 新加坡</b>。每一段的交通方式完全一样，只是方向相反：槟城→吉隆坡坐 ETS（或飞），吉隆坡→马六甲坐巴士到 Melaka Sentral，马六甲→新山坐 Larkin 方向的巴士，新山→新加坡坐 CW 巴士或 170X 过关。唯一要注意的是<b>新山→新加坡方向的高峰是周日晚上</b>，尽量避开。"}
+]
+}
